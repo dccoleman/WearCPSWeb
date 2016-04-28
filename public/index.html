@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<meta charset="utf-8">
+<title>Wear CPS - MQP Experiment</title>
+
+<!-- Calls to /scripts are redirected to /node_modules/ on the server -->
+<script src="js/experimentr.js"></script>
+<script src="js/alert_gen.js"></script>
+<script src="js/primary_task.js"></script>
+<script src="scripts/d3/d3.min.js"></script>
+<script src="scripts/jquery/dist/jquery.min.js"></script>
+
+<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+
+<body></body>
+
+<script>
+experimentr.sequence([
+  'modules/consent/',
+  'modules/watch_test/',
+  'modules/feedback_survey/',
+  'modules/debrief/'
+]).start();
+</script>

@@ -1,0 +1,73 @@
+<div id="consent">
+
+<h2 class="placeholder">Wear CPS - Experiment POC</h2>
+
+<p class="placeholder" id="scenario">
+Background information about experiment, what is required, and how long the experiment should take.
+</p>
+
+<p>
+Please enter your Amazon Worker Id. <strong>You may only complete this experiment once.</strong> Subsequent completions will not be accepted:
+<br>
+<br>
+<input type="text" id="workerId" name="workerId" disabled="true" size="30" />
+<button id="checkId" type="button">Check ID</button>
+<br>
+
+<span id="invalidMessage">
+Our records show that you have taken part in this study before, so we cannot allow you to take this experiment again at this time. Please contact us if you feel this is in error.
+</span>
+</p>
+
+<div id="consentForm">
+<p class="placeholder">Include an IRB or other consent form here. The DIV will automatically create a scrollable window.
+</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tristique arcu vitae massa tincidunt, quis dignissim magna elementum. Etiam vestibulum dui sit amet nunc pellentesque mollis. Quisque semper, purus et sodales scelerisque, nulla nunc vestibulum odio, et molestie mauris lacus vitae enim. Maecenas eleifend, urna quis mattis suscipit, erat turpis dictum purus, laoreet condimentum erat leo sit amet risus. Nam faucibus ultricies feugiat. Mauris nisl nisl, sagittis at neque eget, fermentum auctor tellus. Integer eu tortor pretium, fringilla metus ac, accumsan sapien. Quisque sed enim quam. Sed elementum neque vitae finibus lacinia.</p> 
+<p>Pellentesque facilisis nibh nulla, facilisis mollis urna aliquet in. Ut vel ex et velit eleifend viverra quis ornare turpis. Donec non porta diam. Vestibulum in congue eros, vel mollis felis. Vestibulum laoreet elementum erat, et blandit elit euismod a. Duis faucibus arcu vel magna venenatis elementum. Donec ante augue, fringilla et vehicula non, maximus nec dolor. Morbi nec magna blandit, dictum orci sed, eleifend enim. Cras ac diam at magna imperdiet auctor. Ut accumsan mauris non risus condimentum suscipit. Cras nec libero lectus. Nullam elit velit, mollis sit amet metus et, accumsan auctor nulla. Ut et mi ut dolor vestibulum viverra accumsan eu nisl. Cras scelerisque nec nunc non sollicitudin. Maecenas id turpis imperdiet, porttitor tellus ut, aliquam tortor.</p> 
+<p>Phasellus tristique blandit enim, quis ultrices lorem lacinia nec. Aliquam dignissim mauris tortor, ut fringilla urna bibendum in. Nam lacinia fringilla blandit. Suspendisse potenti. Fusce eu auctor turpis, nec lobortis ante. Mauris porttitor diam et turpis ullamcorper pharetra. Vestibulum ornare pulvinar ex, et molestie nulla fermentum id. Mauris auctor ante non pulvinar vehicula. Maecenas lorem urna, bibendum et mi sed, mattis tincidunt libero. Proin ornare consequat dui, nec tincidunt ipsum elementum a. Maecenas aliquam est sed vehicula ultricies.</p> 
+<p>Etiam fringilla urna risus. Maecenas lacus nisl, varius quis est nec, elementum aliquam tellus. Donec at imperdiet magna. Sed et tempor tortor, eu elementum urna. In tempus nisi et laoreet laoreet. Vivamus molestie dolor vitae feugiat auctor. Nam a nisi volutpat, commodo neque quis, commodo dui. Sed scelerisque aliquet urna. In hac habitasse platea dictumst. Mauris suscipit ex nisi, eget tempus arcu viverra in. Donec tellus ipsum, placerat aliquet ex vitae, imperdiet condimentum tellus.</p> 
+<p>Proin sollicitudin iaculis magna, vitae ornare turpis sollicitudin non. Curabitur ultrices, leo ac maximus tristique, magna arcu laoreet dolor, eu pharetra massa mi eget elit. Donec turpis odio, placerat ornare magna quis, malesuada sagittis dolor. Cras efficitur tempor porttitor. Mauris a nisl in felis ultrices viverra et nec libero. Etiam sit amet dolor eu diam commodo auctor vel eu eros. Suspendisse ac mi vel erat semper rhoncus nec vel nisi.</p> 
+
+</div>
+
+<br>
+
+<input type="checkbox" id="readCheck"> I have read the IRB consent form and all the information provided above.<br>
+
+<br>
+<span id="notChecked">
+Please read the above material and check the agreement box.
+</span>
+
+<p>
+<button id="consentYes" disabled="true" type="button">Proceed to Experiment</button>
+</p>
+
+<p>
+<strong>Note: this HIT requires a modern browser. If you are not using Chrome or Firefox, the "I Agree" button may not activate even after entering your Worker Id.</strong>
+</p>
+
+</div>
+
+<style>
+  #invalidMessage {
+    display: none;
+    color: red;
+  }
+
+  #notChecked {
+    display: none;
+    color: red;
+  }
+
+  #consentForm {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 200px;
+    overflow-y: scroll;
+    padding: 15px;
+  }
+</style>
+
+<script src="modules/consent/index.js"></script>

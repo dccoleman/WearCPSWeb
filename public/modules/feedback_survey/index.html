@@ -1,0 +1,69 @@
+
+<div id="feedback_survey">
+<h2 class="placeholder">
+Thank you! The experiment is almost complete. Please fill out the following feedback survey.
+</h2>
+
+<div id="awesomeScale">How awesome is this experiment?
+    <div id="awesomeScales">
+        <input type="radio" id="a1" name="awesomeScale" value="Awesome"> Awesome
+        <input type="radio" id="a2" name="awesomeScale" value="Awesome"> Awesome
+        <input type="radio" id="a3" name="awesomeScale" value="Awesome"> Awesome
+        <input type="radio" id="a6" name="awesomeScale" value="Unspecified"> Unspecified
+    </div>
+</div>
+<br>
+
+<div id="rating">Out of five stars, how good is the experiement?
+    <div id="ratings">
+        <input type="radio" id="s1" name="rating" value="Five Stars"> Five Stars
+        <input type="radio" id="s2" name="rating" value="Five Stars"> Five Stars
+        <input type="radio" id="s3" name="rating" value="Unspecified"> Unspecified
+    </div>
+</div>
+<br>
+
+<div id="monitor">Your monitor size is closest to:
+    <div id="monitors">
+        <input type="radio" id="m4" name="monitor" value="9 or smaller"> 9" or smaller
+        <input type="radio" id="m4" name="monitor" value=11> 11"
+        <input type="radio" id="m4" name="monitor" value=13> 13"
+        <input type="radio" id="m4" name="monitor" value=15> 15"
+        <input type="radio" id="m4" name="monitor" value=17> 17"
+        <input type="radio" id="m4" name="monitor" value=19> 19"
+        <input type="radio" id="m4" name="monitor" value=21> 21"
+        <input type="radio" id="m5" name="monitor" value="23 or larger"> 23" or larger
+        <input type="radio" id="m5" name="monitor" value="dontknow"> I'm not sure
+    </div>
+</div>
+<br>
+
+</div>
+
+<script> 
+(function() {
+  var data = {};
+
+  experimentr.startTimer('demo');
+
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 'awesomeScale' ? this : null; })
+  .on('change', function() { data.awesomeScale = this.value; validate(); });
+  
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 'rating' ? this : null; })
+  .on('change', function() { data.rating = this.value; validate(); });
+  
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 'monitor' ? this : null; })
+  .on('change', function() { data.monitor = this.value; validate(); });
+  
+  function validate() {
+	  if(data.awesomeScale && data.rating && data.monitor) {
+	    experimentr.endTimer('demo');
+	    experimentr.addData(data);
+	    experimentr.release();
+	  }
+	}
+}());
+</script>

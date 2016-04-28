@@ -1,0 +1,158 @@
+	<div id="watch_test">
+
+		<link rel="stylesheet" href="css/style.css">
+
+		
+		<div class="page_wrapper">
+
+			<div class="topWrapper">
+				<div class="timer">
+					<div id="timer_div"></div>
+				</div>
+
+				<button onclick="Javascript:increaseDifficulty();generateTable();">Increase Difficulty</button>
+			</div>
+
+			<div class="primaryTaskWrapper">
+
+        		<div id="target"></div>
+        		<div id="timer_div_board"></div> <div id="score"></div>
+
+        		<div id="mydata">
+            		<table id="myTableData"></table>
+        		</div>
+
+		        <div class="checkAnswer">
+		            <input type="text" id="formValueId" name="valueId" required placeholder="Target word count?"/>
+		            <input id="myButton" type="button" value="Submit" onclick="checkAnswer(document.getElementById('formValueId').value)"/>
+		        </div>
+
+        		<div id="answer" hidden></div>
+   			</div>
+
+   			<div class="rightWrapper">
+				<div class="options">
+					<h1>Action Options</h1>
+					<input type="button" id="optionZero" onclick="collectClick(0)"> Do nothing<br>
+
+					<input type="button" id="optionOne" onclick="collectClick(1)"> Turn off monitor<br>
+
+					<input type="button" id="optionTwo" onclick="collectClick(2)"> Disconnect monitor<br>
+
+					<input type="button" id="optionThree" onclick="collectClick(3)"> Calibrate Monitor<br>
+
+					<input type="button" id="optionFour" onclick="collectClick(4)"> Suspend Pump<br>
+
+					<input type="button" id="optionFive" onclick="collectClick(5)"> Release Pump<br>
+
+					<input type="button" id="optionSix" onclick="collectClick(6)"> Run away<br>
+				</div>
+
+				<div class="watch__wrapper">
+					<div class="watch" id ="watchId">
+						<div class="watch__belt shadow_5">
+							<div class="watch__model clock shadow_5">
+								<div class='sh-0' id='second-hand'></div>
+								<div class='mh-56' id='minute-hand'></div>
+								<div class='hh-8' id='hour-hand'></div>
+								<span class="ticks">
+									<span class="tick_3">3</span>
+									<span class="tick_6">6</span>
+									<span class="tick_9">9</span>
+									<span class="tick_12">12</span>
+									<span class="alarm_to_click">  </span>
+								</span>
+								<div class="bubbleback"></div>
+								<div class="bubble"></div>
+								<div class="alarm_wrapper">
+									<div class="title">
+										<h4 class="bounce" id="severity">Severity 0</h4>
+										<h3 class="bounce">System Alert!</h3>
+										<h5 class="bounce" id="action"></span>Stay</h5>
+										<div class="alarm__icon bounceInUp">
+											<!--<i class="fa fa-bell"></i>
+											<i class="fa fa-times"></i>-->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/watch.js"></script> 
+	</div>
+
+	<script>
+		(function() {
+			var data    = {};
+
+			init();
+
+
+			function init() {
+				experimentr.hideNext();
+
+				timerStart();
+				boardTimer();
+
+				//each generation will kickoff a next response timer
+				startGeneration();
+
+				generateTable();
+				updateScore();
+			}
+
+			function timerStart() {
+				var experiment_time = 120;
+
+				var interval = setInterval(function() {
+
+					var hour = Math.floor(experiment_time/60);
+
+					var seconds = experiment_time - 60*hour;
+
+					--experiment_time;
+
+					document.getElementById('timer_div').innerHTML = "<strong>Experiment Time Remaing - </strong>" + hour + " : " + twoDigits(seconds);
+
+					if (experiment_time < 0)
+					{
+						clearInterval(interval);
+						experimentr.next();
+					}
+				}, 1000);
+			}
+
+			function boardTimer() {
+        		experiment_time_board = curBoardTime;
+
+        		var interval = setInterval(function() {
+
+          		var hour = Math.floor(experiment_time_board/60);
+
+          		var seconds = experiment_time_board - 60*hour;
+
+          		experiment_time_board--;
+
+          		document.getElementById('timer_div_board').innerHTML = "<strong>Board Time Remaing - </strong>" + hour + " : " + twoDigits(seconds);
+
+          		if (experiment_time_board < 0)
+          		{
+		            generateTable();
+		            checkAnswer(-1);
+		            experiment_time_board = curBoardTime;
+		          }
+		        }, 1000);
+		      }
+
+			function twoDigits( n )
+   	 		{
+        		return (n <= 9 ? "0" + n : n);
+    		}
+			
+		}());
+
+	</script>
