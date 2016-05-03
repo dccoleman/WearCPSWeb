@@ -59,6 +59,7 @@ var j2c    = require('json2csv')
       'answer_9',
       'answer_10',
       'score',
+      'experiment_case',
 
 
 
