@@ -1,3 +1,4 @@
 analysis/results/data.csv
 analysis/results/data.json
 appendonly.aof
+redis.conf
