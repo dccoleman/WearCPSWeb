@@ -38,6 +38,30 @@ var j2c    = require('json2csv')
       'time_diff_alert2',
       'time_diff_alert3',
       'time_diff_alert4',
+      'responseTry_1_answer',
+      'responseTry_2_answer',
+      'responseTry_3_answer',
+      'responseTry_4_answer',
+      'responseTry_5_answer',
+      'responseTry_6_answer',
+      'responseTry_7_answer',
+      'responseTry_8_answer',
+      'responseTry_9_answer',
+      'responseTry_10_answer',
+      'answer_1',
+      'answer_2',
+      'answer_3',
+      'answer_4',
+      'answer_5',
+      'answer_6',
+      'answer_7',
+      'answer_8',
+      'answer_9',
+      'answer_10',
+      'score',
+      'experiment_case',
+
+
 
     ]
   , data

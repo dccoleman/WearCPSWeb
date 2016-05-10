@@ -5,6 +5,7 @@ var currentAlert = 0;
 var timeout;
 var alertEnRoute;
 var experimenting = true;
+var experimentCase;
 function generateAlert() {
 	if(experimenting){
 		timeout = true;
@@ -35,29 +36,36 @@ function generateAlert() {
 				break;
 		}
 
-		switch(severity){
+		switch(experimentCase){ //A/B , with and without color
 			case 0:
-				$('.bubble').css("background-color","green");
+				switch(severity){
+					case 0:
+						$('.bubble').css("background-color","green");
+						break;
+					case 1:
+						$('.bubble').css("background-color","green");
+						break;
+					case 2:
+						$('.bubble').css("background-color","gold");
+						break;
+					case 3:
+						$('.bubble').css("background-color","orange");
+						break;
+					case 4:
+						$('.bubble').css("background-color","darkorange");
+						break;
+					case 5:
+						$('.bubble').css("background-color","red");
+						break;
+					default:
+						break;
+
+				}
 				break;
 			case 1:
-				$('.bubble').css("background-color","green");
+				$('.bubble').css("background-color","black");
 				break;
-			case 2:
-				$('.bubble').css("background-color","gold");
-				break;
-			case 3:
-				$('.bubble').css("background-color","orange");
-				break;
-			case 4:
-				$('.bubble').css("background-color","darkorange");
-				break;
-			case 5:
-				$('.bubble').css("background-color","red");
-				break;
-			default:
-				break;
-
-		}
+			}
 		var actionTuple = generateActionTuple(healthScore,deviceState,severity,confidence);
 
 		document.getElementById("severity").innerHTML = "Severity: " + severity;
@@ -92,7 +100,7 @@ function startGeneration(){
    		data[key5] = " ";
    		data[key6] = " ";
    }
-   experimentr.addData(data);
+   
    /**
    var total = 0;
    for(var i = 0; i < 5; i++){
@@ -101,6 +109,14 @@ function startGeneration(){
        setTimeout(function(){generateAlert()}, total);
    }
 	*/
+	experimentCase = Math.floor(Math.random() * 2);
+	if(experimentCase == 0){
+		data["experiment_case"] = "black only";
+	}
+	else{
+		data["experiment_case"] = "Colors";
+	}
+	experimentr.addData(data);
 	var x = Math.random() * 15000;
 	var experimentLength = 120000;
 	setTimeout(function(){generateAlert()}, x);

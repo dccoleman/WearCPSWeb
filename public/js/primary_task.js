@@ -1,6 +1,6 @@
 //JavaScript for primary task
 //©WearCPS 2016
-//Chris Navarro
+//Chris Navarro, edited by Mark Touma
 
 //=====================GLOBALS=====================
   //Vars controlling what words are displayed
@@ -18,11 +18,19 @@
 
   var answer = 0; //keeps track of number of target word
   var score = 0;  //tracks user score
-
+  var responseTry = 1; //tracks each time the user submits an answer
 //=====================METHODS=====================
 
 //Initially generate table with easiest settings
-function load() {  
+function load() {
+    var data = {};
+    for(var i = 1; i <= 10; i++){ //initialize experimentr response values
+      data[("responseTry_"+i+"_answer")]=" ";
+      data[("answer_"+i)]=" ";
+      data[("score")]=" ";
+      console.log(i);
+    }
+    experimentr.addData(data);
     generateTable();
     console.log("Page load finished");
 }
@@ -68,6 +76,9 @@ function deleteTable() {
 
 //Checks if the answers is right or wrong and updates the score accordingly
 function checkAnswer(value) {
+  var data = {};
+  data[("responseTry_"+responseTry+"_answer")]=value;
+  data[("answer_"+responseTry)]=answer;
   var answerVal = "";
 
   if(value == answer) {
@@ -90,6 +101,9 @@ function checkAnswer(value) {
   $("#answer").fadeIn(700);
   $("#answer").delay(500).fadeOut(600);
 
+  data["score"]=score;
+  experimentr.addData(data);
+  responseTry++;
   updateScore();
   generateTable();
 }
