@@ -94,6 +94,12 @@
 
 			function init() {
 				experimentr.hideNext();
+				
+				$("#formValueId").keyup(function(event){
+    				if(event.keyCode == 13){
+        				$("#myButton").click();
+   				 	}
+				});
 
 				timerStart();
 				boardTimer();
