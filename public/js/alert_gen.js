@@ -5,102 +5,65 @@ var currentAlert = 0;
 var timeout;
 var alertEnRoute;
 var experimenting = true;
-var experimentCase;
+
+var security_notifications;
+var safety_notifications;
+
 function generateAlert() {
 	if(experimenting){
 		timeout = true;
 		alertEnRoute = false;
 		currentAlert++;
 		experimentr.startTimer("alert"+currentAlert);
-		//TODO log when the alert is generated	
-	    var severity = Math.floor((Math.random() * 5) + 1);
-	    var data = {};
-	    data[("Alert_"+currentAlert+"_severity")]=severity;
-	    var confidence = Math.random().toFixed(2);
-	    data[("Alert_"+currentAlert+"_confidence")]=confidence;
-	    experimentr.addData(data);
-	    var output = "Severity: " + severity;
+		//TODO create for safety notifications
+		var type = Math.floor(Math.random() * (2));
+		var notification;
 
-	    //Generate our state variables
-		var healthScore = Math.random().toFixed(2); //This shouldn't be generated here
-		var deviceState; //This shouldn't be generated here
-		switch(Math.floor((Math.random() * 3))) {
-			case 0:
-				deviceState = "Actuating";
-				break;
-			case 1:
-				deviceState = "Both";
-				break;
-			case 2:
-				deviceState = "Sensing";
-				break;
+		//security notification
+		if(type == 0) {
+			var security_index = Math.floor(Math.random()*security_notifications.length);
+
+			if(security_index == 0) {
+				security_index++;
+			}
+
+			notification = security_notifications[security_index];
+
+			$('#image').attr('src', "modules/watch_test/security.png");
 		}
 
-		switch(experimentCase){ //A/B , with and without color
-			case 0:
-				switch(severity){
-					case 0:
-						$('.bubble').css("background-color","green");
-						break;
-					case 1:
-						$('.bubble').css("background-color","green");
-						break;
-					case 2:
-						$('.bubble').css("background-color","gold");
-						break;
-					case 3:
-						$('.bubble').css("background-color","orange");
-						break;
-					case 4:
-						$('.bubble').css("background-color","darkorange");
-						break;
-					case 5:
-						$('.bubble').css("background-color","red");
-						break;
-					default:
-						break;
+		//safety notification
+		else {
+			var safety_index = Math.floor(Math.random()*safety_notifications.length);
 
-				}
-				break;
-			case 1:
-				$('.bubble').css("background-color","black");
-				break;
+			if(safety_index == 0) {
+				safety_index++;
 			}
-		var actionTuple = generateActionTuple(healthScore,deviceState,severity,confidence);
 
-		document.getElementById("severity").innerHTML = "Severity: " + severity;
-		document.getElementById("action").innerHTML = actionTuple[Math.floor(Math.random() * 5) + 1];
+			notification = safety_notifications[safety_index];
 
-		//document.getElementById("watchId").style.webkitAnimationName = 'shake'; // you had a trailing space here which does NOT get trimmed
-	    //document.getElementById("watchId").style.webkitAnimationDuration = '.8s';
-	    showAlert();
-	   $('.watch').addClass('shake');
-	   var timeoutID = window.setTimeout(resetAnimation, 1000);
+			$('#image').attr('src', "modules/watch_test/safety.png");
+
+		}
+
+		$('.modal-title').text(notification[0]);
+	    $('#description').text(notification[1]);
+	    $('label[for=one]').text(notification[2]);
+	    $('label[for=two]').text(notification[3]);
+	    $('label[for=three]').text(notification[4]);
+
+
+	    $("#myModal").modal('show');
+
 	   setTimeout(function(){timeoutAlert()}, 10000);
 	}
 }
 
-function resetAnimation() {
-	$('.watch').removeClass('shake');
-}	
 
 function startGeneration(){
    var data = {}; //Hacky way to deal with Experimentr not dealing with non-existing keys
-   for(var i = 1; i <= 10; i++){
-   		var key1 = "Click_" + i + "_button";
-   		var key2 = "Alert_" + i + "_response";
-   		var key3 = "time_diff_alert" + i;
-   		var key4 = "time_start_alert" + i;
-   		var key5 = "Alert_" + i + "_confidence";
-   		var key6 = "Alert_" + i + "_severity";
-   		data[key1] = " ";
-   		data[key2] = " ";
-   		data[key3] = " ";
-   		data[key4] = " ";
-   		data[key5] = " ";
-   		data[key6] = " ";
-   }
    
+   experimentr.addData(data);
    /**
    var total = 0;
    for(var i = 0; i < 5; i++){
@@ -109,50 +72,10 @@ function startGeneration(){
        setTimeout(function(){generateAlert()}, total);
    }
 	*/
-	experimentCase = Math.floor(Math.random() * 2);
-	if(experimentCase == 0){
-		data["experiment_case"] = "black only";
-	}
-	else{
-		data["experiment_case"] = "Colors";
-	}
-	experimentr.addData(data);
 	var x = Math.random() * 15000;
 	var experimentLength = 120000;
 	setTimeout(function(){generateAlert()}, x);
 	setTimeout(function(){endExperiment()}, experimentLength);
-}
-
-function generateActionTuple(hScore, dState, aSeverity, aConfidence) {
-	var actionTuple = [];
-	actionTuple[0] = 3;
-	actionTuple[1] = "Turn off Monitor";
-	actionTuple[2] = "Disconnect Monitor";
-	actionTuple[3] = "Calibrate Monitor";
-	actionTuple[4] = "Suspend Pump";
-	actionTuple[5] = "Release Pump";
-	return actionTuple;
-}
-
-function showAlert(){
-	$('.bubble').removeClass('remove');
-	$('.bubble').addClass('active');
-	$('.alarm_wrapper').addClass('show');
-	$('.tick_12').addClass('animte');
-	$('.tick_3').addClass('animte3');
-	$('.tick_6').addClass('animte6');
-	$('.tick_9').addClass('animte9');
-}
-
-function hideAlert(){
-	console.log("hiding alert");
-	$('.bubble').addClass('remove');
-	$('.bubble').removeClass('active');
-	$('.alarm_wrapper').removeClass('show');
-	$('.tick_12').removeClass('animte');
-	$('.tick_3').removeClass('animte3');
-	$('.tick_6').removeClass('animte6');
-	$('.tick_9').removeClass('animte9');
 }
 
 function collectClick(val){
@@ -180,6 +103,9 @@ function timeoutAlert(){
 	if(timeout){
 		//Maybe hide alert
 		console.log("Alert timed out");
+
+		$("#myModal").modal('hide');
+
 		timeout=false;
 		if(!alertEnRoute){
 			var x = Math.random() * 15000;
@@ -187,9 +113,4 @@ function timeoutAlert(){
 			alertEnRoute=true;
 		}
 	}
-}
-
-function endExperiment(){
-	experimenting = false;
-	console.log("fin");
 }
