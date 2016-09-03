@@ -1,3 +1,19 @@
-title, description, choice1, choice2, choice3, answer
-Notification Title, This is the notifications description: Today I walked my dog named Brandy. The purpose of this walk was to created additional text to text line wrapping in my modal., Do this 1, Do this 2, Do Nothing, 1
-Notification Title2, This is the notifications  2nd description, Do this 1 alpha, Do this 2 alpha, Do Nothing alpha, 2
+title, description,choice1,choice2,choice3, answer
+Antivirus,"Threat found
+
+Alert
+
+Object: C:\Users\uname\AppData\LocalLow\Sun\Java\Deployment\4122f324d3-uj80dwcc
+
+Threat:
+Java/Exploit.Bytverify trojan",Ignore,Disable Antivirus,Clean Up Threat,3
+Disk Space Warning,"Low Disk Space
+You are running very low on disk space on Windows8 (C:).
+Click here to see if you can free up space on this drive.",Ignore,Free Up Space,Download Cleanup Software,2
+Updates,"Updates are ready to install.
+Some applications couldn’t be updated automatically",Ignore,Remind Me Later,Update,3
+SSL Warning,"The site’s security certificate is not trusted!
+
+You attempted to reach 192.168.17.129 but the server presented a certificate issued by an entity that is not trusted by your computer’s operating system. This may mean that the server has generated its own security credentials, which Chrome cannot rely on for identity information, or an attacker may be trying to intercept your communications.
+You should not proceed, especially if you have never seen this warning before for this site.",Ignore,Install Certificate,Go Back,1
+DEP Mitigation,A program seems to be trying to defeat your security systems.,Ignore,Shut Program Down,Shut Security Down,2
