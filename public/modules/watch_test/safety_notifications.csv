@@ -1,3 +1,4 @@
-title, description, choice1, choice2, choice3, answer
-Safety Notification Title, This is the notifications description, Do this 1, Do this 2, Do Nothing, 1
-Safety Notification Title2, This is the notifications  2nd description, Do this 1 alpha, Do this 2 alpha, Do Nothing alpha, 2
+title, description,choice1,choice2,choice3, answer
+Safety Notification Title,Silly old willy,Do this 1,Do this 2, Do Nothing,1
+Safety Notification Title2,Look what you’ve done,Do this 1 alpha,Do this 2 alpha, Do Nothing alpha,2
+Toaster is on fire,Mixtape just dropped,oh,my,shit,2

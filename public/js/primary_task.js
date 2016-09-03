@@ -5,7 +5,7 @@
 //=====================GLOBALS=====================
   //Vars controlling what words are displayed
   //these could also be change to reflect an increase in difficulty
-  var words = easyWords = ["Apple", "Avocadoe", "Apricot", "Asparagus", "Aubergine", "Arkansas"];
+  var words = easyWords = ["Apple", "Avocado", "Apricot", "Asparagus", "Aubergine", "Arkansas"];
     var harderWords = ["HardTurnt", "HardFleek", "HardFam", "HardRekt", "HardFuego", "HardLit"];
 
   var rowSize = easyRowSize = 5;
