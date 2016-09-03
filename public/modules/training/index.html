@@ -1,16 +1,13 @@
 	<div id="training">
 
 		<link rel="stylesheet" href="css/style.css">
-		<script>generateTable();</script>
+		<script> generateTable();
+				experimentr.release();
+		</script>
 		
 		<div class="page_wrapper">
 			 <p>In this study, you will be provided with a primary task to complete. It is a fairly simple counting game. You will be presented with a table of words and asked to count how many times a certain word appears in the table. If you are correct, your score goes up. If you are incorrect or run out of time, your score will go down. There is a limit of 2 minutes on the entire test and a limit ranging from 45 to 20 seconds on each individual table.<br>Below is a sample of the game. Please play until you feel comfortable with how the game operates.</p><br><br>
 			<div class="topWrapper">
-				
-				<div class="timer">
-					<div id="timer_div"></div>
-				</div>
-
 				<button onclick="Javascript:increaseDifficulty();">Increase Difficulty</button>
 			</div>
 
@@ -32,4 +29,3 @@
    			</div>
 		</div>
 	</div>
-<body onload="generateTable()">
