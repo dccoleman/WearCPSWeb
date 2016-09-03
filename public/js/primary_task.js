@@ -122,3 +122,10 @@ function increaseDifficulty() {
   experiment_time_board = curBoardTime = hardTime;
 }
 
+function decreaseDifficulty() {
+  words = easyWords;
+  rowsize = easyRowSize;
+  columnSize = easyColumnSize;
+  experiment_time_board = curBoardTime = easyTime;
+}
+

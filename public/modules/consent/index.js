@@ -68,7 +68,7 @@
         data.scenario = "You are a fit 20-year-old woman with Type-1 Diabetes. You have extremely healthy eating habits and great physical health. You're currently participating in a session at a Crossfit gym with your family.";
         break;
     }
-    experimentr.addData(data);
+    //experimentr.addData(data);
   }
 
 }());
