@@ -1,17 +1,17 @@
 	<div id="training">
 
 		<link rel="stylesheet" href="css/style.css">
-
+		<script>generateTable();</script>
 		
 		<div class="page_wrapper">
-			 <p>Welcome to our experiment. Here's a quick tutorial. You have to do two tasks simultaneously, to the best of your ability. Your first task is to keep counting how many times the primary task target word occurs in the table and put it in the box, and submit it, before the time runs out. Your second task is to respond to the alerts that are being generated on the smartwatch, by selecting an action. Go ahead, give it a try.</p><br><br>
+			 <p>In this study, you will be provided with a primary task to complete. It is a fairly simple counting game. You will be presented with a table of words and asked to count how many times a certain word appears in the table. If you are correct, your score goes up. If you are incorrect or run out of time, your score will go down. There is a limit of 2 minutes on the entire test and a limit ranging from 45 to 20 seconds on each individual table.<br>Below is a sample of the game. Please play until you feel comfortable with how the game operates.</p><br><br>
 			<div class="topWrapper">
 				
 				<div class="timer">
 					<div id="timer_div"></div>
 				</div>
 
-				<button onclick="Javascript:increaseDifficulty();generateTable();">Increase Difficulty</button>
+				<button onclick="Javascript:increaseDifficulty();">Increase Difficulty</button>
 			</div>
 
 			<div class="primaryTaskWrapper">
@@ -30,136 +30,6 @@
 
         		<div id="answer" hidden></div>
    			</div>
-
-   			<div class="rightWrapper">
-				<div class="options">
-					<h1>Action Options</h1>
-					<input type="button" id="optionZero" onclick="collectClick('Do nothing')"> Do nothing<br>
-
-					<input type="button" id="optionOne" onclick="collectClick('Turn off Monitor')"> Turn off Monitor<br>
-
-					<input type="button" id="optionTwo" onclick="collectClick('Disconnect Monitor')"> Disconnect Monitor<br>
-
-					<input type="button" id="optionThree" onclick="collectClick('Calibrate Monitor')"> Calibrate Monitor<br>
-
-					<input type="button" id="optionFour" onclick="collectClick('Suspend Pump')"> Suspend Pump<br>
-
-					<input type="button" id="optionFive" onclick="collectClick('Release Pump')"> Release Pump<br>
-
-					<input type="button" id="optionSix" onclick="collectClick('Run away')"> Run away<br>
-				</div>
-
-				<div class="watch__wrapper">
-					<div class="watch" id ="watchId">
-						<div class="watch__belt shadow_5">
-							<div class="watch__model clock shadow_5">
-								<div class='sh-0' id='second-hand'></div>
-								<div class='mh-56' id='minute-hand'></div>
-								<div class='hh-8' id='hour-hand'></div>
-								<span class="ticks">
-									<span class="tick_3">3</span>
-									<span class="tick_6">6</span>
-									<span class="tick_9">9</span>
-									<span class="tick_12">12</span>
-
-								</span>
-								<div class="bubbleback"></div>
-								<div class="bubble"></div>
-								<div class="alarm_wrapper">
-									<div class="title">
-										<h4 class="bounce" id="severity">Severity 0</h4>
-										<h3 class="bounce">System Alert!</h3>
-										<h5 class="bounce" id="action"></span>Stay</h5>
-										<div class="alarm__icon bounceInUp">
-											<!--<i class="fa fa-bell"></i>
-											<i class="fa fa-times"></i>-->
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
-
-		<script src="js/watch.js"></script> 
 	</div>
-
-	<script>
-		(function() {
-			var data    = {};
-
-			init();
-
-
-			function init() {
-				experimentr.hideNext();
-
-				$("#formValueId").keyup(function(event){
-    				if(event.keyCode == 13){
-        				$("#myButton").click();
-   				 	}
-				});
-
-				timerStart();
-				boardTimer();
-
-				//each generation will kickoff a next response timer
-				startGeneration();
-				load();
-				//generateTable();
-				updateScore();
-			}
-
-			function timerStart() {
-				var training_time = 30;
-
-				var interval = setInterval(function() {
-
-					var hour = Math.floor(training_time/60);
-
-					var seconds = training_time - 60*hour;
-
-					--training_time;
-
-					document.getElementById('timer_div').innerHTML = "<strong>Training Time Remaing - </strong>" + hour + " : " + twoDigits(seconds);
-
-					if (training_time < 0)
-					{
-						clearInterval(interval);
-						experimentr.next();
-					}
-				}, 1000);
-			}
-
-			function boardTimer() {
-        		experiment_time_board = curBoardTime;
-
-        		var interval = setInterval(function() {
-
-          		var hour = Math.floor(experiment_time_board/60);
-
-          		var seconds = experiment_time_board - 60*hour;
-
-          		experiment_time_board--;
-
-          		document.getElementById('timer_div_board').innerHTML = "<strong>Board Time Remaing - </strong>" + hour + " : " + twoDigits(seconds);
-
-          		if (experiment_time_board < 0)
-          		{
-		            generateTable();
-		            checkAnswer(-1);
-		            experiment_time_board = curBoardTime;
-		          }
-		        }, 1000);
-		      }
-
-			function twoDigits( n )
-   	 		{
-        		return (n <= 9 ? "0" + n : n);
-    		}
-			
-		}());
-
-	</script>
+<body onload="generateTable()">
