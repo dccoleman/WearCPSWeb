@@ -1,6 +1,6 @@
 title, description,choice1,choice2,choice3, answer
-Home Security System Triggered,The home security system was triggered. A window has been broken.,Ignore,Go Home,Call The Police,3
-Vehicle Security System Triggered,Your nearby car has been moved.,Ignore,Go Out to Vehicle,Call the Police,2
+Home Security System Triggered,The home security system was triggered. A window has been broken.,Ignore,View Security Footage,Call The Police,3
+Vehicle Security System Triggered,Car engine started.,Ignore,Disable Car,Call the Police,2
 Smart Fridge Temperature Warning,Your fridge has been running at a very low temperature which may result in supercooling. Raising the temperature will prevent this.,Ignore,Reset Fridge,Raise Temperature,3
 Smart Toaster Notification,Your toaster has been running at a high heat for 3 hours. Your smoke alarms have not been set off.,Ignore,Turn Off,Call Fire Department,2
 Fire Alarm Triggered,Smoke detected in your living room.,Ignore,Reset Alarm,Call Fire Department,3
