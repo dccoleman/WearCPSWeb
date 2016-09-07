@@ -1,17 +1,27 @@
-	<div id="training">
+	<div class="page_wrapper">
 
 		<link rel="stylesheet" href="css/style.css">
-		<script> generateTable();
-				experimentr.release();
-		</script>
-		
-		<div class="page_wrapper">
-			 <p>In this study, you will be provided with a primary task to complete. It is a fairly simple counting game. You will be presented with a table of words and asked to count how many times a certain word appears in the table. If you are correct, your score goes up. If you are incorrect or run out of time, your score will go down. There is a limit of 2 minutes on the entire test and a limit ranging from 45 to 20 seconds on each individual table.<br>Below is a sample of the game. Please play until you feel comfortable with how the game operates.</p><br><br>
-			<div class="topWrapper">
-				<button onclick="Javascript:increaseDifficulty();generateTable();">Increase Difficulty</button>
-			</div>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	
+  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-			<div class="primaryTaskWrapper">
+
+				<h2 class="placeholder">Training Phase
+				</h2>
+
+				<p style="text-align: left;">In this study, you will be provided with a primary task to complete. It is a fairly simple counting game. You will be presented with a table of words and asked to count how many times a certain word appears in the table. If you are correct, your score goes up. If you are incorrect or run out of time, your score will go down. There is a limit of 2 minutes on the entire test and a limit ranging from 45 to 20 seconds on each individual table.</p>
+
+				<p style="text-align: left;">Below is a sample of the game. Please play until you feel comfortable with how the game operates.</p>
+
+				<p style="text-align: left;">As you play the word-counting game various notifications will interrupt you. It is up to you to respond to these how you see fit.</p>
+
+   				<p style="text-align: left;padding-bottom: 25px;">Click the button below for an example notification.</p>
+
+   		
+			  <button type="button" style="display:block;" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Example Notification</button>
+
+
+			<div class="primaryTaskWrapper" style="padding-bottom: 50px;display:block; width:100%;">
 
         		<div id="target"></div>
         		<div id="timer_div_board"></div> <div id="score"></div>
@@ -27,5 +37,40 @@
 
         		<div id="answer" hidden></div>
    			</div>
+
+			  <!-- Modal -->
+			  <div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
+			    <div class="modal-dialog">
+			    
+			      <!-- Modal content-->
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <h3 class="modal-title">
+			          	
+			          	Example Notfication
+			          </h3>
+			        </div>
+
+			        <div class="modal-body">
+			          <div id='description'>
+			          	<p>This notification is an example!</p>
+			          </div>
+
+
+			        </div>
+			        <div class="modal-footer">
+			          <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+			          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        </div>
+			      </div>
+			      
+			    </div>
+			  </div>
 		</div>
 	</div>
+
+		<script> 
+				generateTable();
+				experimentr.release();
+		</script>

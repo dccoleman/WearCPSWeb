@@ -57,18 +57,12 @@
 			          	<p></p>
 			          </div>
 
-			          <div>
-				          <form action="">
-							  <input type="radio" name = "actionOption" id="one"/><label for="one">option 1</label><br>
-							  <input type="radio" name = "actionOption" id='two'><label for="two">option 2</label><br>
-							  <input type="radio" name = "actionOption" id='three'><label for="three">option 3</label><br>
-						  </form>
-					  </div>
 
 			        </div>
 			        <div class="modal-footer">
-			          <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
-			          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			          <button type="button" class="btn btn-default" data-dismiss="modal" id="one"/><label for="one">option 1</label></button>
+			          <button type="button" class="btn btn-default" data-dismiss="modal" id='two'><label for="two">option 2</label></button>
+			          <button type="button" class="btn btn-default" data-dismiss="modal" id='three'><label for="three">option 3</label></button>
 			        </div>
 			      </div>
 			      
@@ -87,6 +81,7 @@
 
 
 			function init() {
+				score = 0;
 				experimentr.hideNext();
 
 				timerStart();

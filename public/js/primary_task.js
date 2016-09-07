@@ -63,6 +63,34 @@ function generateTable() {
     }
 }
 
+function generateTestTable() {      
+    //deleteTable(); //clear pre-existing table
+
+    var table = document.getElementById("myTestTableData");
+    var row;
+
+    //Randomly selects new target word
+    var randomNum =Math.floor((Math.random() * words.length));
+    var targetWord = words[randomNum];
+
+    document.getElementById("testtarget").innerHTML = "<h1>" + "Primary Task Target Word: " + targetWord + "</h1>";
+    
+    for(var i = 0; i < rowSize; i++) {
+      row = table.insertRow(i);
+
+      for(var j = 0; j < columnSize; j++) {
+        //Randomly populates table with word
+        randomNum = Math.floor((Math.random() * words.length));
+
+        //if target word increment answer
+        if(words[randomNum] == targetWord) {
+          answer++;
+        }
+        row.insertCell(j).innerHTML= words[randomNum];
+      }
+    }
+}
+
 //Deletes the table
 function deleteTable() {
     answer = 0; //reset answer

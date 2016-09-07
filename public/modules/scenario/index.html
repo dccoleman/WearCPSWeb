@@ -1,13 +1,51 @@
 	<div id="scenario">
 
-		<link rel="stylesheet" href="css/explanation.css">
-
 		<script> experimentr.release(); </script>
+		<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+
+		<h2 class="placeholder">Welcome to our experiment!</h2>
 		
-		<div class="page_wrapper">
-			 <p>Welcome to our experiment!<br>In the new world of the Internet of Things (IoT), everything from your car to your refrigerator has a connection to the internet and can be controlled by nothing more than the phone in your pocket.<br>In this study, you will be provided with a primary task to complete. While you are performing this primary task, you will recieve a series of notifications relating to the Internet of Things. As shown in the images below, you have many IoT devices in your home including a home security system, toaster, fridge, and fire alarm system.</p><br><br>
+		<div id='welcomeText'>
+			 <p>In the new world of the Internet of Things (IoT), everything from your car to your refrigerator has a connection to the internet and can be controlled by nothing more than the phone in your pocket. </p>
+
+			 <p>In this study, you will be provided with a word-counting task to complete. This involves counting the number of times a particular word appears in a table. This will be further explained on the following page.</p>
+			 
+			 <p>While you are performing this task, you will receive a series of notifications relating to the Internet of Things. As shown in the images below, you have many IoT devices in your home including a home security system, toaster, fridge, and fire alarm system. Respond to these notifications as you see fit.</p>
 		</div>
-		<img src="images/BrokenWindow.jpg" alt="Alerts are sent for detected intrusions" style="width:192px;height:341px;">
-		<img src="images/Fire.jpg" alt="Alerts are sent for detected intrusions" style="width:192px;height:341px;">
-		<img src="images/FridgeAndToaster.jpg" alt="Alerts are sent for detected intrusions" style="width:192px;height:341px;">
+
+		<div class="w3-content" style="max-width:800px;position:relative;padding-bottom:15px;">
+
+		<img class="mySlides" src="images/BrokenWindow.jpg" alt="Alerts are sent for detected intrusions" style="display: block; margin: 0 auto;">
+
+		<img class="mySlides" src="images/Fire.jpg" alt="Alerts are sent for detected intrusions" style="display: block; margin: 0 auto;">
+
+		<img class="mySlides" src="images/FridgeAndToaster.jpg" alt="Alerts are sent for detected intrusions" style="display: block; margin: 0 auto;">
+
+
+		<a class="w3-btn-floating" style="position:absolute;top:45%;left:0" onclick="plusDivs(-1)">❮</a>
+		<a class="w3-btn-floating" style="position:absolute;top:45%;right:0" onclick="plusDivs(1)">❯</a>
+
+		</div>
+
+
+	<script>
+		var slideIndex = 1;
+		showDivs(slideIndex);
+
+		function plusDivs(n) {
+		  showDivs(slideIndex += n);
+		}
+
+		function showDivs(n) {
+		  var i;
+		  var x = document.getElementsByClassName("mySlides");
+		  if (n > x.length) {slideIndex = 1}
+		  if (n < 1) {slideIndex = x.length}
+		  for (i = 0; i < x.length; i++) {
+		     x[i].style.display = "none";
+		  }
+		  x[slideIndex-1].style.display = "block";
+		}
+	</script>
+
 	</div>
