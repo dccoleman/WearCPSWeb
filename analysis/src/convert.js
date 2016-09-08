@@ -60,9 +60,16 @@ var j2c    = require('json2csv')
       'answer_10',
       'score',
       'experiment_case',
-
-
-
+      'notification1',
+      'notification2',
+      'notification3',
+      'notfication4',
+      'notification5',
+      'notification6',
+      'notification7',
+      'notification8',
+      'notification9',
+      'notification10',
     ]
   , data
 

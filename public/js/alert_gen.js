@@ -11,6 +11,7 @@ var safety_notifications;
 
 function generateAlert() {
 	if(experimenting){
+		var data = {};
 		timeout = true;
 		alertEnRoute = false;
 		currentAlert++;
@@ -54,6 +55,8 @@ function generateAlert() {
 
 
 	    $("#myModal").modal('show');
+	    data["notification"+currentAlert] = notification[0];
+	    experimentr.addData(data);
 
 	   setTimeout(function(){timeoutAlert()}, 10000);
 	}
@@ -91,9 +94,9 @@ function collectClick(val){
 		data[key2] = val;
 	}
 	experimentr.addData(data);
-	hideAlert();
+	//hideAlert();
 	if(!alertEnRoute){
-			var x = Math.random() * 15000;
+			var x = 2000 + Math.random() * 15000;
 			setTimeout(function(){generateAlert()}, x);
 			alertEnRoute=true;
 		}
