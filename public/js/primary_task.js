@@ -19,6 +19,7 @@
   var answer = 0; //keeps track of number of target word
   var score = 0;  //tracks user score
   var responseTry = 1; //tracks each time the user submits an answer
+  var enabled = 1; //flipped when a modal is shown so the user can no longer submit answers
 //=====================METHODS=====================
 
 //Initially generate table with easiest settings
@@ -108,6 +109,8 @@ function checkAnswer(value) {
   data[("responseTry_"+responseTry+"_answer")]=value;
   data[("answer_"+responseTry)]=answer;
   var answerVal = "";
+
+  if(!value) return;
 
   if(value == answer) {
     console.log("Right");

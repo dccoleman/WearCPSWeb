@@ -27,8 +27,17 @@
         		</div>
 
 		        <div class="checkAnswer">
-		            <input type="text" id="formValueId" name="valueId" required placeholder="Target word count?"/>
-		            <input id="myButton" type="button" value="Submit" onclick="checkAnswer(document.getElementById('formValueId').value)"/>
+		            <input type="text" id="formValueId" name="valueId" required placeholder="Target word count?" autofocus/>
+		            <input id="submitButton" type="button" value="Submit" onclick="checkAnswer(document.getElementById('formValueId').value);document.getElementById('formValueId').focus()"/>
+		            <script>
+		            document.getElementById("formValueId").addEventListener("keydown", function(event) {
+		            	if(!event) { var event = window.event; }
+					      
+					      if(event.keyCode == 13) {
+					      	if(enabled) { document.getElementById("submitButton").click(); }
+					      }
+					    });
+		            </script>
 		        </div>
 
         		<div id="answer" hidden></div>
@@ -60,9 +69,9 @@
 
 			        </div>
 			        <div class="modal-footer">
-			          <button type="button" class="btn btn-default" data-dismiss="modal" id="one" onclick="collectClick(id)"><label for="one">option 1</label></button>
-			          <button type="button" class="btn btn-default" data-dismiss="modal" id='two' onclick="collectClick(id)"><label for="two">option 2</label></button>
-			          <button type="button" class="btn btn-default" data-dismiss="modal" id='three' onclick="collectClick(id)"><label for="three">option 3</label></button>
+			          <button type="button" class="btn btn-default" data-dismiss="modal" id="one" onclick="collectClick(id);document.getElementById('formValueId').focus()"><label for="one">option 1</label></button>
+			          <button type="button" class="btn btn-default" data-dismiss="modal" id='two' onclick="collectClick(id);document.getElementById('formValueId').focus()"><label for="two">option 2</label></button>
+			          <button type="button" class="btn btn-default" data-dismiss="modal" id='three' onclick="collectClick(id);document.getElementById('formValueId').focus()"><label for="three">option 3</label></button>
 			        </div>
 			      </div>
 			      

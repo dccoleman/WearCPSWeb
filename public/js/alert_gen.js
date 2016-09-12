@@ -53,15 +53,18 @@ function generateAlert() {
 	    $('label[for=two]').text(notification[3]);
 	    $('label[for=three]').text(notification[4]);
 
-
+	    stopEnter();
 	    $("#myModal").modal('show');
 	    data["notification"+currentAlert] = notification[0];
 	    experimentr.addData(data);
-
 	   setTimeout(function(){timeoutAlert()}, 10000);
 	}
 }
 
+function stopEnter() {
+	document.getElementById("formValueId").blur();
+	enabled = 0;
+}
 
 function startGeneration(){
    var data = {}; //Hacky way to deal with Experimentr not dealing with non-existing keys
@@ -100,6 +103,7 @@ function collectClick(val){
 			setTimeout(function(){generateAlert()}, x);
 			alertEnRoute=true;
 		}
+	enabled = 1;
 }
 
 function timeoutAlert(){
@@ -115,5 +119,6 @@ function timeoutAlert(){
 			setTimeout(function(){generateAlert()}, x);
 			alertEnRoute=true;
 		}
+	enabled = 1;
 	}
 }
