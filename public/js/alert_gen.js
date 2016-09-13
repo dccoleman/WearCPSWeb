@@ -8,6 +8,7 @@ var experimenting = true;
 
 var security_notifications;
 var safety_notifications;
+var already_generated = [false];
 
 function generateAlert() {
 	if(experimenting){
@@ -46,6 +47,40 @@ function generateAlert() {
 			$('#image').attr('src', "modules/watch_test/safety.png");
 
 		}
+
+		while(already_generated[notification[1]] == true){
+			console.log("Already generated");
+			type = Math.floor(Math.random() * (2));
+
+			//security notification
+			if(type == 0) {
+				var security_index = Math.floor(Math.random()*security_notifications.length);
+
+				if(security_index == 0) {
+					security_index++;
+				}
+
+				notification = security_notifications[security_index];
+
+				$('#image').attr('src', "modules/watch_test/security.png");
+			}
+
+			//safety notification
+			else {
+				var safety_index = Math.floor(Math.random()*safety_notifications.length);
+
+				if(safety_index == 0) {
+					safety_index++;
+				}
+
+				notification = safety_notifications[safety_index];
+
+				$('#image').attr('src', "modules/watch_test/safety.png");
+
+			}
+		}
+
+		already_generated[notification[1]] = true;
 
 		$('.modal-title').text(notification[0]);
 	    $('#description').text(notification[1]);
