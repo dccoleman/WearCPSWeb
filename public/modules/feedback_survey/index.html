@@ -4,24 +4,62 @@
 Thank you! The experiment is almost complete. Please fill out the following feedback survey.
 </h2>
 
-<div id="awesomeScale">How awesome is this experiment?
+<div id="awesomeScale">What kinds of notifications were you shown? (Select all that apply.)
     <div id="awesomeScales">
-        <input type="radio" id="a1" name="awesomeScale" value="Awesome"> Awesome
-        <input type="radio" id="a2" name="awesomeScale" value="Awesome"> Awesome
-        <input type="radio" id="a3" name="awesomeScale" value="Awesome"> Awesome
-        <input type="radio" id="a6" name="awesomeScale" value="Unspecified"> Unspecified
+        <input type="checkbox" id="a1" name="awesomeScale" value="Security"> Security
+        <input type="checkbox" id="a2" name="awesomeScale" value="Safety"> Safety
     </div>
 </div>
 <br>
 
-<div id="rating">Out of five stars, how good is the experiement?
+<div id="rating">How many notifications total were displayed?
     <div id="ratings">
-        <input type="radio" id="s1" name="rating" value="Five Stars"> Five Stars
-        <input type="radio" id="s2" name="rating" value="Five Stars"> Five Stars
-        <input type="radio" id="s3" name="rating" value="Unspecified"> Unspecified
+        <input type="number" name="quantity" min="0" max="30">
     </div>
 </div>
 <br>
+
+<div id="dominantNotifications">Which notification was displayed more?
+    <div id="dominantNotifications">
+        <input type="radio" id="s1" name="rating" value="Security"> Security
+        <input type="radio" id="s2" name="rating" value="Safety"> Safety
+    </div>
+</div>
+<br>
+
+<div id="rating">How many SECURITY notifications total were displayed?
+    <div id="ratings">
+        <input type="number" name="security" min="0" max="30">
+    </div>
+</div>
+<br>
+
+<div id="rating">How many SAFETY notifications total were displayed?
+    <div id="ratings">
+        <input type="number" name="safety" min="0" max="30">
+    </div>
+</div>
+<br>
+
+<div id="rating">What IOT devices did these notifications come from? (Select all that apply.)
+    <div id="ratings">
+        <input type="checkbox" id="i1" name="IotType" value="Toaster"> Toaster
+        <input type="checkbox" id="i2" name="IotType" value="Fridge"> Fridge
+        <input type="checkbox" id="i3" name="IotType" value="FireAlarmSystem"> Fire Alarm System
+        <input type="checkbox" id="i4" name="IotType" value="HomeSecuritySystem"> Home Security System
+        <input type="checkbox" id="i5" name="IotType" value="Car"> Car
+    </div>
+</div>
+<br>
+
+<div id="rating">Which notification were you shown? 
+    <div id="ratings">
+      <select>
+        <option style="background-image:url(images/Fire.jpg);">male</option>
+        <option style="background-image:url(images/BrokenWindow.jpg);">female</option>
+      </select> 
+    </div>
+</div>
 
 <div id="monitor">Your monitor size is closest to:
     <div id="monitors">
