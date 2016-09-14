@@ -121,7 +121,7 @@ function checkAnswer(value) {
     console.log("Wrong");
     $("#answer").css("color", "red");
     score -= 100;
-    answerVal = "Incorrect";
+    answerVal = "Oops... the correct answer is: " + answer;
   }
 
   document.getElementById("answer").innerHTML = answerVal;
