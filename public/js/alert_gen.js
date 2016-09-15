@@ -134,7 +134,7 @@ function collectClick(val){
 	experimentr.addData(data);
 	//hideAlert();
 	if(!alertEnRoute){
-			var x = 2000 + Math.random() * 15000;
+			var x = 7000 + Math.random() * 15000;
 			setTimeout(function(){generateAlert()}, x);
 			alertEnRoute=true;
 		}
@@ -150,7 +150,7 @@ function timeoutAlert(){
 
 		timeout=false;
 		if(!alertEnRoute){
-			var x = Math.random() * 15000;
+			var x = 7000+ Math.random() * 15000;
 			setTimeout(function(){generateAlert()}, x);
 			alertEnRoute=true;
 		}
