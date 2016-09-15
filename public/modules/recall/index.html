@@ -20,9 +20,11 @@ Thank you! The experiment is almost complete. Please perform the following surve
 var times = 0;
 function changeImages() {
   
-  var name = notifications_generated[times][0];
+  var name = notifications_generated[times].slice(0,10);
 
-  document.getElementById("n1").src=("images/" + name + "1.png");
+  console.log(name);
+
+  document.getElementById("n1").src=("images/" + name + ".png");
   document.getElementById("n2").src=("images/" + name + "1.png");
   times++;
 }
