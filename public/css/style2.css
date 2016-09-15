@@ -1,0 +1,157 @@
+html { 
+  font-size: 100%;
+  height: 100%;
+  width: 100%;
+  outline: none;
+}
+
+a{
+  text-decoration: none;
+  color: #737373;
+}
+h5 span{
+  text-decoration: underline;
+  margin: 5px;
+  cursor: pointer;
+}
+
+p {
+  
+  font-size: 14px !important;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: left !important;
+}
+
+
+#myTableData {
+    margin:0px;
+    padding:0px;
+    width:100%;
+    box-shadow: 10px 10px 5px #888888;
+    border:1px solid #000000;
+    
+    -moz-border-radius-bottomleft:0px;
+    -webkit-border-bottom-left-radius:0px;
+    border-bottom-left-radius:0px;
+    
+    -moz-border-radius-bottomright:0px;
+    -webkit-border-bottom-right-radius:0px;
+    border-bottom-right-radius:0px;
+    
+    -moz-border-radius-topright:0px;
+    -webkit-border-top-right-radius:0px;
+    border-top-right-radius:0px;
+    
+    -moz-border-radius-topleft:0px;
+    -webkit-border-top-left-radius:0px;
+    border-top-left-radius:0px;
+}
+
+#myTableData table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width:100%;
+    height:100%;
+    margin:0px;
+    padding:0px;
+}
+    
+#myTableData td{
+    vertical-align:middle;
+    background-color:#ffffff;
+    border:1px solid #000000;
+    border-width:0px 1px 1px 0px;
+    text-align:left;
+    padding:13px;
+    font-size:16px;
+    font-family:Georgia;
+    font-weight:normal;
+    color:#000000;
+}
+
+.shadow_1 {
+  box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+}
+
+.shadow_2 {
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.23), 0 3px 12px rgba(0, 0, 0, 0.16);
+}
+
+.shadow_3 {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.23), 0 10px 40px rgba(0, 0, 0, 0.19);
+}
+
+.shadow_4 {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.22), 0 14px 56px rgba(0, 0, 0, 0.25);
+}
+
+.shadow_5 {
+  box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+}
+.page_wrapper {
+  height:auto;
+  position:relative;
+  width: 900px;
+}
+
+.primaryTaskWrapper {
+  float: left; 
+  text-align: center;
+  font-size: 24px;
+  color: #737373;
+  width: 640px;
+}
+
+.topWrapper {
+  float: left; 
+  text-align: left;
+  font-size: 24px;
+  color: #737373;
+  width: 640px;
+}
+
+h1 {
+  text-align: left;
+  font-size: 24px;
+}
+
+
+#target h1 {
+  text-align: center;
+  font-size: 24px;
+}
+
+.checkAnswer {
+  padding-top: 30px;
+  float: right;
+}
+
+#nextToDebrief {
+  float: right;
+}
+
+#answer {
+  float: left;
+  padding-top: 30px;
+}
+
+#score {
+  float: right;
+}
+
+#timer_div_board {
+  float: left;
+}
+
+.rightWrapper {
+  float: right;
+}
+
+#description {
+  padding-bottom: 20px;
+}
+
+label {
+  margin-left: 3px;
+}

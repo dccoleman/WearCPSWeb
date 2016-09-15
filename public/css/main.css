@@ -6,7 +6,7 @@
 }
 
 body {
-  background: #F1EFF1;
+  background: #F1EFF1 !important;
   font-family: 'Cabin', sans-serif;
   font-size: 14px;
   font-weight: 400;
