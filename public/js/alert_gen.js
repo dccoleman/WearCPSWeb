@@ -96,7 +96,8 @@ function generateAlert() {
 	    $("#myModal").modal('show');
 	    data["notification"+currentAlert] = notification[0];
 	    experimentr.addData(data);
-	   setTimeout(function(){timeoutAlert()}, 10000);
+	    //TODO: alerts may not want to timeout!
+	    setTimeout(function(){timeoutAlert()}, 10000);
 	}
 }
 
