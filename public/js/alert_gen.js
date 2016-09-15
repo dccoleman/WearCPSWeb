@@ -2,6 +2,7 @@
 
 var clickNumber = 0;
 var currentAlert = 0;
+var count = 0;
 var timeout;
 var alertEnRoute;
 var experimenting = true;
@@ -9,6 +10,7 @@ var experimenting = true;
 var security_notifications;
 var safety_notifications;
 var already_generated = [false];
+var notifications_generated = createArray(12,12);
 
 function generateAlert() {
 	if(experimenting){
@@ -81,6 +83,8 @@ function generateAlert() {
 		}
 
 		already_generated[notification[1]] = true;
+		notifications_generated[count] = notification[1];
+		count++;
 
 		$('.modal-title').text(notification[0]);
 	    $('#description').text(notification[1]);
@@ -156,4 +160,16 @@ function timeoutAlert(){
 		}
 	enabled = 1;
 	}
+}
+
+function createArray(length) {
+    var arr = new Array(length || 0),
+        i = length;
+
+    if (arguments.length > 1) {
+        var args = Array.prototype.slice.call(arguments, 1);
+        while(i--) arr[length-1 - i] = createArray.apply(this, args);
+    }
+
+    return arr;
 }

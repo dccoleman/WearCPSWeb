@@ -1,21 +1,30 @@
 
 <div id="recall_survey">
 <h2 class="placeholder">
-Thank you! The experiment is almost complete. Please fill out the following feedback survey.
+Thank you! The experiment is almost complete. Please perform the following survey on notification recall
 </h2>
 
 
 
 <div id="rating">Which notification were you shown? 
     <div id="ratings">
-        <input type="radio" id="n1" name="notificationRecall1" value="n1"> <img src="images/IOT Picture.jpg" alt="Alerts are sent for detected intrusions" height="400" width="700">
+        <input type="image" id="n1" name="notificationRecall1" value="n1" src="images/antivirus1.png" alt="Alerts are sent for detected intrusions" onclick="changeImages()" style="height:80%;width:80%">
         <br><br>
-        <input type="radio" id="n2" name="notificationRecall1" value="n2"> <img src="images/IOT Picture.jpg" alt="Alerts are sent for detected intrusions" height="400" width="700">
+        <input type="image" id="n2" name="notificationRecall2" value="n2" src="images/fridge1.png" alt="Alerts are sent for detected intrusions" onclick="changeImages()" style="height:80%;width:80%">
     </div>
 </div>
 
 </div>
 
 <script> 
+var times = 0;
+function changeImages() {
+  
+  var name = notifications_generated[times][0];
+
+  document.getElementById("n1").src=("images/" + name + "1.png");
+  document.getElementById("n2").src=("images/" + name + "1.png");
+  times++;
+}
 
 </script>
