@@ -158,3 +158,7 @@ h1 {
 label {
   margin-left: 3px;
 }
+
+.modal-body {
+    white-space: pre-wrap;
+}

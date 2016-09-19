@@ -1,19 +1,40 @@
 title, description,choice1,choice2,choice3, answer
-Antivirus,"Threat found
-
-Alert
-
-Object: C:\Users\uname\AppData\LocalLow\Sun\Java\Deployment\4122f324d3-uj80dwcc
-
-Threat:
-Java/Exploit.Bytverify trojan",Ignore,Disable Antivirus,Clean Up Threat,3
+Antivirus: Threat Found,"Object: C:\Users\uname\AppData\LocalLow\Sun\Java\Deployment\4122f324d3-uj80dwcc
+Threat: Java/Exploit.Bytverify trojan.
+Threat cleanup suggested.",Ignore,Disable Antivirus,Clean Up Threat,3
+Antivirus: Serious Threat Found,"Object: C:\System32\cryptolocker
+Threat: Cryptolocker Ransomware.
+Immediate quarantine suggested.",Disable Antivirus,Ignore,Quarantine,3
+Spyware Warning,"Spyware detected on computer.
+Keylogger installed.
+Recommend affected process be shut down.",Disable Antispyware,Disable Infected Process,Ignore,2
 Disk Space Warning,"Low Disk Space
 You are running very low on disk space on Windows8 (C:).
-Click here to see if you can free up space on this drive.",Ignore,Free Up Space,Download Cleanup Software,2
+Disk cleanup suggested.",Free Up Space,Ignore,Download Cleanup Software,1
+Low Disk Space,"This computer only has 5 mb of disk space remaining.
+You can free up disk space by removing or relocating unused files and programs.",Manage Files & Programs,Download Cleanup Program (8mb),Ignore,1
+No Disk Space,"This computer does not have enough disk space to function.
+Disk cleanup suggested.",Ignore,Free Up Space,Download Cleanup Software,
 Updates,"Updates are ready to install.
-Some applications couldn’t be updated automatically",Ignore,Remind Me Later,Update,3
+Some critical applications couldn’t be updated automatically.
+Performing updates required.",Ignore,Remind Me Later,Update,3
+Updates Performed,"Updates have been performed.
+No action is necessary.",Update,Remind Me Later,Ignore,3
+Updates,"Updates are ready to install.
+Non-critical programs couldn’t be updated automatically and require your attention.
+System recommends installing the updates.",Remind Me Later,Ignore,Install Updates,3
 SSL Warning,"This website's security certificate is not trusted!
 
-You attempted to reach 192.168.17.129 but the server presented a certificate issued by an entity that is not trusted by your computer’s operating system. This may mean that the server has generated its own security credentials, which Chrome cannot rely on for identity information, or an attacker may be trying to intercept your communications.
+You attempted to reach www.example.com, but the server presented a certificate issued by an entity that is not trusted by your computer’s operating system. This may mean that the server has generated its own security credentials, which Chrome cannot rely on for identity information, or an attacker may be trying to intercept your communications.
+
 You should not proceed, especially if you have never seen this warning before for this site.",Ignore,Install Certificate,Go Back,1
-DEP Mitigation,A program seems to be trying to defeat your security systems.,Ignore,Shut Program Down,Shut Security Down,2
+Content Warning,"This website contains content that will cause harm to your computer.
+System recommends blocking content.",Allow Permanently,Allow Just Once,Disallow,3
+Program Launch,"This website is attempting to launch a program on your computer.
+System recommends not allowing this program to launch.",Allow Permanently,Allow Just Once,Disallow,3
+Data Execution Prevention,"A program seems to be trying to defeat your security systems.
+System suggests shutting program down.",Ignore,Shut Program Down,Turn Off Security,2
+Address Space Layout Randomization Bypassed,"A program has bypassed the mandatory ASLR protection provided in your operating system.
+This usually is a result of malicious behavior and shutting down the program is recommended.",Ignore,Shut Program Down,Turn Off Security,2
+Attack Space Reduction Bypass,"An application has bypassed the ASR protection provided in your operating system.
+This usually is a result of malicious behavior and shutting down the program is recommended.",Ignore,Shut Program Down,Turn Off Security,2
