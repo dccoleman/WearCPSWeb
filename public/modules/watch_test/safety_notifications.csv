@@ -1,6 +1,16 @@
 title, description,choice1,choice2,choice3, answer
-Home Security System Triggered,The home security system was triggered. A window has been broken.,Ignore,View Security Footage,Call The Police,3
-Vehicle Security System Triggered,Car engine started.,Ignore,Disable Car,Call the Police,2
+Fire Alarm Triggered,Steam detected in your living room. The system suggests resetting the alarms.,Ignore,Reset Alarm,Call Fire Department,3
+Fire Alarm Warning,Your fire alarm system is running low on backup batteries. The system suggests replacements be installed.,Replace Batteries,Ignore,Disable Battery Check,1
+Fire Alarm Triggered,"Smoke detected in the kitchen, living room, and dining room. The system recommends calling the Fire Department.",Call Fire Department,Disable System,Ignore,1
+Vehicle Security System Alert,Your car is being moved without a key. Likely cause is theft.,Ignore,Reset System,Call Police.,3
+Vehicle Security System Alert,One of your car windows has been broken.,Reset System,Call Police,Ignore,2
+Vehicle Security System Triggered,Your car engine has started without you.,Ignore,Disable Car,Call the Police,2
 Smart Fridge Temperature Warning,Your fridge has been running at a very low temperature which may result in supercooling. Raising the temperature will prevent this.,Ignore,Reset Fridge,Raise Temperature,3
+Smart Fridge Temperature Warning,Your fridge has built up a significant amount of ice. The system suggests a defrost cycle.,Defrost Fridge,Ignore,Lower Temperature,1
+Smart Fridge Warning,Your fridge has been unplugged. The system suggests locking the doors to preserve temperatures until power can be restored.,Ignore,Allow Access,Lock Doors,3
+Home Security System Triggered,The home security system was triggered. A window has been broken.,Ignore,View Security Footage,Call The Police,3
+Home Security System Triggered,The home security system was triggered. The cameras have been disabled. The system suggests notifying the authorities.,Call Police,View Camera Footage,Ignore,1
+Home Security System Warning,The home security system is having trouble connecting to the network. The system suggests a reboot.,Ignore,Reboot System,Call Police,2
+Smart Toaster Notification,Your toast has finished. It can be kept warm until you are ready to consume it.,Ignore,Keep Warm,Continue Toasting,2
 Smart Toaster Notification,Your toaster has been running at a high heat for 3 hours. Your smoke alarms have not been set off.,Ignore,Turn Off,Call Fire Department,2
-Fire Alarm Triggered,Smoke detected in your living room.,Ignore,Reset Alarm,Call Fire Department,3
+Smart Toaster Notification,Your toaster was disconnected from the network 30 seconds ago. The system suggests waiting until typical network disturbance subsides.,Reset Toaster,Reset Smart Home,Wait,3
