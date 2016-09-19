@@ -8,25 +8,66 @@ Thank you! The experiment is almost complete. Please perform the following surve
 
 <div id="rating">Which notification were you shown? 
     <div id="ratings">
-        <input type="image" id="n1" name="notificationRecall1" value="n1" src="images/antivirus1.png" alt="Alerts are sent for detected intrusions" onclick="changeImages()" style="height:80%;width:80%">
+        <input type="image" id="n1" name="notificationRecall1" value="n1" src="images/antivirus1.png" alt="Alerts are sent for detected intrusions" onclick="logOne()" style="height:80%;width:80%">
         <br><br>
-        <input type="image" id="n2" name="notificationRecall2" value="n2" src="images/fridge1.png" alt="Alerts are sent for detected intrusions" onclick="changeImages()" style="height:80%;width:80%">
+        <input type="image" id="n2" name="notificationRecall2" value="n2" src="images/fridge1.png" alt="Alerts are sent for detected intrusions" onclick="logTwo()" style="height:80%;width:80%">
     </div>
 </div>
 
 </div>
 
 <script> 
+experimentr.hideNext();
 var times = 0;
+var right = 0;
+var name;
+var rightName;
+
 function changeImages() {
+  name = notifications_generated[times][0];
+
+  var set = Math.floor(Math.random() * (2));
+  if(set == 1) {
+    right = 1;
+    document.getElementById("n1").src=("images/" + name + ".png");
+    document.getElementById("n2").src=("images/" + name + "1.png");
+  } else {
+    right = 2;
+    document.getElementById("n1").src=("images/" + name + "1.png");
+    document.getElementById("n2").src=("images/" + name + ".png");
+  }
   
-  var name = notifications_generated[times].slice(0,10);
-
-  console.log(name);
-
-  document.getElementById("n1").src=("images/" + name + ".png");
-  document.getElementById("n2").src=("images/" + name + "1.png");
   times++;
+  if(times > count) { experimentr.next(); }
+
+  rightName = name;
 }
+
+function logOne() {
+  data = {};
+  console.log(rightName);
+  if(right == 1) {
+    data[rightName] = 1;
+  } else {
+    data[rightName] = 0;
+  }
+  experimentr.addData(data);
+  changeImages();
+}
+
+function logTwo() {
+  data = {};
+
+  console.log(rightName);
+  if(right == 2) {
+    data[rightName] = 1;
+  } else {
+    data[rightName] = 0;
+  }
+  experimentr.addData(data);
+  changeImages();
+}
+
+changeImages();
 
 </script>

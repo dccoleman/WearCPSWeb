@@ -83,7 +83,7 @@ function generateAlert() {
 		}
 
 		already_generated[notification[1]] = true;
-		notifications_generated[count] = notification[1];
+		notifications_generated[count] = notification;
 		count++;
 
 		$('.modal-title').text(notification[0]);
@@ -97,7 +97,7 @@ function generateAlert() {
 	    data["notification"+currentAlert] = notification[0];
 	    experimentr.addData(data);
 	    //TODO: alerts may not want to timeout!
-	    setTimeout(function(){timeoutAlert()}, 10000);
+	    //setTimeout(function(){timeoutAlert()}, 10000);
 	}
 }
 
