@@ -11,6 +11,7 @@ var security_notifications;
 var safety_notifications;
 var already_generated = [false];
 var notifications_generated = createArray(12,12);
+var ids = [];
 
 function generateAlert() {
 	if(experimenting){
@@ -84,6 +85,7 @@ function generateAlert() {
 
 		already_generated[notification[1]] = true;
 		notifications_generated[count] = notification;
+		ids.push(notification[7]);
 		count++;
 
 		$('.modal-title').text(notification[0]);

@@ -1,16 +1,17 @@
-
 <div id="recall_survey">
 <h2 class="placeholder">
-Thank you! The experiment is almost complete. Please perform the following survey on notification recall
+Please try to remember which of the two notifications below you were shown. Make your choice by clicking on its picture
 </h2>
 
 
 
 <div id="rating">Which notification were you shown? 
     <div id="ratings">
-        <input type="image" id="n1" name="notificationRecall1" value="n1" src="images/antivirus1.png" alt="Alerts are sent for detected intrusions" onclick="logOne()" style="height:80%;width:80%">
+        <input type="image" id="n1" name="notificationRecall1" value="n1" src="images/antivirus1.png" alt="Alerts are sent for detected intrusions" onclick="logAnswer(1)" style="height:80%;width:80%">
         <br><br>
-        <input type="image" id="n2" name="notificationRecall2" value="n2" src="images/fridge1.png" alt="Alerts are sent for detected intrusions" onclick="logTwo()" style="height:80%;width:80%">
+        <input type="image" id="n2" name="notificationRecall2" value="n2" src="images/fridge1.png" alt="Alerts are sent for detected intrusions" onclick="logAnswer(2)" style="height:80%;width:80%">
+        <br><br>
+        <input type="image" id="n3" name="notificationRecall3" value="n3" src="images/fridge1.png" alt="Alerts are sent for detected intrusions" onclick="logAnswer(3)" style="height:80%;width:80%">
     </div>
 </div>
 
@@ -21,48 +22,77 @@ experimentr.hideNext();
 var times = 0;
 var right = 0;
 var name;
-var rightName;
+var type;
+var id;
+var high;
+var low;
 
 function changeImages() {
+  console.log("starting");
   name = notifications_generated[times][0];
+  id = notifications_generated[times][7];
+  type = notifications_generated[times][6];
 
-  var set = Math.floor(Math.random() * (2));
-  if(set == 1) {
-    right = 1;
-    document.getElementById("n1").src=("images/" + name + ".png");
-    document.getElementById("n2").src=("images/" + name + "1.png");
-  } else {
+  high = id + 1;
+  low = id - 1;
+
+  console.log("high " + high + " id " + id + " low " + low);
+
+  var change = true;
+  while(change) {
+    change = false;
+    if(type == 0) {
+      if(high > 15) {high = 0;change = true;}
+      if(low < 0) {low = 15;change = true;}
+    } else {
+      if(high > 29) {high = 16;change = true;}
+      if(low < 16) {low = 29;change = true;}
+    }
+
+    if(ids.indexOf(high) != -1) {
+      high++;
+      console.log("found " + high);
+      change = true;
+    }
+    if(ids.indexOf(low) != -1) {
+      low--;
+      console.log("found " + low);
+      change = true;
+    }
+  }
+
+  console.log(" - " + low + " - " + id + " - " + high);
+
+  var set = Math.floor(Math.random() * (3));
+
+  if(set == 0) {
+    right = 3;
+    document.getElementById("n1").src=("images/" + high + ".png");
+    document.getElementById("n2").src=("images/" + low + ".png");
+    document.getElementById("n3").src=("images/" + id + ".png");
+  } else if (set == 1) {
     right = 2;
-    document.getElementById("n1").src=("images/" + name + "1.png");
-    document.getElementById("n2").src=("images/" + name + ".png");
+    document.getElementById("n1").src=("images/" + low + ".png");
+    document.getElementById("n2").src=("images/" + id + ".png");
+    document.getElementById("n3").src=("images/" + high + ".png");
+  } else {
+    right = 1;
+    document.getElementById("n1").src=("images/" + id + ".png");
+    document.getElementById("n2").src=("images/" + high + ".png");
+    document.getElementById("n3").src=("images/" + low + ".png");
   }
   
   times++;
   if(times > count) { experimentr.next(); }
-
-  rightName = name;
 }
 
-function logOne() {
+function logAnswer(buttonNumber) {
   data = {};
-  console.log(rightName);
-  if(right == 1) {
-    data[rightName] = 1;
+  console.log(name + type);
+  if(right == buttonNumber) {
+    data[name] = 1;
   } else {
-    data[rightName] = 0;
-  }
-  experimentr.addData(data);
-  changeImages();
-}
-
-function logTwo() {
-  data = {};
-
-  console.log(rightName);
-  if(right == 2) {
-    data[rightName] = 1;
-  } else {
-    data[rightName] = 0;
+    data[name] = 0;
   }
   experimentr.addData(data);
   changeImages();
