@@ -43,18 +43,18 @@ function changeImages() {
     change = false;
     if(type == 0) {
       if(high > 15) {high = 0;change = true;}
-      if(low < 0) {low = 15;change = true;}
+      if(low < 0) {low = 14;change = true;}
     } else {
-      if(high > 29) {high = 16;change = true;}
-      if(low < 16) {low = 29;change = true;}
+      if(high > 29) {high = 15;change = true;}
+      if(low < 15) {low = 29;change = true;}
     }
 
-    if(ids.indexOf(high) != -1) {
+    if(ids.indexOf(high) != -1 || high == id) {
       high++;
       console.log("found " + high);
       change = true;
     }
-    if(ids.indexOf(low) != -1) {
+    if(ids.indexOf(low) != -1 || low == id) {
       low--;
       console.log("found " + low);
       change = true;
