@@ -89,7 +89,7 @@ Thank you! The experiment is almost complete. Please fill out the following feed
   .on('change', function() { data.safetyNotificationsQuantity = this.value; validate(); });
 
   function validate() {
-    if(data.notificationsKinds && data.notificationsQuantity && data.dominantNotification && safetyNotificationsQuantity && securityNotificationsQuantity){
+    if(data.notificationsKinds && data.notificationsQuantity && data.dominantNotification && data.safetyNotificationsQuantity && data.securityNotificationsQuantity){
       experimentr.endTimer('demo');
       experimentr.addData(data);
       experimentr.release();
