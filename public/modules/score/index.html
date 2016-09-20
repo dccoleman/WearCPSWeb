@@ -1,0 +1,31 @@
+<div id="score">
+<h2 class="placeholder" id="result">
+</h2>
+<script>
+var ranking;
+if(score < 0){
+	ranking = "Bad";
+}
+else if (score < 300){
+	ranking = "Not Bad";
+}
+else if(score < 500){
+	ranking = "Pretty good";
+}
+else if (score < 800){
+	ranking = "On a Rampage!!";
+}
+else if (score < 1000){
+	ranking = "Unstoppable!!";
+}
+else if (score < 1300){
+	ranking = "Dominating!!";
+}
+else if (score < 1600){
+	ranking = "Godlike!!";
+}
+else{
+	ranking = "Legendary!!";
+}
+document.getElementById("result").innerHTML = "You scored " + score + "!! You were " + ranking;
+</script>
