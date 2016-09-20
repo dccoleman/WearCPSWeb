@@ -49,12 +49,12 @@ function changeImages() {
       if(low < 15) {low = 29;change = true;}
     }
 
-    if(ids.indexOf(high) != -1) {
+    if(ids.indexOf(high) != -1 || high == id) {
       high++;
       console.log("found " + high);
       change = true;
     }
-    if(ids.indexOf(low) != -1) {
+    if(ids.indexOf(low) != -1 || low == id) {
       low--;
       console.log("found " + low);
       change = true;
