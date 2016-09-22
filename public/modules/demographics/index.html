@@ -280,6 +280,16 @@ Thank you! The experiment is almost complete. Please fill out the following demo
     </div>
 </div>
 <br>
+<div id="degree">Highest degree obtained:
+    <div id="degrees">
+        <input type="radio" id="d1" name="degree" value="High School"> High School
+        <input type="radio" id="d2" name="degree" value="Bachelors"> Bachelors
+        <input type="radio" id="d3" name="degree" value="Masters"> Masters
+        <input type="radio" id="d4" name="degree" value="PhD"> PhD
+        <input type="radio" id="d5" name="degree" value="Other"> Other
+    </div>
+</div>
+<br>
 </div>
 
 <script> 
@@ -299,8 +309,12 @@ Thank you! The experiment is almost complete. Please fill out the following demo
   d3.select("#countriesList")
   .on('change', function() { data.country = this.options[this.selectedIndex].value; console.log(data.country); validate(); });
   
+  d3.selectAll('input')
+  .filter(function(d) { return this.name === 'degree' ? this : null; })
+  .on('change', function() { data.degree = this.value; validate(); });
+  
   function validate() {
-	  if(data.age && data.sex && data.country) {
+	  if(data.age && data.sex && data.country && data.degree) {
 	    experimentr.endTimer('demo');
 	    experimentr.addData(data);
 	    experimentr.release();
