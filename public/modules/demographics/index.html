@@ -301,14 +301,14 @@ Thank you! The experiment is almost complete. Please fill out the following demo
 
 
   d3.select("#agesList")
-  .on('change', function() { data.age = this.options[this.selectedIndex].value; console.log(data.age); validate(); });
+  .on('change', function() { data.age = this.options[this.selectedIndex].value; validate(); });
 
   d3.selectAll('input')
   .filter(function(d) { return this.name === 'sex' ? this : null; })
   .on('change', function() { data.sex = this.value; validate(); });
   
   d3.select("#countriesList")
-  .on('change', function() { data.country = this.options[this.selectedIndex].value; console.log(data.country); validate(); });
+  .on('change', function() { data.country = this.options[this.selectedIndex].value; validate(); });
   
   d3.selectAll('input')
   .filter(function(d) { return this.name === 'degree' ? this : null; })
