@@ -7,17 +7,19 @@ Please try to remember which of the notifications below you were shown. Make you
 
 <div id="rating">Which notification were you shown? 
     <div id="ratings">
-        <input type="image" id="n1" name="notificationRecall1" value="n1" src="images/antivirus1.png" alt="Alerts are sent for detected intrusions" onclick="logAnswer(1)" style="height:80%;width:80%">
+        <input id="n0" type="button" value="Start!" onclick="releaseRecall();" />
+        <input type="image" id="n1" name="notificationRecall1" value="n1" src="images/antivirus1.png" alt="Alerts are sent for detected intrusions" onclick="logAnswer(1)" style="display:none;height:80%;width:80%">
         <br><br>
-        <input type="image" id="n2" name="notificationRecall2" value="n2" src="images/fridge1.png" alt="Alerts are sent for detected intrusions" onclick="logAnswer(2)" style="height:80%;width:80%">
+        <input type="image" id="n2" name="notificationRecall2" value="n2" src="images/fridge1.png" alt="Alerts are sent for detected intrusions" onclick="logAnswer(2)" style="display:none;height:80%;width:80%">
         <br><br>
-        <input type="image" id="n3" name="notificationRecall3" value="n3" src="images/fridge1.png" alt="Alerts are sent for detected intrusions" onclick="logAnswer(3)" style="height:80%;width:80%">
+        <input type="image" id="n3" name="notificationRecall3" value="n3" src="images/fridge1.png" alt="Alerts are sent for detected intrusions" onclick="logAnswer(3)" style="display:none;height:80%;width:80%">
     </div>
 </div>
 
 </div>
 
 <script> 
+
 experimentr.hideNext();
 var times = 0;
 var right = 0;
@@ -27,6 +29,26 @@ var id;
 var high;
 var low;
 
+var answers = [];
+
+function releaseRecall() {
+  document.getElementById("n0").style.display="none";
+  document.getElementById("n1").style.display="initial";
+  document.getElementById("n2").style.display="initial";
+  document.getElementById("n3").style.display="initial";
+  changeImages();
+  experimentr.startTimer("recall" + times);
+}
+
+function lockRecall() {
+  experimentr.endTimer("recall" + times);
+  document.getElementById("n0").style.display="initial";
+  document.getElementById("n0").value="Next!";
+  document.getElementById("n1").style.display="none";
+  document.getElementById("n2").style.display="none";
+  document.getElementById("n3").style.display="none";
+}
+
 function changeImages() {
   console.log("starting");
   name = notifications_generated[times][0];
@@ -35,8 +57,6 @@ function changeImages() {
 
   high = id + 1;
   low = id - 1;
-
-  console.log("high " + high + " id " + id + " low " + low);
 
   var change = true;
   while(change) {
@@ -61,8 +81,6 @@ function changeImages() {
     }
   }
 
-  console.log(" - " + low + " - " + id + " - " + high);
-
   var set = Math.floor(Math.random() * (3));
 
   if(set == 0) {
@@ -81,23 +99,27 @@ function changeImages() {
     document.getElementById("n2").src=("images/" + high + ".PNG");
     document.getElementById("n3").src=("images/" + low + ".PNG");
   }
-  
+
   times++;
-  if(times > count) { experimentr.next(); }
+  if(times > count) { 
+    experimentr.addData(answer);
+    experimentr.next();
+  }
 }
 
 function logAnswer(buttonNumber) {
+  lockRecall();
   data = {};
-  console.log(name + type);
-  if(right == buttonNumber) {
-    data[name] = 1;
+  data["id"] = notifications_generated[times][7];
+  data["answer"] = buttonNumber;
+  if(set == 0) {
+    data["right"] = 3;
+  } else if(set == 1) {
+    data["right"] = 2;
   } else {
-    data[name] = 0;
+    data["right"] = 1;
   }
-  experimentr.addData(data);
-  changeImages();
+  answers.push(data);
 }
-
-changeImages();
 
 </script>
