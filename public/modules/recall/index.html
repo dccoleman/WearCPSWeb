@@ -104,16 +104,11 @@ function changeImages() {
   }
 
   times++;
-  if(times > count) { 
-    var recall = {recall: answers};
-    experimentr.addData(recall);
-    experimentr.next();
-  }
 }
 
 function logAnswer(buttonNumber) {
   data = {};
-  data["id"] = notifications_generated[times][7];
+  data["id"] = parseInt(notifications_generated[times][7]);
   data["answer"] = buttonNumber;
   data["name"] = notifications_generated[times][0];
   lockRecall();
@@ -131,6 +126,11 @@ function logAnswer(buttonNumber) {
   }
   console.log("pushing");
   answers.push(data);
+  if(times > count) { 
+    var recall = {recall: answers};
+    experimentr.addData(recall);
+    experimentr.next();
+  }
 }
 
 </script>

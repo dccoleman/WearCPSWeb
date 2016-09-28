@@ -7,12 +7,15 @@ var timeout;
 var alertEnRoute;
 var experimenting = true;
 var alerts = 0;
+var notification;
 
 var security_notifications;
 var safety_notifications;
 var already_generated = [false];
 var notifications_generated = createArray(12,12);
 var ids = [];
+
+var responses = [];
 
 function generateAlert() {
 	if(experimenting && alerts < 6){
@@ -24,7 +27,6 @@ function generateAlert() {
 		experimentr.startTimer("alert"+currentAlert);
 		//TODO create for safety notifications
 		var type = Math.floor(Math.random() * (2));
-		var notification;
 
 		//security notification
 		if(type == 0) {
@@ -98,8 +100,8 @@ function generateAlert() {
 
 	    stopEnter();
 	    $("#myModal").modal('show');
-	    data["notification"+currentAlert] = notification[0];
-	    experimentr.addData(data);
+	    data["name"] = notification[0];
+	    //experimentr.addData(data);
 	    //TODO: alerts may not want to timeout!
 	    //setTimeout(function(){timeoutAlert()}, 10000);
 	}
@@ -129,25 +131,32 @@ function startGeneration(){
 }
 
 function collectClick(val){
+	console.log("collecting click");
 	timeout = false;
 	data = {};
 	clickNumber++;
-	var key1 = "Click_" + clickNumber + "_button";
-	data[key1] = val;
+	data["click_#"] = clickNumber;
 	//TODO account if they press a button without an alert started, and multiple presses for one alert
 	if(currentAlert > 0){
 		experimentr.endTimer("alert"+currentAlert);
-		var key2 = "Alert_" + currentAlert + "_response";
-		data[key2] = val;
+		data["button_clicked"] = val;
+		data["correct_button"] = notification[5];
 	}
-	experimentr.addData(data);
-	//hideAlert();
+	data["name"] = notification[0];
+	data["id"] = parseInt(notification[7]);
+	if(notification)
+	//data["time_start"] = experimentr.data()["time_start" + clickNumber];
+	//data["time_end"] = experimentr.data()["time_end" + clickNumber];
+	//data["time_diff"] = experimentr.data()["time_diff" + clickNumber];
+	//experimentr.addData(data);
+	responses.push(data);
 	if(!alertEnRoute){
 			var x = 7000 + Math.random() * 15000;
 			setTimeout(function(){generateAlert()}, x);
 			alertEnRoute=true;
 		}
 	enabled = 1;
+	console.log("finished collecting click");
 }
 
 function timeoutAlert(){

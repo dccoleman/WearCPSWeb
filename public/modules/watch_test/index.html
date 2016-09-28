@@ -82,6 +82,7 @@
 	</div>
 
 	<script>
+		var runTimer = true;
 		decreaseDifficulty();
 		(function() {
 			var data    = {};
@@ -114,7 +115,9 @@
 
 					--experiment_time;
 
-					document.getElementById('timer_div').innerHTML = "<strong>Experiment Time Remaing - </strong>" + hour + " : " + twoDigits(seconds);
+					if(runTimer) {
+						document.getElementById('timer_div').innerHTML = "<strong>Experiment Time Remaing - </strong>" + hour + " : " + twoDigits(seconds);
+					}
 
 					if(experiment_time % 5 == 0) {
 						//$("#myModal").modal('show');
@@ -123,6 +126,9 @@
 					if (experiment_time < 0)
 					{
 						clearInterval(interval);
+						var notifications = {notifications:responses};
+						experimentr.addData(notifications);
+						runTimer = false;
 						experimentr.next();
 					}
 				}, 1000);
