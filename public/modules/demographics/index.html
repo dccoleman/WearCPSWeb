@@ -317,7 +317,8 @@ Thank you! The experiment is almost complete. Please fill out the following demo
   function validate() {
 	  if(data.age && data.sex && data.country && data.degree) {
 	    experimentr.endTimer('demo');
-	    experimentr.addData(data);
+         var demographics = {demographics:data};
+	    experimentr.addData(demographics);
 	    experimentr.release();
 	  }
 	}

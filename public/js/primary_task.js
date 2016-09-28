@@ -20,6 +20,9 @@
   var score = 0;  //tracks user score
   var responseTry = 1; //tracks each time the user submits an answer
   var enabled = 1; //flipped when a modal is shown so the user can no longer submit answers
+
+  var attempts = [];
+  var runTimer = true;
 //=====================METHODS=====================
 
 //Initially generate table with easiest settings
@@ -46,8 +49,10 @@ function generateTable() {
     var randomNum =Math.floor((Math.random() * words.length));
     var targetWord = words[randomNum];
 
-    document.getElementById("target").innerHTML = "<h1>" + "Primary Task Target Word: " + targetWord + "</h1>";
-    
+    if(runTimer) {
+      document.getElementById("target").innerHTML = "<h1>" + "Primary Task Target Word: " + targetWord + "</h1>";
+    }
+
     for(var i = 0; i < rowSize; i++) {
       row = table.insertRow(i);
 
@@ -95,19 +100,21 @@ function generateTestTable() {
 //Deletes the table
 function deleteTable() {
     answer = 0; //reset answer
-     
-    var Parent = document.getElementById("myTableData");
-    while(Parent.hasChildNodes())
-    {
-      Parent.removeChild(Parent.firstChild);
+    if(runTimer) { 
+      var Parent = document.getElementById("myTableData");
+      while(Parent.hasChildNodes())
+      {
+       Parent.removeChild(Parent.firstChild);
+      }
     }
 } 
 
 //Checks if the answers is right or wrong and updates the score accordingly
 function checkAnswer(value) {
   var data = {};
-  data[("responseTry_"+responseTry+"_answer")]=value;
-  data[("answer_"+responseTry)]=answer;
+  data["entered"]=parseInt(value);
+  data["correct_answer"]=answer;
+  data["time"] = Date.now();
   var answerVal = "";
 
   if(!value) return;
@@ -133,7 +140,9 @@ function checkAnswer(value) {
   $("#answer").delay(500).fadeOut(600);
 
   data["score"]=score;
-  experimentr.addData(data);
+  data["attempt_#"] = responseTry;
+  attempts.push(data);
+  //experimentr.addData(data);
   responseTry++;
   updateScore();
   generateTable();

@@ -108,8 +108,10 @@ function generateAlert() {
 }
 
 function stopEnter() {
-	document.getElementById("formValueId").blur();
-	enabled = 0;
+	if(runTimer) {
+		document.getElementById("formValueId").blur();
+		enabled = 0;
+	}
 }
 
 function startGeneration(){
@@ -135,20 +137,34 @@ function collectClick(val){
 	timeout = false;
 	data = {};
 	clickNumber++;
-	data["click_#"] = clickNumber;
 	//TODO account if they press a button without an alert started, and multiple presses for one alert
-	if(currentAlert > 0){
-		experimentr.endTimer("alert"+currentAlert);
-		data["button_clicked"] = val;
-		data["correct_button"] = notification[5];
-	}
 	data["name"] = notification[0];
 	data["id"] = parseInt(notification[7]);
-	if(notification)
-	//data["time_start"] = experimentr.data()["time_start" + clickNumber];
-	//data["time_end"] = experimentr.data()["time_end" + clickNumber];
-	//data["time_diff"] = experimentr.data()["time_diff" + clickNumber];
-	//experimentr.addData(data);
+	if(currentAlert > 0){
+		experimentr.endTimer("alert"+currentAlert);
+
+		data["time_start"] = experimentr.data()['time_start_alert' + currentAlert];
+		data["time_end"] = experimentr.data()['time_end_alert' + currentAlert];
+		data["time_diff"] = experimentr.data()['time_diff_alert' + currentAlert];
+
+		switch(val) {
+			case "one":
+				val = 1;
+				break;
+			case "two":
+				val = 2;
+				break;
+			case "three":
+				val = 3;
+				break;
+			default:
+				val = -1;
+		}
+
+		data["button_clicked"] = val;
+		data["correct_button"] = parseInt(notification[5]);
+	}
+	data["click_#"] = clickNumber;
 	responses.push(data);
 	if(!alertEnRoute){
 			var x = 7000 + Math.random() * 15000;
