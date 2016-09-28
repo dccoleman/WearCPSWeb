@@ -28,15 +28,16 @@ var type;
 var id;
 var high;
 var low;
+var set;
 
 var answers = [];
 
 function releaseRecall() {
+  changeImages();
   document.getElementById("n0").style.display="none";
   document.getElementById("n1").style.display="initial";
   document.getElementById("n2").style.display="initial";
   document.getElementById("n3").style.display="initial";
-  changeImages();
   experimentr.startTimer("recall" + times);
 }
 
@@ -81,7 +82,9 @@ function changeImages() {
     }
   }
 
-  var set = Math.floor(Math.random() * (3));
+
+
+  set = Math.floor(Math.random() * (3));
 
   if(set == 0) {
     right = 3;
@@ -102,16 +105,18 @@ function changeImages() {
 
   times++;
   if(times > count) { 
-    experimentr.addData(answer);
+    var recall = {recall: answers};
+    experimentr.addData(recall);
     experimentr.next();
   }
 }
 
 function logAnswer(buttonNumber) {
-  lockRecall();
   data = {};
   data["id"] = notifications_generated[times][7];
   data["answer"] = buttonNumber;
+  data["name"] = notifications_generated[times][0];
+  lockRecall();
   if(set == 0) {
     data["right"] = 3;
   } else if(set == 1) {
@@ -119,6 +124,12 @@ function logAnswer(buttonNumber) {
   } else {
     data["right"] = 1;
   }
+  if(notifications_generated[times][6] == 0) {
+    data["type"] = "security";
+  } else {
+    data["type"] = "safety";
+  }
+  console.log("pushing");
   answers.push(data);
 }
 

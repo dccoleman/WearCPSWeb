@@ -6,6 +6,7 @@ var count = 0;
 var timeout;
 var alertEnRoute;
 var experimenting = true;
+var alerts = 0;
 
 var security_notifications;
 var safety_notifications;
@@ -14,7 +15,8 @@ var notifications_generated = createArray(12,12);
 var ids = [];
 
 function generateAlert() {
-	if(experimenting){
+	if(experimenting && alerts < 6){
+		alerts++;
 		var data = {};
 		timeout = true;
 		alertEnRoute = false;
@@ -123,7 +125,7 @@ function startGeneration(){
 	var x = Math.random() * 15000;
 	var experimentLength = 120000;
 	setTimeout(function(){generateAlert()}, x);
-	setTimeout(function(){endExperiment()}, experimentLength);
+	//setTimeout(function(){endExperiment()}, experimentLength);
 }
 
 function collectClick(val){
