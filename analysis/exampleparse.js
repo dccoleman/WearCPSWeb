@@ -1,3 +1,6 @@
 var data = require('./results/data.json')
-
-console.log(JSON.parse(data[0].data));
+var i = 0;
+while(data[i]){
+	console.log(JSON.parse(data[i].data));
+	i++;
+}
