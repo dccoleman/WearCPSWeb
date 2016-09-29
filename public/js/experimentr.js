@@ -17,6 +17,10 @@ experimentr = function() {
     return data;
   };
 
+  experimentr.setData = function(d) {
+    data = d;
+  };
+
   // Starts the experiment by loading the first module
   experimentr.start = function() {
     init();

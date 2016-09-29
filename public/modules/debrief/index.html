@@ -41,6 +41,18 @@ Thank you again for your participation. Feel free submit any additional comments
   function validate() {
     if( data.comments ) {
       experimentr.addData(data);
+
+      var newData = {
+        postId: experimentr.data().postId,
+        data: ( JSON.stringify( experimentr.data() ) )
+      }
+
+      console.log( newData );
+
+      experimentr.setData( newData );
+
+      experimentr.save();
+
       d3.select('#submitComments').attr('disabled', 'true');
       d3.select('#submitFeedback').text('Submit Successful');
     }
