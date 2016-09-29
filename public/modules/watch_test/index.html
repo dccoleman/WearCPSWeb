@@ -121,10 +121,10 @@
 					if (experiment_time < 0)
 					{
 						clearInterval(interval);
-						var notifications = {notifications:responses};
-						experimentr.addData(notifications);
-						var task_scores = {task_scores:attempts};
-						experimentr.addData(task_scores);
+						//var notifications = {notifications:responses};
+						experimentr.addData(responses);
+						//var task_scores = {task_scores:attempts};
+						experimentr.addData(attempts);
 						runTimer = false;
 						experimentr.next();
 					}
