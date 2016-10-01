@@ -20,7 +20,7 @@
   var score = 0;  //tracks user score
   var responseTry = 1; //tracks each time the user submits an answer
   var enabled = 1; //flipped when a modal is shown so the user can no longer submit answers
-
+  var experiment_time;
   var attempts = [];
   var runTimer = true;
 //=====================METHODS=====================
@@ -134,7 +134,7 @@ function checkAnswer(value) {
   document.getElementById("answer").innerHTML = answerVal;
   document.getElementById("formValueId").value = "";
 
-  experiment_time_board = curBoardTime;
+  experiment_time_board = experiment_time < curBoardTime ? experiment_time : curBoardTime;
 
   $("#answer").fadeIn(700);
   $("#answer").delay(500).fadeOut(600);

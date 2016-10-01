@@ -85,7 +85,7 @@
 		decreaseDifficulty();
 		(function() {
 			var data    = {};
-
+			experiment_time = 120;
 			init();
 
 
@@ -104,7 +104,7 @@
 			}
 
 			function timerStart() {
-				var experiment_time = 120;
+				
 
 				var interval = setInterval(function() {
 
@@ -152,7 +152,7 @@
           		{
 		            generateTable();
 		            checkAnswer(-1);
-		            experiment_time_board = curBoardTime;
+		            experiment_time_board = experiment_time < curBoardTime ? experiment_time : curBoardTime;
 		          }
 		        }, 1000);
 		      }
