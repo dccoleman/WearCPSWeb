@@ -50,7 +50,8 @@ function releaseRecall() {
 
 function lockRecall() {
   document.getElementById("n0").style.display="initial";
-  document.getElementById("n0").value="Next Picture!";
+  console.log("times" + times);
+  document.getElementById("n0").value= times < 6 ? "Next Picture!" : "Next";
   document.getElementById("n1").style.display="none";
   document.getElementById("n2").style.display="none";
   document.getElementById("n3").style.display="none";
