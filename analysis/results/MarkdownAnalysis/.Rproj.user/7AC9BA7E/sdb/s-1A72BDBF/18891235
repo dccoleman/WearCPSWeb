@@ -12,14 +12,14 @@
     "path" : null,
     "project_path" : null,
     "properties" : {
-        "cacheKey" : "08dphnvaop",
+        "cacheKey" : "o6xqol8z2z",
         "caption" : "data",
-        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=data&cache_key=08dphnvaop",
-        "displayedObservations" : 6,
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=data&cache_key=o6xqol8z2z",
+        "displayedObservations" : "6",
         "environment" : "",
         "object" : "data",
-        "totalObservations" : 6,
-        "variables" : 76
+        "totalObservations" : "6",
+        "variables" : "76"
     },
     "relative_order" : 1,
     "source_on_save" : false,

@@ -1,2 +1,2 @@
-node src/convert.js results/parsedData.json > results/data.csv
-echo "Converting results/parsedData.json to master results/data.csv"
+node src/convert.js /results/$1 > results/$2.csv
+echo "Converting results/$1 to results/$2.csv"
