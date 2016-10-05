@@ -10,7 +10,7 @@ json.dataEntries.filter(function(row){
 
 
 	newObj = {
-		"age" : row.demographics.age,
+		"age" : row.demographics.age
 	}
 
 	filteredJson.push(newObj);
