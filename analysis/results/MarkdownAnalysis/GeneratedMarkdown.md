@@ -1,33 +1,100 @@
-Untitled
+WearCPS: Safety vs. Security Analysis
 ================
 
-GitHub Documents
-----------------
+Introduction
+------------
 
-This is an R Markdown format used for publishing markdown documents to GitHub. When you click the **Knit** button all R code chunks are run and a markdown file (.md) suitable for publishing to GitHub is generated.
+Below is the initial analyis/breakdown of the test data collected through our website **WearCPS.me**.
 
-Including Code
---------------
+Average Ages
+------------
 
-You can include R code in the document as follows:
+Average ages of participants:
 
 ``` r
-summary(cars)
+summary(Ages$age)
 ```
 
-    ##      speed           dist       
-    ##  Min.   : 4.0   Min.   :  2.00  
-    ##  1st Qu.:12.0   1st Qu.: 26.00  
-    ##  Median :15.0   Median : 36.00  
-    ##  Mean   :15.4   Mean   : 42.98  
-    ##  3rd Qu.:19.0   3rd Qu.: 56.00  
-    ##  Max.   :25.0   Max.   :120.00
+    ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    ##       9       9       9      11      12      15
 
-Including Plots
----------------
+``` r
+ggplot(Ages, aes(x=age)) +  geom_dotplot(binwidth = .3) +
+  scale_y_continuous(name = "", breaks = NULL) + ggtitle("Average Ages") +
+  labs(x="Ages",y="Ages") 
+```
 
-You can also embed plots, for example:
+![](GeneratedMarkdown_files/figure-markdown_github/analysis-1.png)
 
-![](GeneratedMarkdown_files/figure-markdown_github/pressure-1.png)
+Avg. Score
+----------
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Basic plot of Avg. Score:
+
+``` r
+summary(SexVsScore)
+```
+
+    ##    sex      finalScore   
+    ##  Male:3   Min.   :-5900  
+    ##           1st Qu.:-2550  
+    ##           Median :  800  
+    ##           Mean   :-1433  
+    ##           3rd Qu.:  800  
+    ##           Max.   :  800
+
+``` r
+ggplot(SexVsScore, aes(x=finalScore)) +  geom_density(kernel = "gaussian", fill='orange') + ggtitle("Avg. Score") + labs(x="Score", y ="Density") 
+```
+
+![](GeneratedMarkdown_files/figure-markdown_github/analysis2-1.png)
+
+Avg. Response Time
+------------------
+
+Basic plot of Avg. Response Times:
+
+``` r
+summary(NotificationResponseTimes)
+```
+
+    ##       avg           secAvg         safAvg    
+    ##  Min.   :3394   Min.   :2699   Min.   :3912  
+    ##  1st Qu.:4007   1st Qu.:3535   1st Qu.:5282  
+    ##  Median :4619   Median :4371   Median :6652  
+    ##  Mean   :4898   Mean   :4759   Mean   :6632  
+    ##  3rd Qu.:5650   3rd Qu.:5790   3rd Qu.:7993  
+    ##  Max.   :6680   Max.   :7208   Max.   :9334
+
+``` r
+x <- data.frame(v1=NotificationResponseTimes$avg,v2=NotificationResponseTimes$secAvg,v3=NotificationResponseTimes$safAvg)
+library(ggplot2);library(reshape2)
+data<- melt(x)
+```
+
+    ## No id variables; using all as measure variables
+
+``` r
+ggplot(data,aes(x=value, fill=variable)) + geom_density(alpha=0.25) + ggtitle("Response Times") + labs(x="Time(ms)", y ="Density")
+```
+
+![](GeneratedMarkdown_files/figure-markdown_github/analysis3-1.png)
+
+Recall Correctness
+------------------
+
+Basic plot of Recall Correctness:
+
+``` r
+summary(RecallCorrectPercentages)
+```
+
+    ##    avgPercent       secPercent       safPercent    
+    ##  Min.   :0.1667   Min.   :0.0000   Min.   :0.2000  
+    ##  1st Qu.:0.3333   1st Qu.:0.2500   1st Qu.:0.2667  
+    ##  Median :0.5000   Median :0.5000   Median :0.3333  
+    ##  Mean   :0.3889   Mean   :0.3889   Mean   :0.3444  
+    ##  3rd Qu.:0.5000   3rd Qu.:0.5833   3rd Qu.:0.4167  
+    ##  Max.   :0.5000   Max.   :0.6667   Max.   :0.5000
+
+**Note** that the `echo = FALSE` parameter can be added to the code chunk to prevent printing of the R code that generates the plot.

@@ -1,17 +1,18 @@
 {
     "collab_server" : "",
-    "contents" : "---\ntitle: \"Data Analysis/Breakdown\"\noutput: github_document\n---\n\n```{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = TRUE)\n```\n\n## GitHub Documents\n\nThis is an R Markdown format used for publishing markdown documents to GitHub. When you click the **Knit** button all R code chunks are run and a markdown file (.md) suitable for publishing to GitHub is generated.\n\n## Including Code\n\nYou can include R code in the document as follows:\n\n```{r data}\nsummary(data$demographics.degree)\n```\n\n## Including Plots\n\nYou can also embed plots, for example:\n\n```{r pressure, echo=FALSE}\nplot(pressure)\n```\n\nNote that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.\n",
+    "contents" : "---\ntitle: \"WearCPS: Safety vs. Security Analysis\"\noutput: github_document\n---\n\n```{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = TRUE)\nload(\"Data.Rdata\")\n\nlibrary(ggplot2)\n```\n\n## Introduction\n\nBelow is the initial analyis/breakdown of the test data collected through our website **WearCPS.me**.\n\n## Average Ages\n\nAverage ages of participants:\n\n```{r analysis, incude=TRUE}\n\nsummary(Ages$age)\n\nggplot(Ages, aes(x=age)) +  geom_dotplot(binwidth = .3) +\n  scale_y_continuous(name = \"\", breaks = NULL) + ggtitle(\"Average Ages\") +\n  labs(x=\"Ages\",y=\"Ages\") \n```\n\n## Avg. Score\n\nBasic plot of Avg. Score:\n\n```{r analysis2, incude=TRUE}\n\nsummary(SexVsScore)\n\nggplot(SexVsScore, aes(x=finalScore)) +  geom_density(kernel = \"gaussian\", fill='orange') + ggtitle(\"Avg. Score\") + labs(x=\"Score\", y =\"Density\") \n```\n\n## Avg. Response Time\n\nBasic plot of Avg. Response Times:\n\n```{r analysis3, incude=TRUE}\n\nsummary(NotificationResponseTimes)\n\nx <- data.frame(v1=NotificationResponseTimes$avg,v2=NotificationResponseTimes$secAvg,v3=NotificationResponseTimes$safAvg)\nlibrary(ggplot2);library(reshape2)\ndata<- melt(x)\nggplot(data,aes(x=value, fill=variable)) + geom_density(alpha=0.25) + ggtitle(\"Response Times\") + labs(x=\"Time(ms)\", y =\"Density\")\n```\n\n## Recall Correctness\n\nBasic plot of Recall Correctness:\n\n```{r analysis4, incude=TRUE}\n\nsummary(RecallCorrectPercentages)\n\n```\n**Note** that the `echo = FALSE` parameter can be added to the code chunk to prevent printing of the R code that generates the plot.\n",
     "created" : 1475642265876.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3872554325",
+    "hash" : "2463724752",
     "id" : "28A45A65",
-    "lastKnownWriteTime" : 1475696702,
-    "last_content_update" : 1475696702,
+    "lastKnownWriteTime" : 1475773773,
+    "last_content_update" : 1475773773441,
     "path" : "~/Desktop/MQP/analysis/results/MarkdownAnalysis/GeneratedMarkdown.Rmd",
     "project_path" : "GeneratedMarkdown.Rmd",
     "properties" : {
+        "docOutlineVisible" : "0",
         "tempName" : "Untitled1"
     },
     "relative_order" : 2,
