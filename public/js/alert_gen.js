@@ -38,7 +38,7 @@ function generateAlert() {
 
 			notification = security_notifications[security_index];
 
-			$('#image').attr('src', "modules/watch_test/security.png");
+			$('#image').attr('src', "modules/primary_task/security.png");
 		}
 
 		//safety notification
@@ -51,7 +51,7 @@ function generateAlert() {
 
 			notification = safety_notifications[safety_index];
 
-			$('#image').attr('src', "modules/watch_test/safety.png");
+			$('#image').attr('src', "modules/primary_task/safety.png");
 
 		}
 
