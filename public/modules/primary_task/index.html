@@ -168,7 +168,7 @@
 	$(document).ready(function() {
 	    $.ajax({
 	        type: "GET",
-	        url: "modules/watch_test/security_notifications.csv",
+	        url: "modules/primary_task/security_notifications.csv",
 	        dataType: "text",
 	        success: function(data) {
 	        	security_notifications = $.csv.toArrays(data);
@@ -177,7 +177,7 @@
 
 	     $.ajax({
 	        type: "GET",
-	        url: "modules/watch_test/safety_notifications.csv",
+	        url: "modules/primary_task/safety_notifications.csv",
 	        dataType: "text",
 	        success: function(data) {
 	        	safety_notifications = $.csv.toArrays(data);
