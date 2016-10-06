@@ -1,10 +1,12 @@
-var data = require('../results/dataMaster.json')
+var data = require('../results/dataMaster.json');
 var i = 0;
-console.log('{ "dataEntries" : [' )
-while(data[i]){
+
+console.log('{ "dataEntries" : [' );
+
+for(i = 0; i < data.length; i++){
 	console.log(JSON.stringify(JSON.parse(data[i].data)));
-	i++;
-	if(data[i]) {
+	
+	if(i < (data.length -1)) {
 		console.log(",");
 	}
 }
