@@ -1,0 +1,64 @@
+---
+title: "WearCPS: Safety vs. Security Analysis"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+load("Data.Rdata")
+
+library(ggplot2)
+```
+
+## Introduction
+
+Below is the initial analyis/breakdown of the test data collected through our website **WearCPS.me**.
+
+## Average Ages
+
+Average ages of participants:
+
+```{r analysis, incude=TRUE}
+
+summary(Ages$age)
+
+ggplot(Ages, aes(x=age)) +  geom_dotplot(binwidth = .3) +
+  scale_y_continuous(name = "", breaks = NULL) + ggtitle("Average Ages") +
+  labs(x="Ages",y="Ages") 
+```
+
+## Avg. Score
+
+Basic plot of Avg. Score:
+
+```{r analysis2, incude=TRUE}
+
+summary(SexVsScore)
+
+ggplot(SexVsScore, aes(x=finalScore)) +  geom_density(kernel = "gaussian", fill='orange') + ggtitle("Avg. Score") + labs(x="Score", y ="Density") 
+```
+
+## Avg. Response Time
+
+Basic plot of Avg. Response Times:
+
+```{r analysis3, incude=TRUE}
+
+summary(NotificationResponseTimes)
+
+x <- data.frame(v1=NotificationResponseTimes$avg,v2=NotificationResponseTimes$secAvg,v3=NotificationResponseTimes$safAvg)
+library(ggplot2);library(reshape2)
+data<- melt(x)
+ggplot(data,aes(x=value, fill=variable)) + geom_density(alpha=0.25) + ggtitle("Response Times") + labs(x="Time(ms)", y ="Density")
+```
+
+## Recall Correctness
+
+Basic plot of Recall Correctness:
+
+```{r analysis4, incude=TRUE}
+
+summary(RecallCorrectPercentages)
+
+```
+**Note** that the `echo = FALSE` parameter can be added to the code chunk to prevent printing of the R code that generates the plot.

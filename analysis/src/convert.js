@@ -3,7 +3,7 @@ var j2c    = require('json2csv')
   , fs     = require('fs')
   , file   = process.argv[2]
   , _      = require('underscore')
-  , filter = [ "notifications"]
+  , filter = [ "*"]
   , data
 
 fs.readFile(file, 'utf8', function (err, data) {

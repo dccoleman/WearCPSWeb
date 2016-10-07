@@ -315,12 +315,12 @@ Thank you! The experiment is almost complete. Please fill out the following demo
   .on('change', function() { data.degree = this.value; validate(); });
 
   function validate() {
-	  if(data.age && data.sex && data.country && data.degree) {
-	    experimentr.endTimer('demo');
+  if(data.age && data.sex && data.country && data.degree) {
+         experimentr.endTimer('demo');
          var demographics = {demographics:data};
-	    experimentr.addData(demographics);
-	    experimentr.release();
-	  }
-	}
+         experimentr.addData(demographics);
+         experimentr.release();
+       }
+     }
 }());
 </script>

@@ -1,2 +1,3 @@
-Rscript src/analyze.r
-echo "Running src/analyze.r and outputting to results/results.txt (and generating figures if analyze.r has code for them)."
+./backgroundShellScripts/parse.sh
+./backgroundShellScripts/filter.sh
+./backgroundShellScripts/convert.sh

@@ -1,25 +1,23 @@
 <div id="debrief">
 
 <p>
-<strong>Please copy and paste the following code back on Mechanical Turk before closing this window:</strong>
-</p>
-<h2 id="postId"></h2>
-
-<p class="placeholder">
-Mention what the experiment was about and why it's important.
-</p>
-
-<p>
-Thank you again for your participation. Feel free submit any additional comments below.
+Thank you again for your participation. Feel free submit any additional comments below. Click the button to get your code!
 </p>
 
 <textarea name="textarea" rows="10" cols="50">Leave feedback here</textarea>
 <br>
-<button id="submitComments" disabled="true" type="button">Submit</button>
+<button id="submitComments" disabled="true" type="button">Submit/Show Code</button>
 <br>
 <div id="submitFeedback"></div>
 
+<p>
+<strong>Please copy and paste the following code back on Mechanical Turk before closing this window:</strong>
+</p>
+<h2 id="postId"></h2>
+
 </div>
+
+
 
 <style>
 </style>
@@ -29,7 +27,10 @@ Thank you again for your participation. Feel free submit any additional comments
   var postId  = experimentr.postId
     , data    = {};
 
+  d3.select('#postId').style("opacity", 0);
   d3.select("#postId").text(postId);
+
+  d3.select('#submitComments').attr('disabled', null); 
 
   var comments = d3.select('#debrief').select('textarea')
     .on('keypress', function() { d3.select('#submitComments').attr('disabled', null); })
@@ -40,19 +41,17 @@ Thank you again for your participation. Feel free submit any additional comments
 
   function validate() {
     if( data.comments ) {
-      experimentr.addData(data);
+      d3.select('#postId').style("opacity", 1);
 
+      experimentr.addData(data);
+      
       var newData = {
         postId: experimentr.data().postId,
         data: ( JSON.stringify( experimentr.data() ) )
       }
-
       console.log( newData );
-
       experimentr.setData( newData );
-
       experimentr.save();
-
       d3.select('#submitComments').attr('disabled', 'true');
       d3.select('#submitFeedback').text('Submit Successful');
     }

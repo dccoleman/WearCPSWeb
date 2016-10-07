@@ -1,0 +1,28 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1475770953609.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "40EAA416",
+    "lastKnownWriteTime" : 4294967302,
+    "last_content_update" : 1475770953609,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "cofy44dai9",
+        "caption" : "SexVsScore",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=SexVsScore&cache_key=cofy44dai9",
+        "displayedObservations" : "3",
+        "environment" : "",
+        "object" : "SexVsScore",
+        "totalObservations" : "3",
+        "variables" : "2"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
