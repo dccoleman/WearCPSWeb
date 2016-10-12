@@ -1,19 +1,6 @@
-analysis/results/data.csv
-analysis/results/data.json
+
 appendonly.aof
 redis.conf
-
-*.csv
-
-*.csv
-
-analysis/results/filteredCSV/filterRecallCorrectness.csv
-
-*.csv
-
-analysis/results/filteredCSV/filterResponseTimes.csv
-
-analysis/results/filteredCSV/filterScore.csv
 
 analysis/results/filteredJson/filterRecallCorrectness.json
 
