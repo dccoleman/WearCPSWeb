@@ -28,3 +28,5 @@ public/.DS_Store
 public/modules/.DS_Store
 
 analysis/.DS_Store
+
+analysis/results/filteredJson/filterAge.json

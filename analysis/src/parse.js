@@ -10,11 +10,17 @@ for(i = 0; i < data.length; i++){
 			i++;
 		}
 	}
-		console.log(JSON.stringify(JSON.parse(data[i].data)));
-		
+		if(data[i].data[22] != 't') {
+
+		} else {
+			console.log(JSON.stringify(JSON.parse(data[i].data)));
+
 		if(i < (data.length-1)) {
 			console.log(",");
 		}
+		}
+
+	
 	
 }
 
