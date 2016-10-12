@@ -1,40 +1,1 @@
-title, description,choice1,choice2,choice3, answer,type,id
-Antivirus: Threat Found,"Object: C:\Users\uname\AppData\LocalLow\Sun\Java\Deployment\4122f324d3-uj80dwcc
-Threat: Java/Exploit.Bytverify trojan.
-Threat cleanup suggested.",Ignore,Disable Antivirus,Clean Up Threat,3,0,0
-Antivirus: Serious Threat Found,"Object: C:\System32\cryptolocker
-Threat: Cryptolocker Ransomware.
-Immediate quarantine suggested.",Disable Antivirus,Ignore,Quarantine,3,0,1
-Spyware Warning,"Spyware detected on computer.
-Keylogger installed.
-Recommend affected process be shut down.",Disable Antispyware,Disable Infected Process,Ignore,2,0,2
-Disk Space Warning,"Low Disk Space
-You are running very low on disk space on Windows8 (C:).
-Disk cleanup suggested.",Free Up Space,Ignore,Download Cleanup Software,1,0,3
-Low Disk Space,"This computer only has 5 mb of disk space remaining.
-You can free up disk space by removing or relocating unused files and programs.",Manage Files & Programs,Download Cleanup Program (8mb),Ignore,1,0,4
-No Disk Space,"This computer does not have enough disk space to function.
-Disk cleanup suggested.",Ignore,Free Up Space,Download Cleanup Software,,0,5
-Updates,"Updates are ready to install.
-Some critical applications couldn’t be updated automatically.
-Performing updates required.",Ignore,Remind Me Later,Update,3,0,6
-Updates Performed,"Updates have been performed.
-No action is necessary.",Update,Remind Me Later,Ignore,3,0,7
-Updates,"Updates are ready to install.
-Non-critical programs couldn’t be updated automatically and require your attention.
-System recommends installing the updates.",Remind Me Later,Ignore,Install Updates,3,0,8
-SSL Warning,"This website's security certificate is not trusted!
-
-You attempted to reach www.example.com, but the server presented a certificate issued by an entity that is not trusted by your computer’s operating system. This may mean that the server has generated its own security credentials, which Chrome cannot rely on for identity information, or an attacker may be trying to intercept your communications.
-
-You should not proceed, especially if you have never seen this warning before for this site.",Ignore,Install Certificate,Go Back,1,0,9
-Content Warning,"This website contains content that will cause harm to your computer.
-System recommends blocking content.",Allow Permanently,Allow Just Once,Disallow,3,0,10
-Program Launch,"This website is attempting to launch a program on your computer.
-System recommends not allowing this program to launch.",Allow Permanently,Allow Just Once,Disallow,3,0,11
-Data Execution Prevention,"A program seems to be trying to defeat your security systems.
-System suggests shutting program down.",Ignore,Shut Program Down,Turn Off Security,2,0,12
-Address Space Layout Randomization Bypassed,"A program has bypassed the mandatory ASLR protection provided in your operating system.
-This usually is a result of malicious behavior and shutting down the program is recommended.",Ignore,Shut Program Down,Turn Off Security,2,0,13
-Attack Space Reduction Bypass,"An application has bypassed the ASR protection provided in your operating system.
-This usually is a result of malicious behavior and shutting down the program is recommended.",Ignore,Shut Program Down,Turn Off Security,2,0,14
+title, description,choice1,choice2,choice3, answer,type,idAntivirus: Threat Found,"Object: C:\Users\uname\AppData\LocalLow\Sun\Java\Deployment\4122f324d3-uj80dwccThreat: Java/Exploit.Bytverify trojan.Threat cleanup suggested.",Ignore,Disable Antivirus,Clean Up Threat,3,0,0Antivirus: Serious Threat Found,"Object: C:\System32\cryptolockerThreat: Cryptolocker Ransomware.Immediate quarantine suggested.",Disable Antivirus,Ignore,Quarantine,3,0,1Spyware Warning,"Spyware detected on computer.Keylogger installed.Recommend affected process be shut down.",Disable Antispyware,Disable Infected Process,Ignore,2,0,2Disk Space Warning,"Low Disk SpaceYou are running very low on disk space on Windows8 (C:).Disk cleanup suggested.",Free Up Space,Ignore,Download Cleanup Software,1,0,3Low Disk Space,"This computer only has 5 mb of disk space remaining.You can free up disk space by removing or relocating unused files and programs.",Manage Files & Programs,Download Cleanup Program (8mb),Ignore,1,0,4No Disk Space,"This computer does not have enough disk space to function.Disk cleanup suggested.",Ignore,Free Up Space,Run Disk Cleanup Software,3,0,5Updates,"Updates are ready to install.Some critical applications couldn�۪t be updated automatically.Performing updates required.",Ignore,Remind Me Later,Update,3,0,6Updates Performed,"Updates have been performed.No action is necessary.",Update,Remind Me Later,Ignore,3,0,7Updates,"Updates are ready to install.Non-critical programs couldn�۪t be updated automatically and require your attention.System recommends installing the updates.",Remind Me Later,Ignore,Install Updates,3,0,8SSL Warning,"This website's security certificate is not trusted!You attempted to reach www.example.com, but the server presented a certificate issued by an entity that is not trusted by your computer�۪s operating system. This may mean that the server has generated its own security credentials, which Chrome cannot rely on for identity information, or an attacker may be trying to intercept your communications.You should not proceed, especially if you have never seen this warning before for this site.",Ignore,Install Certificate,Go Back,3,0,9Content Warning,"This website contains content that will cause harm to your computer.System recommends blocking content.",Allow Permanently,Allow Just Once,Disallow,3,0,10Program Launch,"This website is attempting to launch a program on your computer.System recommends not allowing this program to launch.",Allow Permanently,Allow Just Once,Disallow,3,0,11Data Execution Prevention,"A program seems to be trying to defeat your security systems.System suggests shutting program down.",Ignore,Shut Program Down,Turn Off Security,2,0,12Address Space Layout Randomization Bypassed,"A program has bypassed the mandatory ASLR protection provided in your operating system.This usually is a result of malicious behavior and shutting down the program is recommended.",Ignore,Shut Program Down,Turn Off Security,2,0,13Attack Space Reduction Bypass,"An application has bypassed the ASR protection provided in your operating system.This usually is a result of malicious behavior and shutting down the program is recommended.",Ignore,Shut Program Down,Turn Off Security,2,0,14
