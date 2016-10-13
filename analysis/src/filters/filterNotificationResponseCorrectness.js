@@ -15,13 +15,20 @@ var i,
 	safCount = 0;
 
 	for(i = 0; i < row.notifications.length; i++) {
-		avg += row.notifications[i].time_diff;
+
+		if(row.notifications[i].button_clicked == row.notifications[i].correct_button) {
+			avg ++;
+
+			if(row.notifications[i].id < 15) {
+				secAvg++;
+			} else {
+				safAvg++;
+			}
+		}
 
 		if(row.notifications[i].id < 15) {
-			secAvg += row.notifications[i].time_diff;
 			secCount++;
 		} else {
-			safAvg += row.notifications[i].time_diff;
 			safCount++;
 		}
 
@@ -32,13 +39,14 @@ var i,
 	safAvg = safAvg/safCount;
 
 	newObj = {
-		"avg" : avg,
-		"secAvg" : secAvg,
-		"safAvg" : safAvg
+		"avgCorrect" : avg,
+		"secAvgCorrect" : secAvg,
+		"safAvgCorrect" : safAvg
 	}
 
 	secCount = 0;
 	safCount = 0;
+
 	avg = 0;
 	secAvg = 0;
 	safAvg = 0;
