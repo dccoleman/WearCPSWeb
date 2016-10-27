@@ -18,7 +18,7 @@ var ids = [];
 var responses = [];
 
 var alertTypeSet = [0,1,0,0,1,1];
-var alertSequenceSet = [0,0,1,1,2,2];
+var alertSequenceSet = [0,0,1,2,1,2];
 var securityCount = 0;
 var safetyCount = 0;
 
