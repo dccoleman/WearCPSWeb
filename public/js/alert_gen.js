@@ -17,6 +17,10 @@ var ids = [];
 
 var responses = [];
 
+var type = [0,1,0,0,1,1];
+var securityCount = 0;
+var safetyCount = 0;
+
 function generateAlert() {
 	if(experimenting && alerts < 6){
 		alerts++;
@@ -25,72 +29,25 @@ function generateAlert() {
 		alertEnRoute = false;
 		currentAlert++;
 		experimentr.startTimer("alert"+currentAlert);
-		//TODO create for safety notifications
-		var type = Math.floor(Math.random() * (2));
-
-		//security notification
-		if(type == 0) {
-			var security_index = Math.floor(Math.random()*security_notifications.length);
-
-			if(security_index == 0) {
-				security_index++;
-			}
-
-			notification = security_notifications[security_index];
-
+		
+		if(type[alerts] == 0) {
+			notification = security_notifications[securityCount];
 			$('#image').attr('src', "modules/primary_task/security.png");
-		}
+			securityCount++;
 
-		//safety notification
-		else {
-			var safety_index = Math.floor(Math.random()*safety_notifications.length);
-
-			if(safety_index == 0) {
-				safety_index++;
-			}
-
-			notification = safety_notifications[safety_index];
-
+		} else if(type[alerts] == 1) {
+			notification = safety_notifications[safetyCount];
 			$('#image').attr('src', "modules/primary_task/safety.png");
-
+			safetyCount++;
+		} else {
+			console.log("Error: Fix the types array");
 		}
+			
 
-		while(already_generated[notification[1]] == true){
-			console.log("Already generated");
-			type = Math.floor(Math.random() * (2));
-
-			//security notification
-			if(type == 0) {
-				var security_index = Math.floor(Math.random()*security_notifications.length);
-
-				if(security_index == 0) {
-					security_index++;
-				}
-
-				notification = security_notifications[security_index];
-
-				$('#image').attr('src', "modules/watch_test/security.png");
-			}
-
-			//safety notification
-			else {
-				var safety_index = Math.floor(Math.random()*safety_notifications.length);
-
-				if(safety_index == 0) {
-					safety_index++;
-				}
-
-				notification = safety_notifications[safety_index];
-
-				$('#image').attr('src', "modules/watch_test/safety.png");
-
-			}
-		}
-
-		already_generated[notification[1]] = true;
-		notifications_generated[count] = notification;
-		ids.push(notification[7]);
-		count++;
+		//already_generated[notification[1]] = true;
+		//notifications_generated[count] = notification;
+		//ids.push(notification[7]);
+		//count++;
 
 		$('.modal-title').text(notification[0]);
 	    $('#description').text(notification[1]);
