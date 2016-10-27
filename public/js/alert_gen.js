@@ -18,36 +18,30 @@ var ids = [];
 var responses = [];
 
 var type = [0,1,0,0,1,1];
+var sequence = [0,0,1,1,2,2];
 var securityCount = 0;
 var safetyCount = 0;
 
 function generateAlert() {
 	if(experimenting && alerts < 6){
-		alerts++;
 		var data = {};
 		timeout = true;
 		alertEnRoute = false;
 		currentAlert++;
 		experimentr.startTimer("alert"+currentAlert);
-		
+		console.log(sequence[alerts]);
 		if(type[alerts] == 0) {
-			notification = security_notifications[securityCount];
+			notification = security_notifications[sequence[alerts]];
 			$('#image').attr('src', "modules/primary_task/security.png");
-			securityCount++;
 
 		} else if(type[alerts] == 1) {
-			notification = safety_notifications[safetyCount];
+			notification = safety_notifications[sequence[alerts]];
 			$('#image').attr('src', "modules/primary_task/safety.png");
-			safetyCount++;
 		} else {
-			console.log("Error: Fix the types array");
-		}
-			
-
-		//already_generated[notification[1]] = true;
-		//notifications_generated[count] = notification;
-		//ids.push(notification[7]);
-		//count++;
+			console.log("Error: Fix the types or sequence arrays");
+		}	
+		
+		alerts++;
 
 		$('.modal-title').text(notification[0]);
 	    $('#description').text(notification[1]);
