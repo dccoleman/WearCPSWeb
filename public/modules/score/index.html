@@ -4,13 +4,13 @@
 <script>
 var ranking;
 if(score < 0){
-	ranking = "Bad";
+	ranking = "Well Done.";
 }
 else if (score < 300){
-	ranking = "Not Bad";
+	ranking = "Well Done!";
 }
 else if(score < 500){
-	ranking = "Pretty good";
+	ranking = "Great Work.";
 }
 else if (score < 800){
 	ranking = "On a Rampage!!";
@@ -27,6 +27,6 @@ else if (score < 1600){
 else{
 	ranking = "Legendary!!";
 }
-document.getElementById("result").innerHTML = "You scored " + score + "!! You were " + ranking;
+document.getElementById("result").innerHTML = "You scored " + score + "!! " + ranking;
 experimentr.release();
 </script>
