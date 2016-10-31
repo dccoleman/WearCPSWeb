@@ -1,3 +1,3 @@
 Smart Fridge Temperature Warning,Your fridge is extremely cold which may result in supercooling. Raising the temperature will prevent this.,Ignore,Reset Fridge,Raise Temperature,3,1,3
 Fire Alarm Triggered,Smoke has been detected in your kitchen. The system recommends calling the Fire Department.,Call Fire Department,Disable System,Ignore,1,1,4
-Vehicle Security System Triggered,Your car engine has started without you. System recommends locking out the brakes.,Ignore,Disable Car,Call Police,2,1,5
+Vehicle Security System Triggered,Your car engine has started without you. System recommends locking out the brakes.,Ignore,Lock Brakes,Call Police,2,1,5
