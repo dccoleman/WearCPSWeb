@@ -153,9 +153,9 @@ library(dplyr)
     ## 
     ## Attaching package: 'dplyr'
 
-    ## The following object is masked from 'package:stats':
+    ## The following objects are masked from 'package:stats':
     ## 
-    ##     filter
+    ##     filter, lag
 
     ## The following objects are masked from 'package:base':
     ## 
@@ -163,11 +163,6 @@ library(dplyr)
 
 ``` r
 library(boot)
-```
-
-    ## Warning: package 'boot' was built under R version 3.1.3
-
-``` r
 library(ggplot2)
 
 
@@ -242,4 +237,37 @@ ciplot("Type", "ResponseTime")
     ## Warning in boot.ci(boot(c(6618L, 21187L, 6311L, 4585L, 3870L, 5914L,
     ## 2474L, : bootstrap variances needed for studentized intervals
 
-![](GeneratedMarkdown_files/figure-markdown_github/analysis6-1.png) **Note** that the `echo = FALSE` parameter can be added to the code chunk to prevent printing of the R code that generates the plot.
+    ## Warning in boot.ci(boot(c(6618L, 21187L, 6311L, 4585L, 3870L, 5914L,
+    ## 2474L, : bootstrap variances needed for studentized intervals
+
+    ## Warning in boot.ci(boot(c(6618L, 21187L, 6311L, 4585L, 3870L, 5914L,
+    ## 2474L, : bootstrap variances needed for studentized intervals
+
+![](GeneratedMarkdown_files/figure-markdown_github/analysis6-1.png)
+
+``` r
+library(bootES)
+
+safety <- subset(filterResponseTimesPerRow, Type=="Safety")
+security <- subset(filterResponseTimesPerRow, Type=="Security")
+
+reportES <- function(attr) {
+  b <- bootES(data, 
+              data.col=attr, 
+              group.col="Type", 
+              contrast=c(Safety=1,Security=-1), 
+              effect.type="cohens.d"
+  )
+  
+  cat( "d=",     round( b$t0, 2), "~", 
+       "[", round( b$bounds[1], 2), ",", 
+       round( b$bounds[2], 2), "]", 
+       sep="")
+}
+
+reportES("ResponseTime")
+```
+
+    ## d=-0.27~[-0.83,0.53]
+
+**Note** that the `echo = FALSE` parameter can be added to the code chunk to prevent printing of the R code that generates the plot.

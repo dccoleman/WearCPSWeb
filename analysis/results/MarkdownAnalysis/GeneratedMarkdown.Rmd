@@ -8,6 +8,8 @@ knitr::opts_chunk$set(echo = TRUE)
 load("Data.Rdata")
 
 library(ggplot2)
+library(pwr)
+
 ```
 
 ## Introduction
@@ -138,6 +140,136 @@ ciplot <- function(xVar, yVar) {
 
 summary(filterResponseTimesPerRow)
 ciplot("Type", "ResponseTime")
+
+```
+
+```{r}
+library(bootES)
+
+reportES <- function(attr) {
+  b <- bootES(data, 
+              data.col=attr, 
+              group.col="Type", 
+              contrast=c(Safety=1,Security=-1), 
+              effect.type="cohens.d"
+  )
+  
+  cat( "d=",     round( b$t0, 2), "~", 
+       "[", round( b$bounds[1], 2), ",", 
+       round( b$bounds[2], 2), "]", 
+       sep="")
+}
+
+reportES("ResponseTime")
+
+```
+
+### Power Analysis
+```{r}
+# Example (breaking down the functions)
+# Effect Size is the key. 
+# While we have good estimates of variability from a given metric (like visited),
+# the means of group 1 and 2 are something we should reason about.
+# It's helpful to plug different means in (hypothetical means) to see how suggested "n" changes.
+#
+# Effect size is defined as:
+# effectsize = abs(meangroup1 - meangroup2) / stdevofbothgroups
+# abs( mean( fade$visited ) - mean( nofade$visited ) ) / sd( data$visited ), 
+# We assume a power of 0.8 (a good estimate according to wikipedia)
+# Then we plug those into the pwr.t.test function like:
+# 
+# desired <- pwr.t.test( 
+#   d=effectsize # from above 
+#   sig.level=.05, 
+#   power=0.8, 
+#   type="two.sample"  # changes if we do paired tests, or one sided
+# )
+# `desired` contains information about power, n, etcetera. We want `desired$n`
+# A heuristic if your actual data are non-normal (given we are using tests for normal data) is to add 15% to n.
+# Also, `desired$n` is initially the number in *each* group, so we need to multiply by 2
+# desired$n * 1.15 * 2 # participants needed for a "safe" experiment given the means and stdev
+#shinyApp(
+#  
+#  ui = fluidPage(
+#    #  Application title
+#    titlePanel("Interactive Power Analysis for Visited"),
+#    
+#    # Sidebar with sliders that demonstrate various available
+#    # options
+#    sidebarLayout(
+#      sidebarPanel(
+#        # Simple integer interval
+#        sliderInput("group1", "Group1:", 
+#                    min=0, max=50, value=mean(fade$visited)),
+#        
+#        sliderInput("group2", "Group2:", 
+#                    min=0, max=50, value=mean(nofade$visited))
+#      ),
+#      
+#      # Show a table summarizing the values entered
+#      mainPanel(
+#        tableOutput("values")
+#      )
+#  )),
+#  
+#  server = function(input, output) {
+#    # Reactive expression to compose a data frame containing all of
+#    # the values
+#    sliderValues <- reactive({
+#      
+#      numParticipants <- pwr.t.test( 
+#        d=abs(   mean(   input$group1 ) - 
+#                 mean(   input$group2 ) ) / 
+#                 14.28, 
+#        sig.level=.05, 
+#        power=0.8, 
+#        type="two.sample" 
+#      )$n * 1.15 * 2
+#      
+#      # Compose data frame
+#      data.frame(
+#        Name = c("group1", 
+#                 "group2",
+#                 "necessaryN"),
+#        Value = as.character(c(input$group1, 
+#                               input$group2,
+#                               numParticipants)), 
+#        stringsAsFactors=FALSE)
+#    }) 
+#    
+#    # Show the values using an HTML table
+#    output$values <- renderTable({
+#      sliderValues()
+#    })
+#  },
+#  
+#  options = list(height = 500)
+#)
+
+library(pwr)
+
+safety <- subset(filterResponseTimesPerRow, Type=="Safety")
+security <- subset(filterResponseTimesPerRow, Type=="Security")
+
+# our current difference
+pwr.t.test( 
+  d=abs( mean(   safety$ResponseTime ) - 
+         mean( security$ResponseTime ) ) / 
+         sd(     filterResponseTimesPerRow$ResponseTime ), 
+  sig.level=.05, 
+  power=0.8, 
+  type="two.sample" 
+)$n * 1.15 * 2
+
+# assuming a 2.5 second reliable difference
+pwr.t.test( 
+  d=abs( 2500 ) / 
+         sd(     filterResponseTimesPerRow$ResponseTime ), 
+  sig.level=.05, 
+  power=0.8, 
+  type="two.sample" 
+)$n * 1.15 * 2
+
 
 ```
 **Note** that the `echo = FALSE` parameter can be added to the code chunk to prevent printing of the R code that generates the plot.
