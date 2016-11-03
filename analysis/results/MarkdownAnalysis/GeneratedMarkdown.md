@@ -169,11 +169,17 @@ library(boot)
 
 ``` r
 library(ggplot2)
+
+
+
 # Bootstrap 95% CI for mean
 # function to obtain mean from the data (with indexing)
 mean.fun <- function(D, d) {
   return( mean(D[d]) )
 }
+
+data <- filterResponseTimesPerRow
+
 # CI plot
 # Example of usage: ciplot("myDependentVariable","myIndependentVariable") 
 ciplot <- function(xVar, yVar) {
@@ -208,6 +214,32 @@ ciplot <- function(xVar, yVar) {
   #p <- p + coord_flip() #Can flip the coordinate here
   p
 }
+
+summary(filterResponseTimesPerRow)
 ```
 
-**Note** that the `echo = FALSE` parameter can be added to the code chunk to prevent printing of the R code that generates the plot.
+    ##        Type     ResponseTime  
+    ##  Safety  :19   Min.   : 1367  
+    ##  Security:15   1st Qu.: 2961  
+    ##                Median : 3598  
+    ##                Mean   : 4525  
+    ##                3rd Qu.: 5193  
+    ##                Max.   :21187
+
+``` r
+ciplot("Type", "ResponseTime")
+```
+
+    ## Warning in boot.ci(boot(c(6618L, 21187L, 6311L, 4585L, 3870L, 5914L,
+    ## 2474L, : bootstrap variances needed for studentized intervals
+
+    ## Warning in boot.ci(boot(c(6618L, 21187L, 6311L, 4585L, 3870L, 5914L,
+    ## 2474L, : bootstrap variances needed for studentized intervals
+
+    ## Warning in boot.ci(boot(c(6618L, 21187L, 6311L, 4585L, 3870L, 5914L,
+    ## 2474L, : bootstrap variances needed for studentized intervals
+
+    ## Warning in boot.ci(boot(c(6618L, 21187L, 6311L, 4585L, 3870L, 5914L,
+    ## 2474L, : bootstrap variances needed for studentized intervals
+
+![](GeneratedMarkdown_files/figure-markdown_github/analysis6-1.png) **Note** that the `echo = FALSE` parameter can be added to the code chunk to prevent printing of the R code that generates the plot.

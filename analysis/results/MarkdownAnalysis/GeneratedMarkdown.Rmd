@@ -90,11 +90,17 @@ ggplot(data,aes(x=value, fill=variable)) + geom_density(alpha=0.25) + ggtitle("R
 library(dplyr)
 library(boot)
 library(ggplot2)
+
+
+
 # Bootstrap 95% CI for mean
 # function to obtain mean from the data (with indexing)
 mean.fun <- function(D, d) {
   return( mean(D[d]) )
 }
+
+data <- filterResponseTimesPerRow
+
 # CI plot
 # Example of usage: ciplot("myDependentVariable","myIndependentVariable") 
 ciplot <- function(xVar, yVar) {
@@ -129,5 +135,9 @@ ciplot <- function(xVar, yVar) {
   #p <- p + coord_flip() #Can flip the coordinate here
   p
 }
+
+summary(filterResponseTimesPerRow)
+ciplot("Type", "ResponseTime")
+
 ```
 **Note** that the `echo = FALSE` parameter can be added to the code chunk to prevent printing of the R code that generates the plot.
