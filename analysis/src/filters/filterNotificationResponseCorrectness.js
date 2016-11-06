@@ -19,14 +19,14 @@ var i,
 		if(row.notifications[i].button_clicked == row.notifications[i].correct_button) {
 			avg ++;
 
-			if(row.notifications[i].id < 15) {
+			if(row.notifications[i].id < 3) {
 				secAvg++;
 			} else {
 				safAvg++;
 			}
 		}
 
-		if(row.notifications[i].id < 15) {
+		if(row.notifications[i].id < 3) {
 			secCount++;
 		} else {
 			safCount++;

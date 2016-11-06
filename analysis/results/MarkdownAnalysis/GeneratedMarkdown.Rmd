@@ -22,9 +22,9 @@ Average ages of participants:
 
 ```{r analysis, incude=TRUE}
 
-summary(Ages$age)
+summary(filterAge$age)
 
-ggplot(Ages, aes(x=age)) +  geom_dotplot(binwidth = .3) +
+ggplot(filterAge, aes(x=age)) +  geom_dotplot(binwidth = .3) +
   scale_y_continuous(name = "", breaks = NULL) + ggtitle("Average Ages") +
   labs(x="Ages",y="Ages") 
 ```
@@ -35,9 +35,9 @@ Basic plot of Avg. Score:
 
 ```{r analysis2, incude=TRUE}
 
-summary(SexVsScore)
+summary(filterScore)
 
-ggplot(SexVsScore, aes(x=finalScore)) +  geom_density(kernel = "gaussian", fill='orange', alpha=0.25) + ggtitle("Avg. Score") + labs(x="Score", y ="Density") +
+ggplot(filterScore, aes(x=finalScore)) +  geom_density(kernel = "gaussian", fill='orange', alpha=0.25) + ggtitle("Avg. Score") + labs(x="Score", y ="Density") +
   scale_y_continuous(name = "", breaks = NULL)
 ```
 
@@ -47,9 +47,9 @@ Basic plot of Avg. Response Times:
 
 ```{r analysis3, incude=TRUE}
 
-summary(NotificationResponseTimes)
+summary(filterResponseTimes)
 
-x <- data.frame(Average=NotificationResponseTimes$avg,Security=NotificationResponseTimes$secAvg,Safety=NotificationResponseTimes$safAvg)
+x <- data.frame(Average=filterResponseTimes$avg,Security=filterResponseTimes$secAvg,Safety=filterResponseTimes$safAvg)
 library(ggplot2);library(reshape2)
 data<- melt(x)
 ggplot(data,aes(x=value, fill=variable)) + geom_density(alpha=0.25) + ggtitle("Response Times") + labs(x="Time(ms)", y ="Density") +
@@ -62,9 +62,9 @@ Basic plot of Notification Correctness:
 
 ```{r analysis4, incude=TRUE}
 
-summary(NotificationResponseCorrectness)
+summary(filterNotificationResponseCorrectness)
 
-x <- data.frame(Average=NotificationResponseCorrectness$avgCorrect,Security=NotificationResponseCorrectness$secAvgCorrect,Safety=NotificationResponseCorrectness$safAvgCorrect)
+x <- data.frame(Average=filterNotificationResponseCorrectness$avgCorrect,Security=filterNotificationResponseCorrectness$secAvgCorrect,Safety=filterNotificationResponseCorrectness$safAvgCorrect)
 library(ggplot2);library(reshape2)
 data<- melt(x)
 ggplot(data,aes(x=value, fill=variable)) + geom_density(alpha=0.25) + ggtitle("Notification Correctness") + labs(x="Percent Correct", y ="Density") +
@@ -78,9 +78,9 @@ Basic plot of Recall Correctness:
 
 ```{r analysis5, incude=TRUE}
 
-summary(RecallCorrectPercentages)
+summary(filterRecallCorrectness)
 
-x <- data.frame(Average=RecallCorrectPercentages$avgPercent,Security=RecallCorrectPercentages$secPercent,Safety=RecallCorrectPercentages$safPercent)
+x <- data.frame(Average=filterRecallCorrectness$avgPercent,Security=filterRecallCorrectness$secPercent,Safety=filterRecallCorrectness$safPercent)
 library(ggplot2);library(reshape2)
 data<- melt(x)
 ggplot(data,aes(x=value, fill=variable)) + geom_density(alpha=0.25) + ggtitle("Recall Correctness") + labs(x="Percent Correct", y ="Density") +
@@ -140,6 +140,65 @@ ciplot <- function(xVar, yVar) {
 
 summary(filterResponseTimesPerRow)
 ciplot("Type", "ResponseTime")
+
+```
+
+## Confidence Interval Correctness
+
+Basic plot of Notification Correctness:
+
+```{r analysis7, include=TRUE}
+library(dplyr)
+library(boot)
+library(ggplot2)
+
+
+
+# Bootstrap 95% CI for mean
+# function to obtain mean from the data (with indexing)
+mean.fun <- function(D, d) {
+  return( mean(D[d]) )
+}
+
+data2 <- filterNotificationResponseCorrectnessPerRow
+
+# CI plot
+# Example of usage: ciplot("myDependentVariable","myIndependentVariable") 
+ciplot2 <- function(xVar, yVar) {
+  
+  groups <- group_by_(data2, xVar)
+  
+  # Note: So far it is the only way found to enable variable name as string parameter for the function
+  groupedData <- eval(parse(text=sprintf("summarize(groups, 
+                                         mean=mean(%s),
+                                         UCI=boot.ci(boot(%s, statistic = mean.fun, R=1000, sim=\"ordinary\"))$bca[,5],
+                                         LCI=boot.ci(boot(%s, statistic = mean.fun, R=1000, sim=\"ordinary\"))$bca[,4])",
+                                         yVar, yVar, yVar)))
+  
+  # Note: Another way to compute bootstrap CIs (boot library is used here instead), is to compute it mannually.
+  # By adding mutate(se=sd/sqrt(n),lower=resp+qnorm(0.025)*se,upper=resp+qnorm(0.975)*se)
+  df2 <- data.frame(
+    trt = factor(groupedData[[1]]),
+    resp = groupedData[["mean"]],
+    group = factor(groupedData[[1]]),
+    upper = c(groupedData[["UCI"]]),
+    lower = c(groupedData[["LCI"]])
+  )
+ 
+  # Plot CI
+  p2 <- ggplot(df2, aes(trt, resp))
+  p2 <- p2 + theme(axis.title=element_text(size=20), axis.text=element_text(size=18))
+  p2 <- p2 + geom_pointrange(aes(ymin = lower, ymax = upper)) 
+  p2 <- p2 + expand_limits(y = 0) 
+  p2 <- p2 + ylab(yVar) 
+  p2 <- p2 + xlab("") 
+  p2 <- p2 + geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.1) 
+  #p <- p + coord_flip() #Can flip the coordinate here
+  p2
+}
+
+summary(filterNotificationResponseCorrectnessPerRow)
+ciplot2("Type", "ResponseAnswer")
 
 ```
 

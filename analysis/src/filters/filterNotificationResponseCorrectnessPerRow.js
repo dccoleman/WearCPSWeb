@@ -12,15 +12,17 @@ var i, notificationType, responseAnswer;
 
 		//correct
 		if(row.notifications[i].button_clicked == row.notifications[i].correct_button) {
-			responseAnswer = "correct";
+			//responseAnswer = "correct";
+			responseAnswer = 1;
 		}
 		//incorrect
 		else {
-			responseAnswer = "incorrect";
+			//responseAnswer = "incorrect";
+			responseAnswer = 0;
 		}
 
 		//security
-		if(row.notifications[i].id < 15) {
+		if(row.notifications[i].id < 3) {
 			notificationType = "Security";
 		} 
 		//safety

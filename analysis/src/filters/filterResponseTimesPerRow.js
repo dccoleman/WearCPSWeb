@@ -11,7 +11,7 @@ var i, type, responseTime;
 	for(i = 0; i < row.notifications.length; i++) {
 		responseTime = row.notifications[i].time_diff;
 		//security
-		if(row.notifications[i].id < 15) {
+		if(row.notifications[i].id < 3) {
 			type = "Security";
 		
 		//safety

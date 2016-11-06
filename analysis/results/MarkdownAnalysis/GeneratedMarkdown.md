@@ -12,14 +12,14 @@ Average Ages
 Average ages of participants:
 
 ``` r
-summary(Ages$age)
+summary(filterAge$age)
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##    20.0    20.0    20.5    21.0    21.0    24.0
+    ##   22.00   27.00   32.00   33.43   38.00   55.00
 
 ``` r
-ggplot(Ages, aes(x=age)) +  geom_dotplot(binwidth = .3) +
+ggplot(filterAge, aes(x=age)) +  geom_dotplot(binwidth = .3) +
   scale_y_continuous(name = "", breaks = NULL) + ggtitle("Average Ages") +
   labs(x="Ages",y="Ages") 
 ```
@@ -32,19 +32,19 @@ Avg. Score
 Basic plot of Avg. Score:
 
 ``` r
-summary(SexVsScore)
+summary(filterScore)
 ```
 
-    ##    sex      finalScore  
-    ##  Male:6   Min.   :-400  
-    ##           1st Qu.: 250  
-    ##           Median : 400  
-    ##           Mean   : 350  
-    ##           3rd Qu.: 625  
-    ##           Max.   : 800
+    ##      sex       finalScore    
+    ##  Female:11   Min.   : 100.0  
+    ##  Male  :17   1st Qu.: 575.0  
+    ##              Median : 700.0  
+    ##              Mean   : 689.3  
+    ##              3rd Qu.: 900.0  
+    ##              Max.   :1100.0
 
 ``` r
-ggplot(SexVsScore, aes(x=finalScore)) +  geom_density(kernel = "gaussian", fill='orange', alpha=0.25) + ggtitle("Avg. Score") + labs(x="Score", y ="Density") +
+ggplot(filterScore, aes(x=finalScore)) +  geom_density(kernel = "gaussian", fill='orange', alpha=0.25) + ggtitle("Avg. Score") + labs(x="Score", y ="Density") +
   scale_y_continuous(name = "", breaks = NULL)
 ```
 
@@ -56,19 +56,20 @@ Avg. Response Time
 Basic plot of Avg. Response Times:
 
 ``` r
-summary(NotificationResponseTimes)
+summary(filterResponseTimes)
 ```
 
-    ##       avg            secAvg          safAvg    
-    ##  Min.   : 2798   Min.   : 2468   Min.   :3459  
-    ##  1st Qu.: 3588   1st Qu.: 3488   1st Qu.:3696  
-    ##  Median : 4068   Median : 4547   Median :3824  
-    ##  Mean   : 4846   Mean   : 5606   Mean   :4265  
-    ##  3rd Qu.: 4326   3rd Qu.: 4916   3rd Qu.:4058  
-    ##  Max.   :10299   Max.   :13902   Max.   :6696
+    ##       avg           secAvg         safAvg     
+    ##  Min.   :1446   Min.   :1521   Min.   : 1371  
+    ##  1st Qu.:2865   1st Qu.:2576   1st Qu.: 2632  
+    ##  Median :3678   Median :3391   Median : 3951  
+    ##  Mean   :4105   Mean   :3815   Mean   : 4399  
+    ##  3rd Qu.:4881   3rd Qu.:4326   3rd Qu.: 5569  
+    ##  Max.   :7426   Max.   :8151   Max.   :10017  
+    ##  NA's   :1      NA's   :1      NA's   :1
 
 ``` r
-x <- data.frame(Average=NotificationResponseTimes$avg,Security=NotificationResponseTimes$secAvg,Safety=NotificationResponseTimes$safAvg)
+x <- data.frame(Average=filterResponseTimes$avg,Security=filterResponseTimes$secAvg,Safety=filterResponseTimes$safAvg)
 library(ggplot2);library(reshape2)
 data<- melt(x)
 ```
@@ -80,6 +81,15 @@ ggplot(data,aes(x=value, fill=variable)) + geom_density(alpha=0.25) + ggtitle("R
   scale_y_continuous(name = "", breaks = NULL)
 ```
 
+    ## Warning in loop_apply(n, do.ply): Removed 1 rows containing non-finite
+    ## values (stat_density).
+
+    ## Warning in loop_apply(n, do.ply): Removed 1 rows containing non-finite
+    ## values (stat_density).
+
+    ## Warning in loop_apply(n, do.ply): Removed 1 rows containing non-finite
+    ## values (stat_density).
+
 ![](GeneratedMarkdown_files/figure-markdown_github/analysis3-1.png)
 
 Notification Correctness
@@ -88,19 +98,20 @@ Notification Correctness
 Basic plot of Notification Correctness:
 
 ``` r
-summary(NotificationResponseCorrectness)
+summary(filterNotificationResponseCorrectness)
 ```
 
-    ##    avgCorrect     secAvgCorrect     safAvgCorrect   
-    ##  Min.   :0.0000   Min.   :0.00000   Min.   :0.0000  
-    ##  1st Qu.:0.3750   1st Qu.:0.08333   1st Qu.:0.5417  
-    ##  Median :0.5000   Median :0.41667   Median :0.6667  
-    ##  Mean   :0.4722   Mean   :0.38889   Mean   :0.5639  
-    ##  3rd Qu.:0.6250   3rd Qu.:0.50000   3rd Qu.:0.7292  
-    ##  Max.   :0.8333   Max.   :1.00000   Max.   :0.8000
+    ##    avgCorrect     secAvgCorrect    safAvgCorrect   
+    ##  Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  
+    ##  1st Qu.:0.1667   1st Qu.:0.0000   1st Qu.:0.0000  
+    ##  Median :0.3333   Median :0.0000   Median :0.6667  
+    ##  Mean   :0.3051   Mean   :0.1574   Mean   :0.4568  
+    ##  3rd Qu.:0.4167   3rd Qu.:0.3333   3rd Qu.:0.6667  
+    ##  Max.   :0.5714   Max.   :0.6667   Max.   :1.0000  
+    ##  NA's   :1        NA's   :1        NA's   :1
 
 ``` r
-x <- data.frame(Average=NotificationResponseCorrectness$avgCorrect,Security=NotificationResponseCorrectness$secAvgCorrect,Safety=NotificationResponseCorrectness$safAvgCorrect)
+x <- data.frame(Average=filterNotificationResponseCorrectness$avgCorrect,Security=filterNotificationResponseCorrectness$secAvgCorrect,Safety=filterNotificationResponseCorrectness$safAvgCorrect)
 library(ggplot2);library(reshape2)
 data<- melt(x)
 ```
@@ -112,6 +123,15 @@ ggplot(data,aes(x=value, fill=variable)) + geom_density(alpha=0.25) + ggtitle("N
   scale_y_continuous(name = "", breaks = NULL)
 ```
 
+    ## Warning in loop_apply(n, do.ply): Removed 1 rows containing non-finite
+    ## values (stat_density).
+
+    ## Warning in loop_apply(n, do.ply): Removed 1 rows containing non-finite
+    ## values (stat_density).
+
+    ## Warning in loop_apply(n, do.ply): Removed 1 rows containing non-finite
+    ## values (stat_density).
+
 ![](GeneratedMarkdown_files/figure-markdown_github/analysis4-1.png)
 
 Recall Correctness
@@ -120,19 +140,19 @@ Recall Correctness
 Basic plot of Recall Correctness:
 
 ``` r
-summary(RecallCorrectPercentages)
+summary(filterRecallCorrectness)
 ```
 
     ##    avgPercent       secPercent       safPercent    
-    ##  Min.   :0.4000   Min.   :0.0000   Min.   :0.0000  
-    ##  1st Qu.:0.5833   1st Qu.:0.6667   1st Qu.:1.0000  
-    ##  Median :0.8333   Median :0.7083   Median :1.0000  
-    ##  Mean   :0.7611   Mean   :0.6806   Mean   :0.8333  
-    ##  3rd Qu.:0.9583   3rd Qu.:0.9375   3rd Qu.:1.0000  
+    ##  Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  
+    ##  1st Qu.:0.6250   1st Qu.:0.5000   1st Qu.:0.5000  
+    ##  Median :0.7500   Median :1.0000   Median :0.7500  
+    ##  Mean   :0.7143   Mean   :0.7857   Mean   :0.6786  
+    ##  3rd Qu.:0.8750   3rd Qu.:1.0000   3rd Qu.:1.0000  
     ##  Max.   :1.0000   Max.   :1.0000   Max.   :1.0000
 
 ``` r
-x <- data.frame(Average=RecallCorrectPercentages$avgPercent,Security=RecallCorrectPercentages$secPercent,Safety=RecallCorrectPercentages$safPercent)
+x <- data.frame(Average=filterRecallCorrectness$avgPercent,Security=filterRecallCorrectness$secPercent,Safety=filterRecallCorrectness$safPercent)
 library(ggplot2);library(reshape2)
 data<- melt(x)
 ```
@@ -153,9 +173,9 @@ library(dplyr)
     ## 
     ## Attaching package: 'dplyr'
 
-    ## The following objects are masked from 'package:stats':
+    ## The following object is masked from 'package:stats':
     ## 
-    ##     filter, lag
+    ##     filter
 
     ## The following objects are masked from 'package:base':
     ## 
@@ -163,6 +183,11 @@ library(dplyr)
 
 ``` r
 library(boot)
+```
+
+    ## Warning: package 'boot' was built under R version 3.1.3
+
+``` r
 library(ggplot2)
 
 
@@ -214,42 +239,117 @@ summary(filterResponseTimesPerRow)
 ```
 
     ##        Type     ResponseTime  
-    ##  Safety  :19   Min.   : 1367  
-    ##  Security:15   1st Qu.: 2961  
-    ##                Median : 3598  
-    ##                Mean   : 4525  
-    ##                3rd Qu.: 5193  
-    ##                Max.   :21187
+    ##  Safety  :81   Min.   : 1034  
+    ##  Security:82   1st Qu.: 2342  
+    ##                Median : 3484  
+    ##                Mean   : 4097  
+    ##                3rd Qu.: 5312  
+    ##                Max.   :14956
 
 ``` r
 ciplot("Type", "ResponseTime")
 ```
 
-    ## Warning in boot.ci(boot(c(6618L, 21187L, 6311L, 4585L, 3870L, 5914L,
-    ## 2474L, : bootstrap variances needed for studentized intervals
+    ## Warning in boot.ci(boot(c(2603L, 2538L, 3675L, 4087L, 4040L, 8364L,
+    ## 5286L, : bootstrap variances needed for studentized intervals
 
-    ## Warning in boot.ci(boot(c(6618L, 21187L, 6311L, 4585L, 3870L, 5914L,
-    ## 2474L, : bootstrap variances needed for studentized intervals
+    ## Warning in boot.ci(boot(c(2603L, 2538L, 3675L, 4087L, 4040L, 8364L,
+    ## 5286L, : bootstrap variances needed for studentized intervals
 
-    ## Warning in boot.ci(boot(c(6618L, 21187L, 6311L, 4585L, 3870L, 5914L,
-    ## 2474L, : bootstrap variances needed for studentized intervals
+    ## Warning in boot.ci(boot(c(2603L, 2538L, 3675L, 4087L, 4040L, 8364L,
+    ## 5286L, : bootstrap variances needed for studentized intervals
 
-    ## Warning in boot.ci(boot(c(6618L, 21187L, 6311L, 4585L, 3870L, 5914L,
-    ## 2474L, : bootstrap variances needed for studentized intervals
-
-    ## Warning in boot.ci(boot(c(6618L, 21187L, 6311L, 4585L, 3870L, 5914L,
-    ## 2474L, : bootstrap variances needed for studentized intervals
-
-    ## Warning in boot.ci(boot(c(6618L, 21187L, 6311L, 4585L, 3870L, 5914L,
-    ## 2474L, : bootstrap variances needed for studentized intervals
+    ## Warning in boot.ci(boot(c(2603L, 2538L, 3675L, 4087L, 4040L, 8364L,
+    ## 5286L, : bootstrap variances needed for studentized intervals
 
 ![](GeneratedMarkdown_files/figure-markdown_github/analysis6-1.png)
 
+Confidence Interval Correctness
+-------------------------------
+
+Basic plot of Notification Correctness:
+
+``` r
+library(dplyr)
+library(boot)
+library(ggplot2)
+
+
+
+# Bootstrap 95% CI for mean
+# function to obtain mean from the data (with indexing)
+mean.fun <- function(D, d) {
+  return( mean(D[d]) )
+}
+
+data2 <- filterNotificationResponseCorrectnessPerRow
+
+# CI plot
+# Example of usage: ciplot("myDependentVariable","myIndependentVariable") 
+ciplot2 <- function(xVar, yVar) {
+  
+  groups <- group_by_(data2, xVar)
+  
+  # Note: So far it is the only way found to enable variable name as string parameter for the function
+  groupedData <- eval(parse(text=sprintf("summarize(groups, 
+                                         mean=mean(%s),
+                                         UCI=boot.ci(boot(%s, statistic = mean.fun, R=1000, sim=\"ordinary\"))$bca[,5],
+                                         LCI=boot.ci(boot(%s, statistic = mean.fun, R=1000, sim=\"ordinary\"))$bca[,4])",
+                                         yVar, yVar, yVar)))
+  
+  # Note: Another way to compute bootstrap CIs (boot library is used here instead), is to compute it mannually.
+  # By adding mutate(se=sd/sqrt(n),lower=resp+qnorm(0.025)*se,upper=resp+qnorm(0.975)*se)
+  df2 <- data.frame(
+    trt = factor(groupedData[[1]]),
+    resp = groupedData[["mean"]],
+    group = factor(groupedData[[1]]),
+    upper = c(groupedData[["UCI"]]),
+    lower = c(groupedData[["LCI"]])
+  )
+ 
+  # Plot CI
+  p2 <- ggplot(df2, aes(trt, resp))
+  p2 <- p2 + theme(axis.title=element_text(size=20), axis.text=element_text(size=18))
+  p2 <- p2 + geom_pointrange(aes(ymin = lower, ymax = upper)) 
+  p2 <- p2 + expand_limits(y = 0) 
+  p2 <- p2 + ylab(yVar) 
+  p2 <- p2 + xlab("") 
+  p2 <- p2 + geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.1) 
+  #p <- p + coord_flip() #Can flip the coordinate here
+  p2
+}
+
+summary(filterNotificationResponseCorrectnessPerRow)
+```
+
+    ##        Type    ResponseAnswer  
+    ##  Safety  :81   Min.   :0.0000  
+    ##  Security:82   1st Qu.:0.0000  
+    ##                Median :0.0000  
+    ##                Mean   :0.3067  
+    ##                3rd Qu.:1.0000  
+    ##                Max.   :1.0000
+
+``` r
+ciplot2("Type", "ResponseAnswer")
+```
+
+    ## Warning in boot.ci(boot(c(0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 0L, 0L, 1L, :
+    ## bootstrap variances needed for studentized intervals
+
+    ## Warning in boot.ci(boot(c(0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 0L, 0L, 1L, :
+    ## bootstrap variances needed for studentized intervals
+
+    ## Warning in boot.ci(boot(c(0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 0L, 0L, 1L, :
+    ## bootstrap variances needed for studentized intervals
+
+    ## Warning in boot.ci(boot(c(0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 0L, 0L, 1L, :
+    ## bootstrap variances needed for studentized intervals
+
+![](GeneratedMarkdown_files/figure-markdown_github/analysis7-1.png)
+
 ``` r
 library(bootES)
-
-safety <- subset(filterResponseTimesPerRow, Type=="Safety")
-security <- subset(filterResponseTimesPerRow, Type=="Security")
 
 reportES <- function(attr) {
   b <- bootES(data, 
@@ -268,6 +368,120 @@ reportES <- function(attr) {
 reportES("ResponseTime")
 ```
 
-    ## d=-0.27~[-0.83,0.53]
+    ## d=0.25~[-0.06,0.52]
+
+### Power Analysis
+
+``` r
+# Example (breaking down the functions)
+# Effect Size is the key. 
+# While we have good estimates of variability from a given metric (like visited),
+# the means of group 1 and 2 are something we should reason about.
+# It's helpful to plug different means in (hypothetical means) to see how suggested "n" changes.
+#
+# Effect size is defined as:
+# effectsize = abs(meangroup1 - meangroup2) / stdevofbothgroups
+# abs( mean( fade$visited ) - mean( nofade$visited ) ) / sd( data$visited ), 
+# We assume a power of 0.8 (a good estimate according to wikipedia)
+# Then we plug those into the pwr.t.test function like:
+# 
+# desired <- pwr.t.test( 
+#   d=effectsize # from above 
+#   sig.level=.05, 
+#   power=0.8, 
+#   type="two.sample"  # changes if we do paired tests, or one sided
+# )
+# `desired` contains information about power, n, etcetera. We want `desired$n`
+# A heuristic if your actual data are non-normal (given we are using tests for normal data) is to add 15% to n.
+# Also, `desired$n` is initially the number in *each* group, so we need to multiply by 2
+# desired$n * 1.15 * 2 # participants needed for a "safe" experiment given the means and stdev
+#shinyApp(
+#  
+#  ui = fluidPage(
+#    #  Application title
+#    titlePanel("Interactive Power Analysis for Visited"),
+#    
+#    # Sidebar with sliders that demonstrate various available
+#    # options
+#    sidebarLayout(
+#      sidebarPanel(
+#        # Simple integer interval
+#        sliderInput("group1", "Group1:", 
+#                    min=0, max=50, value=mean(fade$visited)),
+#        
+#        sliderInput("group2", "Group2:", 
+#                    min=0, max=50, value=mean(nofade$visited))
+#      ),
+#      
+#      # Show a table summarizing the values entered
+#      mainPanel(
+#        tableOutput("values")
+#      )
+#  )),
+#  
+#  server = function(input, output) {
+#    # Reactive expression to compose a data frame containing all of
+#    # the values
+#    sliderValues <- reactive({
+#      
+#      numParticipants <- pwr.t.test( 
+#        d=abs(   mean(   input$group1 ) - 
+#                 mean(   input$group2 ) ) / 
+#                 14.28, 
+#        sig.level=.05, 
+#        power=0.8, 
+#        type="two.sample" 
+#      )$n * 1.15 * 2
+#      
+#      # Compose data frame
+#      data.frame(
+#        Name = c("group1", 
+#                 "group2",
+#                 "necessaryN"),
+#        Value = as.character(c(input$group1, 
+#                               input$group2,
+#                               numParticipants)), 
+#        stringsAsFactors=FALSE)
+#    }) 
+#    
+#    # Show the values using an HTML table
+#    output$values <- renderTable({
+#      sliderValues()
+#    })
+#  },
+#  
+#  options = list(height = 500)
+#)
+
+library(pwr)
+
+safety <- subset(filterResponseTimesPerRow, Type=="Safety")
+security <- subset(filterResponseTimesPerRow, Type=="Security")
+
+# our current difference
+pwr.t.test( 
+  d=abs( mean(   safety$ResponseTime ) - 
+         mean( security$ResponseTime ) ) / 
+         sd(     filterResponseTimesPerRow$ResponseTime ), 
+  sig.level=.05, 
+  power=0.8, 
+  type="two.sample" 
+)$n * 1.15 * 2
+```
+
+    ## [1] 602.6842
+
+``` r
+# assuming a 2.5 second reliable difference
+pwr.t.test( 
+  d=abs( 2500 ) / 
+         sd(     filterResponseTimesPerRow$ResponseTime ), 
+  sig.level=.05, 
+  power=0.8, 
+  type="two.sample" 
+)$n * 1.15 * 2
+```
+
+    ## [1] 37.07659
 
 **Note** that the `echo = FALSE` parameter can be added to the code chunk to prevent printing of the R code that generates the plot.

@@ -22,7 +22,7 @@ var i,
 	for(i = 0; i < row.recall.length; i++) {
 
 		if(row.recall[i].answer == row.recall[i].correct_answer) {
-			if(row.recall[i].id < 15) {
+			if(row.recall[i].id < 3) {
 				secCorrect++;
 				secCount++;
 			} else {
@@ -30,7 +30,7 @@ var i,
 				safCount++;
 			}
 		} else {
-			if(row.recall[i].id < 15) {
+			if(row.recall[i].id < 3) {
 				secCount++;
 			} else {
 				safCount++;

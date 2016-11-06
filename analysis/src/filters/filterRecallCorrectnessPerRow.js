@@ -20,7 +20,7 @@ var i, typeRecall, answer;
 		}
 
 		//security
-		if(row.recall[i].id < 15) {
+		if(row.recall[i].id < 3) {
 			typeRecall = "Security";
 		} 
 		//safety

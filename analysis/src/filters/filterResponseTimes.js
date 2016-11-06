@@ -17,7 +17,7 @@ var i,
 	for(i = 0; i < row.notifications.length; i++) {
 		avg += row.notifications[i].time_diff;
 
-		if(row.notifications[i].id < 15) {
+		if(row.notifications[i].id < 3) {
 			secAvg += row.notifications[i].time_diff;
 			secCount++;
 		} else {
