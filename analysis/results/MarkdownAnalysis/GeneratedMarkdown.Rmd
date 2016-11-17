@@ -20,20 +20,28 @@ Below is the initial analyis/breakdown of the test data collected through our we
 
 Average ages of participants:
 
-```{r analysis, incude=TRUE}
+```{r analysis, incude=TRUE, echo = FALSE}
 
 summary(filterAge$age)
 
-ggplot(filterAge, aes(x=age)) +  geom_dotplot(binwidth = .3) +
+ggplot(filterAge, aes(x=age)) +  geom_dotplot() +
   scale_y_continuous(name = "", breaks = NULL) + ggtitle("Average Ages") +
   labs(x="Ages",y="Ages") 
+
+
+summary(filterEducationVsPerformance)
+
+ggplot(filterEducationVsPerformance, aes(x=Education.Level, y=FinalScore, fill=Education.Level)) + stat_summary(fun.y="mean", geom="bar") + ggtitle("Education Level Vs Scores") +
+  labs(x="Education Level",y="Scores") 
+
+ggplot(filterEducationVsPerformance, aes(x=Education.Level, y=NotificationCorrect, fill=Education.Level)) + stat_summary(fun.y="mean", geom="bar") + ggtitle("Education Level Vs Notifications Correct") + labs(x="Education Level",y="Number Correct") 
 ```
 
 ## Avg. Score
 
 Basic plot of Avg. Score:
 
-```{r analysis2, incude=TRUE}
+```{r analysis2, incude=TRUE, echo = FALSE}
 
 summary(filterScore)
 
@@ -45,7 +53,7 @@ ggplot(filterScore, aes(x=finalScore)) +  geom_density(kernel = "gaussian", fill
 
 Basic plot of Avg. Response Times:
 
-```{r analysis3, incude=TRUE}
+```{r analysis3, incude=TRUE, echo = FALSE}
 
 summary(filterResponseTimes)
 
@@ -60,7 +68,7 @@ ggplot(data,aes(x=value, fill=variable)) + geom_density(alpha=0.25) + ggtitle("R
 
 Basic plot of Notification Correctness:
 
-```{r analysis4, incude=TRUE}
+```{r analysis4, incude=TRUE, echo = FALSE}
 
 summary(filterNotificationResponseCorrectness)
 
@@ -76,7 +84,7 @@ ggplot(data,aes(x=value, fill=variable)) + geom_density(alpha=0.25) + ggtitle("N
 
 Basic plot of Recall Correctness:
 
-```{r analysis5, incude=TRUE}
+```{r analysis5, incude=TRUE, echo = FALSE}
 
 summary(filterRecallCorrectness)
 
@@ -88,7 +96,7 @@ ggplot(data,aes(x=value, fill=variable)) + geom_density(alpha=0.25) + ggtitle("R
 
 ```
 
-```{r analysis6, include=TRUE}
+```{r analysis6, include=TRUE, echo = FALSE}
 library(dplyr)
 library(boot)
 library(ggplot2)
@@ -147,7 +155,7 @@ ciplot("Type", "ResponseTime")
 
 Basic plot of Notification Correctness:
 
-```{r analysis7, include=TRUE}
+```{r analysis7, include=TRUE, echo = FALSE}
 library(dplyr)
 library(boot)
 library(ggplot2)
@@ -202,7 +210,7 @@ ciplot2("Type", "ResponseAnswer")
 
 ```
 
-```{r}
+```{r, echo = FALSE}
 library(bootES)
 
 reportES <- function(attr) {
@@ -224,7 +232,7 @@ reportES("ResponseTime")
 ```
 
 ### Power Analysis
-```{r}
+```{r, echo = FALSE}
 # Example (breaking down the functions)
 # Effect Size is the key. 
 # While we have good estimates of variability from a given metric (like visited),
