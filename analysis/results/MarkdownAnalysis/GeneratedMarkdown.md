@@ -14,12 +14,14 @@ Average ages of participants:
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
     ##   22.00   27.00   32.00   33.43   38.00   55.00
 
+    ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
+
 ![](GeneratedMarkdown_files/figure-markdown_github/analysis-1.png)
 
-    ##     Education.Level NotificationCorrect   FinalScore    
-    ##  Bachelors  :16     Min.   :0.000       Min.   : 100.0  
-    ##  High School: 7     1st Qu.:1.000       1st Qu.: 575.0  
-    ##  Masters    : 5     Median :2.000       Median : 700.0  
+    ##  EducationLevel     NotificationCorrect   FinalScore    
+    ##  Length:28          Min.   :0.000       Min.   : 100.0  
+    ##  Class :character   1st Qu.:1.000       1st Qu.: 575.0  
+    ##  Mode  :character   Median :2.000       Median : 700.0  
     ##                     Mean   :1.786       Mean   : 689.3  
     ##                     3rd Qu.:2.250       3rd Qu.: 900.0  
     ##                     Max.   :4.000       Max.   :1100.0
@@ -57,14 +59,7 @@ Basic plot of Avg. Response Times:
 
     ## No id variables; using all as measure variables
 
-    ## Warning in loop_apply(n, do.ply): Removed 1 rows containing non-finite
-    ## values (stat_density).
-
-    ## Warning in loop_apply(n, do.ply): Removed 1 rows containing non-finite
-    ## values (stat_density).
-
-    ## Warning in loop_apply(n, do.ply): Removed 1 rows containing non-finite
-    ## values (stat_density).
+    ## Warning: Removed 3 rows containing non-finite values (stat_density).
 
 ![](GeneratedMarkdown_files/figure-markdown_github/analysis3-1.png)
 
@@ -84,14 +79,7 @@ Basic plot of Notification Correctness:
 
     ## No id variables; using all as measure variables
 
-    ## Warning in loop_apply(n, do.ply): Removed 1 rows containing non-finite
-    ## values (stat_density).
-
-    ## Warning in loop_apply(n, do.ply): Removed 1 rows containing non-finite
-    ## values (stat_density).
-
-    ## Warning in loop_apply(n, do.ply): Removed 1 rows containing non-finite
-    ## values (stat_density).
+    ## Warning: Removed 3 rows containing non-finite values (stat_density).
 
 ![](GeneratedMarkdown_files/figure-markdown_github/analysis4-1.png)
 
@@ -115,15 +103,13 @@ Basic plot of Recall Correctness:
     ## 
     ## Attaching package: 'dplyr'
 
-    ## The following object is masked from 'package:stats':
+    ## The following objects are masked from 'package:stats':
     ## 
-    ##     filter
+    ##     filter, lag
 
     ## The following objects are masked from 'package:base':
     ## 
     ##     intersect, setdiff, setequal, union
-
-    ## Warning: package 'boot' was built under R version 3.1.3
 
     ##        Type     ResponseTime  
     ##  Safety  :81   Min.   : 1034  
@@ -132,6 +118,12 @@ Basic plot of Recall Correctness:
     ##                Mean   : 4097  
     ##                3rd Qu.: 5312  
     ##                Max.   :14956
+
+    ## Warning in boot.ci(boot(c(2603L, 2538L, 3675L, 4087L, 4040L, 8364L,
+    ## 5286L, : bootstrap variances needed for studentized intervals
+
+    ## Warning in boot.ci(boot(c(2603L, 2538L, 3675L, 4087L, 4040L, 8364L,
+    ## 5286L, : bootstrap variances needed for studentized intervals
 
     ## Warning in boot.ci(boot(c(2603L, 2538L, 3675L, 4087L, 4040L, 8364L,
     ## 5286L, : bootstrap variances needed for studentized intervals
@@ -172,9 +164,59 @@ Basic plot of Notification Correctness:
     ## Warning in boot.ci(boot(c(0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 0L, 0L, 1L, :
     ## bootstrap variances needed for studentized intervals
 
-![](GeneratedMarkdown_files/figure-markdown_github/analysis7-1.png)
+    ## Warning in boot.ci(boot(c(0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 0L, 0L, 1L, :
+    ## bootstrap variances needed for studentized intervals
 
-    ## d=0.25~[-0.06,0.52]
+    ## Warning in boot.ci(boot(c(0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 0L, 0L, 1L, :
+    ## bootstrap variances needed for studentized intervals
+
+![](GeneratedMarkdown_files/figure-markdown_github/analysis7-1.png) \#\#\# Primary Task Score Over Time
+
+Basic plot of Recall Correctness:
+
+``` r
+summary(filterPrimaryTaskScoreTimes)
+```
+
+    ##  ParticipantID      PrimaryTaskEntryTime     Score       
+    ##  Length:317         Min.   : 59.93       Min.   :-200.0  
+    ##  Class :character   1st Qu.:152.79       1st Qu.: 100.0  
+    ##  Mode  :character   Median :203.96       Median : 300.0  
+    ##                     Mean   :213.03       Mean   : 349.2  
+    ##                     3rd Qu.:256.90       3rd Qu.: 500.0  
+    ##                     Max.   :498.78       Max.   :1100.0
+
+``` r
+ggplot(filterPrimaryTaskScoreTimes, aes(x=filterPrimaryTaskScoreTimes$PrimaryTaskEntryTime, y=filterPrimaryTaskScoreTimes$Score)) +  geom_point() + ggtitle("Score Vs. Time") + labs(x="Time", y ="Score")
+```
+
+![](GeneratedMarkdown_files/figure-markdown_github/analysis8-1.png)
+
+### Notification Grade Level Versus Response Correctness
+
+Basic plot of Recall Correctness:
+
+``` r
+summary(filterNotificationGradeLevels)
+```
+
+    ##    GradeLevel        Correct      
+    ##  Min.   : 6.820   Min.   :0.0000  
+    ##  1st Qu.: 7.200   1st Qu.:0.0000  
+    ##  Median : 9.150   Median :0.0000  
+    ##  Mean   : 9.455   Mean   :0.3067  
+    ##  3rd Qu.: 9.770   3rd Qu.:1.0000  
+    ##  Max.   :14.040   Max.   :1.0000
+
+``` r
+#grade_level_data <- aggregate(Correct~GradeLevel, data=filterNotificationGradeLevels, #FUN=function(filterNotificationGradeLevels) c(mean=mean(filterNotificationGradeLevels), #count=length(filterNotificationGradeLevels)))
+
+ggplot(filterNotificationGradeLevels, aes(x=GradeLevel, y=Correct, fill=GradeLevel)) +  stat_summary(fun.y="mean", geom ="bar") + ggtitle("Grade Levels Vs Correctness") + labs(x="Grade Level", y ="Correctness")
+```
+
+![](GeneratedMarkdown_files/figure-markdown_github/analysis9-1.png)
+
+    ## d=0.25~[-0.07,0.54]
 
 ### Power Analysis
 

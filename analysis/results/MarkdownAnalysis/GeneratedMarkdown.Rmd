@@ -31,10 +31,10 @@ ggplot(filterAge, aes(x=age)) +  geom_dotplot() +
 
 summary(filterEducationVsPerformance)
 
-ggplot(filterEducationVsPerformance, aes(x=Education.Level, y=FinalScore, fill=Education.Level)) + stat_summary(fun.y="mean", geom="bar") + ggtitle("Education Level Vs Scores") +
+ggplot(filterEducationVsPerformance, aes(x=EducationLevel, y=FinalScore, fill=EducationLevel)) + stat_summary(fun.y="mean", geom="bar") + ggtitle("Education Level Vs Scores") +
   labs(x="Education Level",y="Scores") 
 
-ggplot(filterEducationVsPerformance, aes(x=Education.Level, y=NotificationCorrect, fill=Education.Level)) + stat_summary(fun.y="mean", geom="bar") + ggtitle("Education Level Vs Notifications Correct") + labs(x="Education Level",y="Number Correct") 
+ggplot(filterEducationVsPerformance, aes(x=EducationLevel, y=NotificationCorrect, fill=EducationLevel)) + stat_summary(fun.y="mean", geom="bar") + ggtitle("Education Level Vs Notifications Correct") + labs(x="Education Level",y="Number Correct") 
 ```
 
 ## Avg. Score
@@ -209,7 +209,31 @@ summary(filterNotificationResponseCorrectnessPerRow)
 ciplot2("Type", "ResponseAnswer")
 
 ```
+### Primary Task Score Over Time
 
+Basic plot of Recall Correctness:
+
+```{r analysis8, incude=TRUE}
+
+summary(filterPrimaryTaskScoreTimes)
+
+ggplot(filterPrimaryTaskScoreTimes, aes(x=filterPrimaryTaskScoreTimes$PrimaryTaskEntryTime, y=filterPrimaryTaskScoreTimes$Score)) +  geom_point() + ggtitle("Score Vs. Time") + labs(x="Time", y ="Score")
+
+```
+
+### Notification Grade Level Versus Response Correctness
+
+Basic plot of Recall Correctness:
+
+```{r analysis9, incude=TRUE}
+
+summary(filterNotificationGradeLevels)
+
+#grade_level_data <- aggregate(Correct~GradeLevel, data=filterNotificationGradeLevels, #FUN=function(filterNotificationGradeLevels) c(mean=mean(filterNotificationGradeLevels), #count=length(filterNotificationGradeLevels)))
+
+ggplot(filterNotificationGradeLevels, aes(x=GradeLevel, y=Correct, fill=GradeLevel)) +  stat_summary(fun.y="mean", geom ="bar") + ggtitle("Grade Levels Vs Correctness") + labs(x="Grade Level", y ="Correctness")
+
+```
 ```{r, echo = FALSE}
 library(bootES)
 
