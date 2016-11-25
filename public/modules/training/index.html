@@ -19,7 +19,7 @@
    				<pstyle="padding-bottom:20px;">Click the button below for an example notification.</p>
 
    		
-			  <button type="button" style="display:block;" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Example Notification</button>
+			  <button type="button" style="display:block;" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Display Example Notification</button>
 
 			  <p style="padding-top:20px;">Once you are familiar with the example primary task below click 'next' to proceed to the actual experiment.</p>
 
@@ -49,7 +49,8 @@
 			      <!-- Modal content-->
 			      <div class="modal-content">
 			        <div class="modal-header">
-			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <!--<button type="button" class="close" data-dismiss="modal">&times;</button> -->
+			          <img id="image" src="" style="width:60px;height:60px;float: left; padding-right: 10px;">
 			          <h3 class="modal-title">
 			          	
 			          	Example Notification
@@ -67,8 +68,9 @@
 
 			        </div>
 			        <div class="modal-footer">
-			          <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
-			          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			          <button type="button" class="btn btn-default" data-dismiss="modal" id="one" ><label for="one">option 1</label></button>
+			          <button type="button" class="btn btn-default" data-dismiss="modal" id='two' ><label for="two">option 2</label></button>
+			          <button type="button" class="btn btn-default" data-dismiss="modal" id='three' ><label for="three">option 3</label></button>
 			        </div>
 			      </div>
 			      
@@ -78,6 +80,53 @@
 	</div>
 
 		<script> 
-				generateTable();
-				experimentr.release();
+			var timeout;
+			var side = -1;
+		function modalAlert(message){
+			experimentr.hideNext();
+			if(side == -1) {
+				side = Math.floor(Math.random() * (2));
+			}
+
+			var data = {};
+
+			if(side == 0) {
+				$('#image').attr('src', "modules/primary_task/security.png");
+				$('.modal-title').text("Certificate Warning");
+			    $('#description').html("This website's security certificate is out of date! System suggests returning to safety.<br><br><b>This is a typical security notification that may be shown during the study, and does not pertain to your life or safety in any way.</b><br><br>Please select an action from those displayed below to continue.");
+			    $('label[for=one]').text("Ignore");
+			    $('label[for=two]').text("Install Certificate");
+			    $('label[for=three]').text("Return to Safety");
+			    data['TrainingShown'] = "Security";
+			} else {
+				$('#image').attr('src', "modules/primary_task/safety.png");
+				$('.modal-title').text("Toast Finished");
+			    $('#description').html("Your toast has finished cooking. Toaster has been shut down and this notification can be safely ignored!<br><br><b>This is a typical safety notification that may be shown during the study, and does not pertain to your life or safety in any way.</b><br><br> Please select an action from those displayed below to continue.");
+			    $('label[for=one]').text("Keep Warm");
+			    $('label[for=two]').text("Ignore");
+			    $('label[for=three]').text("Burn Toast");
+			    data['TrainingShown'] = "Security";
+			}
+			
+			experimentr.addData(data);
+	    	
+			window.setTimeout(function(){showModal();},5000);
+
+		}
+
+		function showModal(){
+		    console.log("HERE")
+		    $("#myModal").modal('show');
+		    experimentr.release();
+		    experimentr.showNext();
+		}
+
+		modalAlert("dicks");
+		generateTable();
+
 		</script>
+
+
+
+
+
