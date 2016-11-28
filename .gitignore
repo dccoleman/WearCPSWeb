@@ -18,3 +18,5 @@ analysis/.DS_Store
 
 analysis/results/filteredJson/filterAge.json
 .Rproj.user
+
+.DS_Store
