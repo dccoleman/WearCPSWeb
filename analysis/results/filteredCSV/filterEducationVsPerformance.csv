@@ -1,29 +1,62 @@
-EducationLevel,NotificationCorrect,FinalScore
-Bachelors,2,600
-High School,2,800
-Bachelors,1,1100
-Bachelors,4,900
-Bachelors,1,900
-Bachelors,2,700
-Bachelors,0,600
-High School,1,300
-Bachelors,3,1000
-High School,2,700
-High School,3,500
-Bachelors,2,600
-High School,1,800
-Bachelors,2,800
-Masters,3,400
-Bachelors,3,800
-High School,3,300
-Masters,1,800
-Masters,1,700
-Masters,1,600
-Bachelors,1,1100
+Education Level,NotificationCorrect,FinalScore
+Bachelors,2,3700
+High School,3,600
+Bachelors,2,500
+Bachelors,3,700
+Bachelors,2,2100
+PhD,1,900
+Masters,3,900
+Bachelors,3,700
+Bachelors,3,900
+Other,1,900
 Bachelors,1,200
+Masters,2,500
+High School,3,1000
+Bachelors,2,800
+Bachelors,2,400
+Bachelors,0,700
+High School,3,500
+Bachelors,2,400
+Masters,3,800
+High School,1,-200
+Bachelors,1,1300
+Bachelors,2,-800
+High School,3,200
+High School,0,1700
+Other,3,500
+Bachelors,1,300
+Bachelors,1,-200
+Bachelors,3,-500
+Bachelors,1,200
+High School,1,600
+Masters,1,700
+High School,3,800
+Bachelors,3,1200
+Bachelors,1,700
+High School,1,1000
 Bachelors,2,700
-High School,3,900
-Masters,2,900
-Bachelors,0,1100
+High School,1,700
+High School,1,700
+PhD,3,700
+Bachelors,1,600
+High School,2,400
 Bachelors,1,400
-Bachelors,2,100
+High School,1,700
+Bachelors,1,900
+High School,2,1500
+High School,3,100
+High School,3,1000
+Bachelors,1,800
+Bachelors,3,600
+Masters,3,1100
+High School,2,100
+Bachelors,3,100
+Bachelors,3,600
+Bachelors,0,300
+Bachelors,3,300
+High School,3,800
+Bachelors,2,500
+Bachelors,1,900
+Masters,3,600
+Bachelors,1,1000
+Bachelors,2,700
