@@ -211,7 +211,7 @@ summary(filterNotificationGradeLevels)
 ``` r
 #grade_level_data <- aggregate(Correct~GradeLevel, data=filterNotificationGradeLevels, #FUN=function(filterNotificationGradeLevels) c(mean=mean(filterNotificationGradeLevels), #count=length(filterNotificationGradeLevels)))
 
-ggplot(filterNotificationGradeLevels, aes(x=GradeLevel, y=Correct, fill=GradeLevel)) +  stat_summary(fun.y="mean", geom ="bar") + ggtitle("Grade Levels Vs Correctness") + labs(x="Grade Level", y ="Correctness")
+ggplot(filterNotificationGradeLevels, aes(x=GradeLevel, y=Correct)) +  stat_summary_bin(fun.y="mean", geom ="bar") + ggtitle("Grade Levels Vs Correctness") + labs(x="Grade Level", y ="Correctness")
 ```
 
 ![](GeneratedMarkdown_files/figure-markdown_github/analysis9-1.png)
