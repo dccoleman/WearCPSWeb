@@ -4,7 +4,7 @@ WearCPS: Safety vs. Security Analysis
 Introduction
 ------------
 
-Below is the initial analyis/breakdown of the test data collected through our online pilot, **WearCPS.me**, through Amazon's Mechanical Turk
+Below is the initial analyis/breakdown of the test data collected through our website **WearCPS.me**.
 
 Average Ages
 ------------
@@ -12,14 +12,13 @@ Average Ages
 Average ages of participants:
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   13.00   26.00   30.00   31.79   34.00   55.00
+    ##   22.00   27.00   32.00   33.43   38.00   55.00
 
-![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-1-1.png)
+    ## `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
 
-Score/Performance vs. Education Breakdown
------------------------------------------
+![](GeneratedMarkdown_files/figure-markdown_github/analysis-1.png)
 
-    ##      EducationLevel NotificationCorrect   FinalScore    
+    ##     Education.Level NotificationCorrect   FinalScore    
     ##  Bachelors  :33     Min.   :0.000       Min.   :-800.0  
     ##  High School:18     1st Qu.:1.000       1st Qu.: 400.0  
     ##  Masters    : 6     Median :2.000       Median : 700.0  
@@ -27,12 +26,12 @@ Score/Performance vs. Education Breakdown
     ##  PhD        : 2     3rd Qu.:3.000       3rd Qu.: 900.0  
     ##                     Max.   :3.000       Max.   :3700.0
 
-![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-2-1.png)![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-2-2.png)
+![](GeneratedMarkdown_files/figure-markdown_github/analysis-2.png)![](GeneratedMarkdown_files/figure-markdown_github/analysis-3.png)
 
 Avg. Score
 ----------
 
-PDF of Avg. Score:
+Basic plot of Avg. Score:
 
     ##      sex       finalScore    
     ##  Female:18   Min.   :-800.0  
@@ -42,12 +41,12 @@ PDF of Avg. Score:
     ##              3rd Qu.: 900.0  
     ##              Max.   :3700.0
 
-![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-3-1.png)
+![](GeneratedMarkdown_files/figure-markdown_github/analysis2-1.png)
 
 Avg. Response Time
 ------------------
 
-PDF of Avg. Response Times:
+Basic plot of Avg. Response Times:
 
     ##       avg            secAvg          safAvg     
     ##  Min.   : 1600   Min.   : 1516   Min.   : 1325  
@@ -59,12 +58,12 @@ PDF of Avg. Response Times:
 
     ## No id variables; using all as measure variables
 
-![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-4-1.png)
+![](GeneratedMarkdown_files/figure-markdown_github/analysis3-1.png)
 
 Notification Correctness
 ------------------------
 
-PDF of Avg. Notification Correctness:
+Basic plot of Notification Correctness:
 
     ##    avgCorrect     secAvgCorrect    safAvgCorrect   
     ##  Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  
@@ -76,12 +75,12 @@ PDF of Avg. Notification Correctness:
 
     ## No id variables; using all as measure variables
 
-![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-5-1.png)
+![](GeneratedMarkdown_files/figure-markdown_github/analysis4-1.png)
 
 Recall Correctness
 ------------------
 
-PDF of Avg. Recall Correctness:
+Basic plot of Recall Correctness:
 
     ##    avgPercent       secPercent       safPercent    
     ##  Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  
@@ -93,28 +92,18 @@ PDF of Avg. Recall Correctness:
 
     ## No id variables; using all as measure variables
 
-![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-6-1.png)
+![](GeneratedMarkdown_files/figure-markdown_github/analysis5-1.png)
 
-Confidence Intervals
---------------------
+    ## 
+    ## Attaching package: 'dplyr'
 
-### Response Times
+    ## The following objects are masked from 'package:stats':
+    ## 
+    ##     filter, lag
 
-Confidence intervals of the response times of safety vs. security.
-
-    ## Warning in boot.ci(boot(c(1823L, 1182L, 3432L, 5581L, 2204L, 3457L,
-    ## 5295L, : bootstrap variances needed for studentized intervals
-
-    ## Warning in boot.ci(boot(c(1823L, 1182L, 3432L, 5581L, 2204L, 3457L,
-    ## 5295L, : bootstrap variances needed for studentized intervals
-
-    ## Warning in boot.ci(boot(c(1823L, 1182L, 3432L, 5581L, 2204L, 3457L,
-    ## 5295L, : bootstrap variances needed for studentized intervals
-
-    ## Warning in boot.ci(boot(c(1823L, 1182L, 3432L, 5581L, 2204L, 3457L,
-    ## 5295L, : bootstrap variances needed for studentized intervals
-
-![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-7-1.png)
+    ## The following objects are masked from 'package:base':
+    ## 
+    ##     intersect, setdiff, setequal, union
 
     ##        Type      ResponseTime  
     ##  Safety  :178   Min.   : 1091  
@@ -124,23 +113,30 @@ Confidence intervals of the response times of safety vs. security.
     ##                 3rd Qu.: 4887  
     ##                 Max.   :53430
 
-### Response Correctness
+    ## Warning in boot.ci(boot(c(1823L, 1182L, 3432L, 5581L, 2204L, 3457L,
+    ## 5295L, : bootstrap variances needed for studentized intervals
 
-Confidence intervals of the response correctness of safety vs. security.
+    ## Warning in boot.ci(boot(c(1823L, 1182L, 3432L, 5581L, 2204L, 3457L,
+    ## 5295L, : bootstrap variances needed for studentized intervals
 
-    ## Warning in boot.ci(boot(c(0L, 1L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, :
-    ## bootstrap variances needed for studentized intervals
+    ## Warning in boot.ci(boot(c(1823L, 1182L, 3432L, 5581L, 2204L, 3457L,
+    ## 5295L, : bootstrap variances needed for studentized intervals
 
-    ## Warning in boot.ci(boot(c(0L, 1L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, :
-    ## bootstrap variances needed for studentized intervals
+    ## Warning in boot.ci(boot(c(1823L, 1182L, 3432L, 5581L, 2204L, 3457L,
+    ## 5295L, : bootstrap variances needed for studentized intervals
 
-    ## Warning in boot.ci(boot(c(0L, 1L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, :
-    ## bootstrap variances needed for studentized intervals
+    ## Warning in boot.ci(boot(c(1823L, 1182L, 3432L, 5581L, 2204L, 3457L,
+    ## 5295L, : bootstrap variances needed for studentized intervals
 
-    ## Warning in boot.ci(boot(c(0L, 1L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, :
-    ## bootstrap variances needed for studentized intervals
+    ## Warning in boot.ci(boot(c(1823L, 1182L, 3432L, 5581L, 2204L, 3457L,
+    ## 5295L, : bootstrap variances needed for studentized intervals
 
-![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-8-1.png)
+![](GeneratedMarkdown_files/figure-markdown_github/analysis6-1.png)
+
+Confidence Interval Correctness
+-------------------------------
+
+Basic plot of Notification Correctness:
 
     ##        Type     ResponseAnswer  
     ##  Safety  :178   Min.   :0.0000  
@@ -150,34 +146,31 @@ Confidence intervals of the response correctness of safety vs. security.
     ##                 3rd Qu.:1.0000  
     ##                 Max.   :1.0000
 
-### Recall Correctness
-
-Confidence intervals of the recall correctness of safety vs. security.
-
-    ## Warning in boot.ci(boot(c(1L, 0L, 1L, 0L, 1L, 1L, 1L, 1L, 0L, 1L, 0L, 1L, :
+    ## Warning in boot.ci(boot(c(0L, 1L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, :
     ## bootstrap variances needed for studentized intervals
 
-    ## Warning in boot.ci(boot(c(1L, 0L, 1L, 0L, 1L, 1L, 1L, 1L, 0L, 1L, 0L, 1L, :
+    ## Warning in boot.ci(boot(c(0L, 1L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, :
     ## bootstrap variances needed for studentized intervals
 
-    ## Warning in boot.ci(boot(c(1L, 0L, 1L, 0L, 1L, 1L, 1L, 1L, 0L, 1L, 0L, 1L, :
+    ## Warning in boot.ci(boot(c(0L, 1L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, :
     ## bootstrap variances needed for studentized intervals
 
-    ## Warning in boot.ci(boot(c(1L, 0L, 1L, 0L, 1L, 1L, 1L, 1L, 0L, 1L, 0L, 1L, :
+    ## Warning in boot.ci(boot(c(0L, 1L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, :
     ## bootstrap variances needed for studentized intervals
 
-![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-9-1.png)
+    ## Warning in boot.ci(boot(c(0L, 1L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, :
+    ## bootstrap variances needed for studentized intervals
 
-    ##        Type         Answer      
-    ##  Safety  :244   Min.   :0.0000  
-    ##  Security:122   1st Qu.:0.0000  
-    ##                 Median :1.0000  
-    ##                 Mean   :0.7186  
-    ##                 3rd Qu.:1.0000  
-    ##                 Max.   :1.0000
+    ## Warning in boot.ci(boot(c(0L, 1L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, :
+    ## bootstrap variances needed for studentized intervals
 
-Primary Task Score Over Time
-----------------------------
+![](GeneratedMarkdown_files/figure-markdown_github/analysis7-1.png) \#\#\# Primary Task Score Over Time
+
+Basic plot of Recall Correctness:
+
+``` r
+summary(filterPrimaryTaskScoreTimes)
+```
 
     ##         ParticipantID PrimaryTaskEntryTime     Score        
     ##  A4J4GGMKJ68L0 : 44   Min.   : 37.52       Min.   :-1000.0  
@@ -188,15 +181,19 @@ Primary Task Score Over Time
     ##  A1FOTRH3UJMKTS: 18   Max.   :519.50       Max.   : 3700.0  
     ##  (Other)       :608
 
-![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-10-1.png)
+``` r
+ggplot(filterPrimaryTaskScoreTimes, aes(x=filterPrimaryTaskScoreTimes$PrimaryTaskEntryTime, y=filterPrimaryTaskScoreTimes$Score)) +  geom_point() + ggtitle("Score Vs. Time") + labs(x="Time", y ="Score")
+```
 
-Individual Trial
-----------------
+![](GeneratedMarkdown_files/figure-markdown_github/analysis8-1.png)
 
-Notification Grade Level Versus Response Correctness
-----------------------------------------------------
+### Notification Grade Level Versus Response Correctness
 
-Basic plot of response correctness against the reading grade level of the notification.
+Basic plot of Recall Correctness:
+
+``` r
+summary(filterNotificationGradeLevels)
+```
 
     ##    GradeLevel        Correct      
     ##  Min.   : 6.820   Min.   :0.0000  
@@ -206,30 +203,20 @@ Basic plot of response correctness against the reading grade level of the notifi
     ##  3rd Qu.: 9.770   3rd Qu.:1.0000  
     ##  Max.   :14.040   Max.   :1.0000
 
-![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-11-1.png)
+``` r
+#grade_level_data <- aggregate(Correct~GradeLevel, data=filterNotificationGradeLevels, #FUN=function(filterNotificationGradeLevels) c(mean=mean(filterNotificationGradeLevels), #count=length(filterNotificationGradeLevels)))
 
-Power Analysis
---------------
-
-### Response Time
-
-This is the power analyis for the difference in response time between safety and security notifications. The first number is the power analysis of our results from the pilot. The second number represent the analysis we'd need to show a significant (2.5 seconds) difference in response times.
-
-<<<<<<< HEAD
-    ## [1] 79492.61
-=======
 ggplot(filterNotificationGradeLevels, aes(x=GradeLevel, y=Correct)) +  stat_summary(fun.y="mean", geom ="bar") + ggtitle("Grade Levels Vs Correctness") + labs(x="Grade Level", y ="Correctness")
 ```
->>>>>>> origin/master
+
+![](GeneratedMarkdown_files/figure-markdown_github/analysis9-1.png)
+
+    ## d=0.02~[-0.19,0.29]
+
+### Power Analysis
+
+    ## [1] 79492.61
 
     ## [1] 100.5687
-
-### Response Correctness
-
-This is the power analyis for the difference in response correctness between safety and security notifications. The first number is the power analysis of our results from the pilot. The second number represent the analysis we'd need to show a significant (20%) difference in response correctness.
-
-    ## [1] 511.9611
-
-    ## [1] 201.3841
 
 **Note** that the `echo = FALSE` parameter can be added to the code chunk to prevent printing of the R code that generates the plot.
