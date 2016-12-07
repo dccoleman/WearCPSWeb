@@ -15,7 +15,7 @@ json.dataEntries.filter(function(row){
 	}
 
 	newObj = {
-		"Education Level": row.demographics.degree,
+		"EducationLevel": row.demographics.degree,
 		"NotificationCorrect" : notifications_correct,
 		"FinalScore" : row.task_scores[row.task_scores.length - 1].score
 	}

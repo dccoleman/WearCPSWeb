@@ -12,11 +12,11 @@ var i, typeRecall, answer;
 
 		//correct
 		if(row.recall[i].answer == row.recall[i].correct_answer) {
-			answer = "correct";
+			answer = 1;
 		} 
 		//incorrect
 		else {
-			answer = "incorrect";
+			answer = 0;
 		}
 
 		//security

@@ -3,31 +3,36 @@ title: "WearCPS: Safety vs. Security Analysis"
 output: github_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, echo = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-load("Data.Rdata")
+load("Pilot2.Rdata")
 
 library(ggplot2)
 library(pwr)
+library(dplyr)
+library(boot)
 
 ```
 
 ## Introduction
 
-Below is the initial analyis/breakdown of the test data collected through our website **WearCPS.me**.
+Below is the initial analyis/breakdown of the test data collected through our online pilot, **WearCPS.me**, through Amazon's Mechanical Turk
 
 ## Average Ages
 
 Average ages of participants:
 
-```{r analysis, incude=TRUE, echo = FALSE}
+```{r, incude=TRUE, echo = FALSE}
 
 summary(filterAge$age)
 
 ggplot(filterAge, aes(x=age)) +  geom_dotplot() +
   scale_y_continuous(name = "", breaks = NULL) + ggtitle("Average Ages") +
   labs(x="Ages",y="Ages") 
+```
 
+## Score/Performance vs. Education Breakdown
+```{r, incude=TRUE, echo = FALSE}
 
 summary(filterEducationVsPerformance)
 
@@ -35,13 +40,14 @@ ggplot(filterEducationVsPerformance, aes(x=EducationLevel, y=FinalScore, fill=Ed
   labs(x="Education Level",y="Scores") 
 
 ggplot(filterEducationVsPerformance, aes(x=EducationLevel, y=NotificationCorrect, fill=EducationLevel)) + stat_summary(fun.y="mean", geom="bar") + ggtitle("Education Level Vs Notifications Correct") + labs(x="Education Level",y="Number Correct") 
+
 ```
 
 ## Avg. Score
 
-Basic plot of Avg. Score:
+PDF of Avg. Score:
 
-```{r analysis2, incude=TRUE, echo = FALSE}
+```{r, incude=TRUE, echo = FALSE}
 
 summary(filterScore)
 
@@ -51,13 +57,13 @@ ggplot(filterScore, aes(x=finalScore)) +  geom_density(kernel = "gaussian", fill
 
 ## Avg. Response Time
 
-Basic plot of Avg. Response Times:
+PDF of Avg. Response Times:
 
-```{r analysis3, incude=TRUE, echo = FALSE}
+```{r, incude=TRUE, echo = FALSE}
 
 summary(filterResponseTimes)
 
-x <- data.frame(Average=filterResponseTimes$avg,Security=filterResponseTimes$secAvg,Safety=filterResponseTimes$safAvg)
+x <- data.frame(Security=filterResponseTimes$secAvg,Safety=filterResponseTimes$safAvg)
 library(ggplot2);library(reshape2)
 data<- melt(x)
 ggplot(data,aes(x=value, fill=variable)) + geom_density(alpha=0.25) + ggtitle("Response Times") + labs(x="Time(ms)", y ="Density") +
@@ -66,13 +72,13 @@ ggplot(data,aes(x=value, fill=variable)) + geom_density(alpha=0.25) + ggtitle("R
 
 ## Notification Correctness
 
-Basic plot of Notification Correctness:
+PDF of Avg. Notification Correctness:
 
-```{r analysis4, incude=TRUE, echo = FALSE}
+```{r, incude=TRUE, echo = FALSE}
 
 summary(filterNotificationResponseCorrectness)
 
-x <- data.frame(Average=filterNotificationResponseCorrectness$avgCorrect,Security=filterNotificationResponseCorrectness$secAvgCorrect,Safety=filterNotificationResponseCorrectness$safAvgCorrect)
+x <- data.frame(Security=filterNotificationResponseCorrectness$secAvgCorrect,Safety=filterNotificationResponseCorrectness$safAvgCorrect)
 library(ggplot2);library(reshape2)
 data<- melt(x)
 ggplot(data,aes(x=value, fill=variable)) + geom_density(alpha=0.25) + ggtitle("Notification Correctness") + labs(x="Percent Correct", y ="Density") +
@@ -82,13 +88,13 @@ ggplot(data,aes(x=value, fill=variable)) + geom_density(alpha=0.25) + ggtitle("N
 
 ## Recall Correctness
 
-Basic plot of Recall Correctness:
+PDF of Avg. Recall Correctness:
 
-```{r analysis5, incude=TRUE, echo = FALSE}
+```{r, incude=TRUE, echo = FALSE}
 
 summary(filterRecallCorrectness)
 
-x <- data.frame(Average=filterRecallCorrectness$avgPercent,Security=filterRecallCorrectness$secPercent,Safety=filterRecallCorrectness$safPercent)
+x <- data.frame(Security=filterRecallCorrectness$secPercent,Safety=filterRecallCorrectness$safPercent)
 library(ggplot2);library(reshape2)
 data<- melt(x)
 ggplot(data,aes(x=value, fill=variable)) + geom_density(alpha=0.25) + ggtitle("Recall Correctness") + labs(x="Percent Correct", y ="Density") +
@@ -96,12 +102,12 @@ ggplot(data,aes(x=value, fill=variable)) + geom_density(alpha=0.25) + ggtitle("R
 
 ```
 
-```{r analysis6, include=TRUE, echo = FALSE}
-library(dplyr)
-library(boot)
-library(ggplot2)
 
+## Confidence Intervals
 
+### Response Times
+Confidence intervals of the response times of safety vs. security.
+```{r, include=TRUE, echo = FALSE}
 
 # Bootstrap 95% CI for mean
 # function to obtain mean from the data (with indexing)
@@ -146,74 +152,34 @@ ciplot <- function(xVar, yVar) {
   p
 }
 
-summary(filterResponseTimesPerRow)
+
 ciplot("Type", "ResponseTime")
-
+summary(filterResponseTimesPerRow)
 ```
 
-## Confidence Interval Correctness
+### Response Correctness
+Confidence intervals of the response correctness of safety vs. security.
+```{r, include=TRUE, echo = FALSE}
+data <- filterNotificationResponseCorrectnessPerRow
 
-Basic plot of Notification Correctness:
-
-```{r analysis7, include=TRUE, echo = FALSE}
-library(dplyr)
-library(boot)
-library(ggplot2)
-
-
-
-# Bootstrap 95% CI for mean
-# function to obtain mean from the data (with indexing)
-mean.fun <- function(D, d) {
-  return( mean(D[d]) )
-}
-
-data2 <- filterNotificationResponseCorrectnessPerRow
-
-# CI plot
-# Example of usage: ciplot("myDependentVariable","myIndependentVariable") 
-ciplot2 <- function(xVar, yVar) {
-  
-  groups <- group_by_(data2, xVar)
-  
-  # Note: So far it is the only way found to enable variable name as string parameter for the function
-  groupedData <- eval(parse(text=sprintf("summarize(groups, 
-                                         mean=mean(%s),
-                                         UCI=boot.ci(boot(%s, statistic = mean.fun, R=1000, sim=\"ordinary\"))$bca[,5],
-                                         LCI=boot.ci(boot(%s, statistic = mean.fun, R=1000, sim=\"ordinary\"))$bca[,4])",
-                                         yVar, yVar, yVar)))
-  
-  # Note: Another way to compute bootstrap CIs (boot library is used here instead), is to compute it mannually.
-  # By adding mutate(se=sd/sqrt(n),lower=resp+qnorm(0.025)*se,upper=resp+qnorm(0.975)*se)
-  df2 <- data.frame(
-    trt = factor(groupedData[[1]]),
-    resp = groupedData[["mean"]],
-    group = factor(groupedData[[1]]),
-    upper = c(groupedData[["UCI"]]),
-    lower = c(groupedData[["LCI"]])
-  )
- 
-  # Plot CI
-  p2 <- ggplot(df2, aes(trt, resp))
-  p2 <- p2 + theme(axis.title=element_text(size=20), axis.text=element_text(size=18))
-  p2 <- p2 + geom_pointrange(aes(ymin = lower, ymax = upper)) 
-  p2 <- p2 + expand_limits(y = 0) 
-  p2 <- p2 + ylab(yVar) 
-  p2 <- p2 + xlab("") 
-  p2 <- p2 + geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.1) 
-  #p <- p + coord_flip() #Can flip the coordinate here
-  p2
-}
-
+ciplot("Type", "ResponseAnswer")
 summary(filterNotificationResponseCorrectnessPerRow)
-ciplot2("Type", "ResponseAnswer")
 
 ```
-### Primary Task Score Over Time
 
-Basic plot of Recall Correctness:
+### Recall Correctness
+Confidence intervals of the recall correctness of safety vs. security.
+```{r, include=TRUE, echo = FALSE}
+data <- filterRecallCorrectnessPerRow
 
-```{r analysis8, incude=TRUE}
+ciplot("Type", "Answer")
+summary(filterRecallCorrectnessPerRow)
+```
+
+
+## Primary Task Score Over Time
+
+```{r, incude=TRUE, echo = FALSE}
 
 summary(filterPrimaryTaskScoreTimes)
 
@@ -221,41 +187,24 @@ ggplot(filterPrimaryTaskScoreTimes, aes(x=filterPrimaryTaskScoreTimes$PrimaryTas
 
 ```
 
-### Notification Grade Level Versus Response Correctness
+## Individual Trial
 
-Basic plot of Recall Correctness:
+## Notification Grade Level Versus Response Correctness
 
-```{r analysis9, incude=TRUE}
+Basic plot of response correctness against the reading grade level of the notification.
+
+```{r, incude=TRUE, echo = FALSE}
 
 summary(filterNotificationGradeLevels)
 
-#grade_level_data <- aggregate(Correct~GradeLevel, data=filterNotificationGradeLevels, #FUN=function(filterNotificationGradeLevels) c(mean=mean(filterNotificationGradeLevels), #count=length(filterNotificationGradeLevels)))
-
-ggplot(filterNotificationGradeLevels, aes(x=GradeLevel, y=Correct, fill=GradeLevel)) +  stat_summary(fun.y="mean", geom ="bar") + ggtitle("Grade Levels Vs Correctness") + labs(x="Grade Level", y ="Correctness")
-
-```
-```{r, echo = FALSE}
-library(bootES)
-
-reportES <- function(attr) {
-  b <- bootES(data, 
-              data.col=attr, 
-              group.col="Type", 
-              contrast=c(Safety=1,Security=-1), 
-              effect.type="cohens.d"
-  )
-  
-  cat( "d=",     round( b$t0, 2), "~", 
-       "[", round( b$bounds[1], 2), ",", 
-       round( b$bounds[2], 2), "]", 
-       sep="")
-}
-
-reportES("ResponseTime")
+ggplot(filterNotificationGradeLevels, aes(x=GradeLevel, y=Correct, fill=GradeLevel, width=.5)) +  stat_summary(fun.y="mean", geom ="bar") + ggtitle("Grade Levels Vs Correctness") + labs(x="Grade Level", y ="Correctness")
 
 ```
 
-### Power Analysis
+## Power Analysis
+
+### Response Time
+This is the power analyis for the difference in response time between safety and security notifications. The first number is the power analysis of our results from the pilot. The second number represent the analysis we'd need to show a significant (2.5 seconds) difference in response times.
 ```{r, echo = FALSE}
 # Example (breaking down the functions)
 # Effect Size is the key. 
@@ -337,8 +286,6 @@ reportES("ResponseTime")
 #  options = list(height = 500)
 #)
 
-library(pwr)
-
 safety <- subset(filterResponseTimesPerRow, Type=="Safety")
 security <- subset(filterResponseTimesPerRow, Type=="Security")
 
@@ -361,6 +308,35 @@ pwr.t.test(
   type="two.sample" 
 )$n * 1.15 * 2
 
+```
+
+### Response Correctness
+
+This is the power analyis for the difference in response correctness between safety and security notifications. The first number is the power analysis of our results from the pilot. The second number represent the analysis we'd need to show a significant (20%) difference in response correctness.
+
+```{r, echo = FALSE}
+
+safety2 <- subset(filterNotificationResponseCorrectnessPerRow, Type=="Safety")
+security2 <- subset(filterNotificationResponseCorrectnessPerRow, Type=="Security")
+
+# assuming a 25% reliable difference
+pwr.t.test( 
+  d=abs(mean(   safety2$ResponseAnswer ) - 
+         mean( security2$ResponseAnswer )  / 
+         sd(     filterNotificationResponseCorrectnessPerRow$ResponseAnswer )), 
+  sig.level=.05, 
+  power=0.8, 
+  type="two.sample" 
+)$n * 1.15 * 2
+
+# assuming a 20% reliable difference
+pwr.t.test( 
+  d=abs(.2 / 
+         sd(     filterNotificationResponseCorrectnessPerRow$ResponseAnswer )), 
+  sig.level=.05, 
+  power=0.8, 
+  type="two.sample" 
+)$n * 1.15 * 2
 
 ```
 **Note** that the `echo = FALSE` parameter can be added to the code chunk to prevent printing of the R code that generates the plot.
