@@ -189,6 +189,17 @@ ggplot(filterPrimaryTaskScoreTimes, aes(x=filterPrimaryTaskScoreTimes$PrimaryTas
 
 ## Individual Trial
 
+```{r, incude=TRUE, echo = FALSE}
+
+summary(filterPrimaryTaskScoreTimes)
+
+scoreData = subset(filterPrimaryTaskScoreTimes, ParticipantID=='A4J4GGMKJ68L0')
+
+
+ggplot(scoreData, aes(x=scoreData$PrimaryTaskEntryTime, y=scoreData$Score)) +  geom_point() + ggtitle("Score Vs. Time") + labs(x="Time", y ="Score")
+
+```
+
 ## Notification Grade Level Versus Response Correctness
 
 Basic plot of response correctness against the reading grade level of the notification.
@@ -197,11 +208,7 @@ Basic plot of response correctness against the reading grade level of the notifi
 
 summary(filterNotificationGradeLevels)
 
-<<<<<<< HEAD
 ggplot(filterNotificationGradeLevels, aes(x=GradeLevel, y=Correct, fill=GradeLevel, width=.5)) +  stat_summary(fun.y="mean", geom ="bar") + ggtitle("Grade Levels Vs Correctness") + labs(x="Grade Level", y ="Correctness")
-=======
-ggplot(filterNotificationGradeLevels, aes(x=GradeLevel, y=Correct)) +  stat_summary(fun.y="mean", geom ="bar") + ggtitle("Grade Levels Vs Correctness") + labs(x="Grade Level", y ="Correctness")
->>>>>>> origin/master
 
 ```
 

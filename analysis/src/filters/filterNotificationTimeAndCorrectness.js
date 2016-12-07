@@ -10,8 +10,7 @@ json.dataEntries.filter(function(row){
 
 
 	newObj = {
-		"sex" : row.demographics.sex,
-		"finalScore" : row.task_scores[row.task_scores.length - 1].score
+		"age" : row.demographics.age
 	}
 
 	filteredJson.push(newObj);
