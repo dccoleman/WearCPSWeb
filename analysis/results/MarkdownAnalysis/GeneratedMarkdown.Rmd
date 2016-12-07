@@ -187,16 +187,35 @@ ggplot(filterPrimaryTaskScoreTimes, aes(x=filterPrimaryTaskScoreTimes$PrimaryTas
 
 ```
 
-## Individual Trial
+## Individual Trial For User A4J4GGMKJ68L0
 
 ```{r, incude=TRUE, echo = FALSE}
 
 summary(filterPrimaryTaskScoreTimes)
 
+xpoints <- c(1000,1000,1000,1000,1000,1000)
+
 scoreData = subset(filterPrimaryTaskScoreTimes, ParticipantID=='A4J4GGMKJ68L0')
 
+notifData = subset(filterNotificationTimeAndCorrectness, participantID=='A4J4GGMKJ68L0')
 
-ggplot(scoreData, aes(x=scoreData$PrimaryTaskEntryTime, y=scoreData$Score)) +  geom_point() + ggtitle("Score Vs. Time") + labs(x="Time", y ="Score")
+ggplot() + geom_point(data = scoreData, aes(x=scoreData$PrimaryTaskEntryTime, y=scoreData$Score)) + geom_point(data = notifData, aes(x = notifData$notificationTime, y = xpoints, color = correct, size = 4)) + ggtitle("Score Vs. Time Vs. Notification Correctness") + labs(x="Time", y ="Score")
+
+```
+
+## Individual Trial For User A1HWTTN3JEUNZY
+
+```{r, incude=TRUE, echo = FALSE}
+
+summary(filterPrimaryTaskScoreTimes)
+
+xpoints <- c(250,250,250,250,250,250)
+
+scoreData = subset(filterPrimaryTaskScoreTimes, ParticipantID=='A1HWTTN3JEUNZY')
+
+notifData = subset(filterNotificationTimeAndCorrectness, participantID=='A1HWTTN3JEUNZY')
+
+ggplot() + geom_point(data = scoreData, aes(x=scoreData$PrimaryTaskEntryTime, y=scoreData$Score)) + geom_point(data = notifData, aes(x = notifData$notificationTime, y = xpoints, color = correct, size = 4)) + ggtitle("Score Vs. Time Vs. Notification Correctness") + labs(x="Time", y ="Score")
 
 ```
 

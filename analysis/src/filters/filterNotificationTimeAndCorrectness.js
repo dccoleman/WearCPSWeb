@@ -8,12 +8,25 @@ var newObj = {};
 
 json.dataEntries.filter(function(row){
 
+	var startTime = row.time_start_experiment;
 
-	newObj = {
-		"age" : row.demographics.age
+	for(i = 0; i < row.notifications.length; i++) {
+
+		var time_diff = row.notifications[i].time_start - startTime;
+		var correctness = "incorrect";
+
+		if(row.notifications[i].button_clicked == row.notifications[i].correct_button) {
+			correctness = "correct";
+		}
+
+		newObj = {
+			"participantID" : row.workerId,
+			"notificationTime" : (time_diff / 1000),
+			"correct" : correctness
+		}
+
+		filteredJson.push(newObj);
 	}
-
-	filteredJson.push(newObj);
 });
 
 

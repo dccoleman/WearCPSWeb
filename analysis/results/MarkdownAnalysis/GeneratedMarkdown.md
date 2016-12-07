@@ -210,8 +210,8 @@ Primary Task Score Over Time
 
 ![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-10-1.png)
 
-Individual Trial
-----------------
+Individual Trial For User A4J4GGMKJ68L0
+---------------------------------------
 
     ##         ParticipantID PrimaryTaskEntryTime     Score        
     ##  A4J4GGMKJ68L0 : 44   Min.   : 37.52       Min.   :-1000.0  
@@ -223,6 +223,20 @@ Individual Trial
     ##  (Other)       :608
 
 ![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-11-1.png)
+
+Individual Trial For User A1HWTTN3JEUNZY
+----------------------------------------
+
+    ##         ParticipantID PrimaryTaskEntryTime     Score        
+    ##  A4J4GGMKJ68L0 : 44   Min.   : 37.52       Min.   :-1000.0  
+    ##  A1A3TGZ7DKJWRW: 24   1st Qu.:140.06       1st Qu.:  100.0  
+    ##  A3UAO2LYUPO7L6: 22   Median :190.62       Median :  300.0  
+    ##  A3OV174HQJIJK8: 20   Mean   :205.30       Mean   :  429.5  
+    ##  A1C59M3HPCO503: 19   3rd Qu.:250.89       3rd Qu.:  600.0  
+    ##  A1FOTRH3UJMKTS: 18   Max.   :519.50       Max.   : 3700.0  
+    ##  (Other)       :608
+
+![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-12-1.png)
 
 Notification Grade Level Versus Response Correctness
 ----------------------------------------------------
@@ -237,7 +251,7 @@ Basic plot of response correctness against the reading grade level of the notifi
     ##  3rd Qu.: 9.770   3rd Qu.:1.0000  
     ##  Max.   :14.040   Max.   :1.0000
 
-![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-12-1.png)
+![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-13-1.png)
 
 Power Analysis
 --------------
