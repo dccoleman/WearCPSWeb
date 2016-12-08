@@ -12,6 +12,14 @@ json.dataEntries.filter(function(row){
 	for(i = 0; i < row.notifications.length; i++) {
 		var gradeLevel = gradeLevelMap[row.notifications[i].id];
 
+		var adder = 1;
+		if(row.notifications[i].id < 3) {
+			if(row.notifications[i].id == 1) {
+				adder = 2;
+			}
+			row.notifications[i].correct_button += adder;
+		}
+
 		var correct;
 		if(row.notifications[i].correct_button == row.notifications[i].button_clicked) {
 			correct = 1;

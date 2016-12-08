@@ -15,6 +15,14 @@ json.dataEntries.filter(function(row){
 		var time_diff = row.notifications[i].time_start - startTime;
 		var correctness = "incorrect";
 
+		var adder = 1;
+		if(row.notifications[i].id < 3) {
+			if(row.notifications[i].id == 1) {
+				adder = 2;
+			}
+			row.notifications[i].correct_button += adder;
+		}
+
 		if(row.notifications[i].button_clicked == row.notifications[i].correct_button) {
 			correctness = "correct";
 		}

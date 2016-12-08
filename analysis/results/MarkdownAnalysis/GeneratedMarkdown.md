@@ -21,13 +21,13 @@ Average ages of participants:
 Score/Performance vs. Education Breakdown
 -----------------------------------------
 
-    ##      EducationLevel NotificationCorrect   FinalScore    
-    ##  Bachelors  :33     Min.   :0.000       Min.   :-800.0  
-    ##  High School:18     1st Qu.:1.000       1st Qu.: 400.0  
-    ##  Masters    : 6     Median :2.000       Median : 700.0  
-    ##  Other      : 2     Mean   :1.934       Mean   : 680.3  
-    ##  PhD        : 2     3rd Qu.:3.000       3rd Qu.: 900.0  
-    ##                     Max.   :3.000       Max.   :3700.0
+    ##  EducationLevel     NotificationCorrect   FinalScore    
+    ##  Length:61          Min.   :0.000       Min.   :-800.0  
+    ##  Class :character   1st Qu.:1.000       1st Qu.: 400.0  
+    ##  Mode  :character   Median :3.000       Median : 700.0  
+    ##                     Mean   :2.541       Mean   : 680.3  
+    ##                     3rd Qu.:4.000       3rd Qu.: 900.0  
+    ##                     Max.   :6.000       Max.   :3700.0
 
 ![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-2-1.png)![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-2-2.png)
 
@@ -36,13 +36,13 @@ Avg. Score
 
 PDF of Avg. Score:
 
-    ##      sex       finalScore    
-    ##  Female:18   Min.   :-800.0  
-    ##  Male  :43   1st Qu.: 400.0  
-    ##              Median : 700.0  
-    ##              Mean   : 680.3  
-    ##              3rd Qu.: 900.0  
-    ##              Max.   :3700.0
+    ##      sex              finalScore    
+    ##  Length:61          Min.   :-800.0  
+    ##  Class :character   1st Qu.: 400.0  
+    ##  Mode  :character   Median : 700.0  
+    ##                     Mean   : 680.3  
+    ##                     3rd Qu.: 900.0  
+    ##                     Max.   :3700.0
 
 ![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
@@ -71,10 +71,10 @@ PDF of Avg. Notification Correctness:
     ##    avgCorrect     secAvgCorrect    safAvgCorrect   
     ##  Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  
     ##  1st Qu.:0.1667   1st Qu.:0.0000   1st Qu.:0.3333  
-    ##  Median :0.3333   Median :0.0000   Median :0.3333  
-    ##  Mean   :0.3260   Mean   :0.1257   Mean   :0.5273  
-    ##  3rd Qu.:0.5000   3rd Qu.:0.3333   3rd Qu.:1.0000  
-    ##  Max.   :0.5000   Max.   :0.6667   Max.   :1.0000
+    ##  Median :0.5000   Median :0.3333   Median :0.3333  
+    ##  Mean   :0.4262   Mean   :0.3279   Mean   :0.5273  
+    ##  3rd Qu.:0.6667   3rd Qu.:0.6667   3rd Qu.:1.0000  
+    ##  Max.   :1.0000   Max.   :1.0000   Max.   :1.0000
 
     ## No id variables; using all as measure variables
 
@@ -124,45 +124,45 @@ Confidence intervals of the response times of safety vs. security.
 
 ![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
-    ##        Type      ResponseTime  
-    ##  Safety  :178   Min.   : 1091  
-    ##  Security:183   1st Qu.: 2142  
-    ##                 Median : 3418  
-    ##                 Mean   : 4101  
-    ##                 3rd Qu.: 4887  
-    ##                 Max.   :53430
+    ##      Type            ResponseTime  
+    ##  Length:361         Min.   : 1091  
+    ##  Class :character   1st Qu.: 2142  
+    ##  Mode  :character   Median : 3418  
+    ##                     Mean   : 4101  
+    ##                     3rd Qu.: 4887  
+    ##                     Max.   :53430
 
 ### Response Correctness
 
 Confidence intervals of the response correctness of safety vs. security.
 
-    ## Warning in boot.ci(boot(c(0L, 1L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, :
+    ## Warning in boot.ci(boot(c(0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 0L, 0L, :
     ## bootstrap variances needed for studentized intervals
 
-    ## Warning in boot.ci(boot(c(0L, 1L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, :
+    ## Warning in boot.ci(boot(c(0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 0L, 0L, :
     ## bootstrap variances needed for studentized intervals
 
-    ## Warning in boot.ci(boot(c(0L, 1L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, :
+    ## Warning in boot.ci(boot(c(0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 0L, 0L, :
     ## bootstrap variances needed for studentized intervals
 
-    ## Warning in boot.ci(boot(c(0L, 1L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, :
+    ## Warning in boot.ci(boot(c(0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 0L, 0L, :
     ## bootstrap variances needed for studentized intervals
 
-    ## Warning in boot.ci(boot(c(0L, 1L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, :
+    ## Warning in boot.ci(boot(c(0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 0L, 0L, :
     ## bootstrap variances needed for studentized intervals
 
-    ## Warning in boot.ci(boot(c(0L, 1L, 0L, 0L, 1L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, :
+    ## Warning in boot.ci(boot(c(0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 1L, 0L, 0L, 0L, :
     ## bootstrap variances needed for studentized intervals
 
 ![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-8-1.png)
 
-    ##        Type     ResponseAnswer  
-    ##  Safety  :178   Min.   :0.0000  
-    ##  Security:183   1st Qu.:0.0000  
-    ##                 Median :0.0000  
-    ##                 Mean   :0.3269  
-    ##                 3rd Qu.:1.0000  
-    ##                 Max.   :1.0000
+    ##      Type           ResponseAnswer  
+    ##  Length:361         Min.   :0.0000  
+    ##  Class :character   1st Qu.:0.0000  
+    ##  Mode  :character   Median :0.0000  
+    ##                     Mean   :0.4294  
+    ##                     3rd Qu.:1.0000  
+    ##                     Max.   :1.0000
 
 ### Recall Correctness
 
@@ -188,53 +188,50 @@ Confidence intervals of the recall correctness of safety vs. security.
 
 ![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-9-1.png)
 
-    ##        Type         Answer      
-    ##  Safety  :244   Min.   :0.0000  
-    ##  Security:122   1st Qu.:0.0000  
-    ##                 Median :1.0000  
-    ##                 Mean   :0.7186  
-    ##                 3rd Qu.:1.0000  
-    ##                 Max.   :1.0000
+    ##      Type               Answer      
+    ##  Length:366         Min.   :0.0000  
+    ##  Class :character   1st Qu.:0.0000  
+    ##  Mode  :character   Median :1.0000  
+    ##                     Mean   :0.7186  
+    ##                     3rd Qu.:1.0000  
+    ##                     Max.   :1.0000
 
 Primary Task Score Over Time
 ----------------------------
 
-    ##         ParticipantID PrimaryTaskEntryTime     Score        
-    ##  A4J4GGMKJ68L0 : 44   Min.   : 37.52       Min.   :-1000.0  
-    ##  A1A3TGZ7DKJWRW: 24   1st Qu.:140.06       1st Qu.:  100.0  
-    ##  A3UAO2LYUPO7L6: 22   Median :190.62       Median :  300.0  
-    ##  A3OV174HQJIJK8: 20   Mean   :205.30       Mean   :  429.5  
-    ##  A1C59M3HPCO503: 19   3rd Qu.:250.89       3rd Qu.:  600.0  
-    ##  A1FOTRH3UJMKTS: 18   Max.   :519.50       Max.   : 3700.0  
-    ##  (Other)       :608
+    ##  ParticipantID      PrimaryTaskEntryTime     Score        
+    ##  Length:755         Min.   : 37.52       Min.   :-1000.0  
+    ##  Class :character   1st Qu.:140.06       1st Qu.:  100.0  
+    ##  Mode  :character   Median :190.62       Median :  300.0  
+    ##                     Mean   :205.30       Mean   :  429.5  
+    ##                     3rd Qu.:250.89       3rd Qu.:  600.0  
+    ##                     Max.   :519.50       Max.   : 3700.0
 
 ![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-10-1.png)
 
 Individual Trial For User A4J4GGMKJ68L0
 ---------------------------------------
 
-    ##         ParticipantID PrimaryTaskEntryTime     Score        
-    ##  A4J4GGMKJ68L0 : 44   Min.   : 37.52       Min.   :-1000.0  
-    ##  A1A3TGZ7DKJWRW: 24   1st Qu.:140.06       1st Qu.:  100.0  
-    ##  A3UAO2LYUPO7L6: 22   Median :190.62       Median :  300.0  
-    ##  A3OV174HQJIJK8: 20   Mean   :205.30       Mean   :  429.5  
-    ##  A1C59M3HPCO503: 19   3rd Qu.:250.89       3rd Qu.:  600.0  
-    ##  A1FOTRH3UJMKTS: 18   Max.   :519.50       Max.   : 3700.0  
-    ##  (Other)       :608
+    ##  ParticipantID      PrimaryTaskEntryTime     Score        
+    ##  Length:755         Min.   : 37.52       Min.   :-1000.0  
+    ##  Class :character   1st Qu.:140.06       1st Qu.:  100.0  
+    ##  Mode  :character   Median :190.62       Median :  300.0  
+    ##                     Mean   :205.30       Mean   :  429.5  
+    ##                     3rd Qu.:250.89       3rd Qu.:  600.0  
+    ##                     Max.   :519.50       Max.   : 3700.0
 
 ![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-11-1.png)
 
 Individual Trial For User A1HWTTN3JEUNZY
 ----------------------------------------
 
-    ##         ParticipantID PrimaryTaskEntryTime     Score        
-    ##  A4J4GGMKJ68L0 : 44   Min.   : 37.52       Min.   :-1000.0  
-    ##  A1A3TGZ7DKJWRW: 24   1st Qu.:140.06       1st Qu.:  100.0  
-    ##  A3UAO2LYUPO7L6: 22   Median :190.62       Median :  300.0  
-    ##  A3OV174HQJIJK8: 20   Mean   :205.30       Mean   :  429.5  
-    ##  A1C59M3HPCO503: 19   3rd Qu.:250.89       3rd Qu.:  600.0  
-    ##  A1FOTRH3UJMKTS: 18   Max.   :519.50       Max.   : 3700.0  
-    ##  (Other)       :608
+    ##  ParticipantID      PrimaryTaskEntryTime     Score        
+    ##  Length:755         Min.   : 37.52       Min.   :-1000.0  
+    ##  Class :character   1st Qu.:140.06       1st Qu.:  100.0  
+    ##  Mode  :character   Median :190.62       Median :  300.0  
+    ##                     Mean   :205.30       Mean   :  429.5  
+    ##                     3rd Qu.:250.89       3rd Qu.:  600.0  
+    ##                     Max.   :519.50       Max.   : 3700.0
 
 ![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-12-1.png)
 
@@ -247,7 +244,7 @@ Basic plot of response correctness against the reading grade level of the notifi
     ##  Min.   : 6.820   Min.   :0.0000  
     ##  1st Qu.: 7.200   1st Qu.:0.0000  
     ##  Median : 9.760   Median :0.0000  
-    ##  Mean   : 9.499   Mean   :0.3269  
+    ##  Mean   : 9.499   Mean   :0.4294  
     ##  3rd Qu.: 9.770   3rd Qu.:1.0000  
     ##  Max.   :14.040   Max.   :1.0000
 
@@ -268,8 +265,8 @@ This is the power analyis for the difference in response time between safety and
 
 This is the power analyis for the difference in response correctness between safety and security notifications. The first number is the power analysis of our results from the pilot. The second number represent the analysis we'd need to show a significant (20%) difference in response correctness.
 
-    ## [1] 511.9611
+    ## [1] 2214.326
 
-    ## [1] 201.3841
+    ## [1] 223.9957
 
 **Note** that the `echo = FALSE` parameter can be added to the code chunk to prevent printing of the R code that generates the plot.
