@@ -250,6 +250,42 @@ Basic plot of response correctness against the reading grade level of the notifi
 
 ![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-13-1.png)
 
+Wilcox Paired Test
+------------------
+
+    ##  secAvgCorrect    safAvgCorrect   
+    ##  Min.   :0.0000   Min.   :0.0000  
+    ##  1st Qu.:0.0000   1st Qu.:0.3333  
+    ##  Median :0.3333   Median :0.3333  
+    ##  Mean   :0.3279   Mean   :0.5191  
+    ##  3rd Qu.:0.6667   3rd Qu.:1.0000  
+    ##  Max.   :1.0000   Max.   :1.0000
+
+    ## 
+    ##  Exact Wilcoxon signed rank test
+    ## 
+    ## data:  filterIDAndCorrectness$secAvgCorrect and filterIDAndCorrectness$safAvgCorrect
+    ## V = 94.5, p-value = 2.965e-05
+    ## alternative hypothesis: true mu is not equal to 0
+
+Wilcox Unpaired Test
+--------------------
+
+    ##  secAvgCorrect    safAvgCorrect   
+    ##  Min.   :0.0000   Min.   :0.0000  
+    ##  1st Qu.:0.0000   1st Qu.:0.3333  
+    ##  Median :0.3333   Median :0.3333  
+    ##  Mean   :0.3279   Mean   :0.5191  
+    ##  3rd Qu.:0.6667   3rd Qu.:1.0000  
+    ##  Max.   :1.0000   Max.   :1.0000
+
+    ## 
+    ##  Asymptotic Wilcoxon rank sum test
+    ## 
+    ## data:  filterIDAndCorrectness$secAvgCorrect and filterIDAndCorrectness$safAvgCorrect
+    ## W = 1351.5, p-value = 0.006844
+    ## alternative hypothesis: true mu is not equal to 0
+
 Power Analysis
 --------------
 

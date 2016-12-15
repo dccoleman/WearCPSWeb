@@ -11,6 +11,7 @@ library(ggplot2)
 library(pwr)
 library(dplyr)
 library(boot)
+library(exactRankTests)
 
 ```
 
@@ -211,9 +212,10 @@ summary(filterPrimaryTaskScoreTimes)
 
 xpoints <- c(250,250,250,250,250,250)
 
-scoreData = subset(filterPrimaryTaskScoreTimes, ParticipantID=='A1HWTTN3JEUNZY')
+scoreData = subset(filterPrimaryTaskScoreTimes, ParticipantID=='A1A3TGZ7DKJWRW')
+##A1HWTTN3JEUNZY
 
-notifData = subset(filterNotificationTimeAndCorrectness, participantID=='A1HWTTN3JEUNZY')
+notifData = subset(filterNotificationTimeAndCorrectness, participantID=='A1A3TGZ7DKJWRW')
 
 ggplot() + geom_point(data = scoreData, aes(x=scoreData$PrimaryTaskEntryTime, y=scoreData$Score)) + geom_point(data = notifData, aes(x = notifData$notificationTime, y = xpoints, color = correct, size = 4)) + ggtitle("Score Vs. Time Vs. Notification Correctness") + labs(x="Time", y ="Score")
 
@@ -227,7 +229,26 @@ Basic plot of response correctness against the reading grade level of the notifi
 
 summary(filterNotificationGradeLevels)
 
-ggplot(filterNotificationGradeLevels, aes(x=GradeLevel, y=Correct, fill=GradeLevel, width=.5)) +  stat_summary(fun.y="mean", geom ="bar") + ggtitle("Grade Levels Vs Correctness") + labs(x="Grade Level", y ="Correctness")
+ggplot(filterNotificationGradeLevels, aes(x=GradeLevel, y=Correct, fill=GradeLevel, width=.5)) +  stat_summary(fun.y="mean", geom ="point") + ggtitle("Grade Levels Vs Correctness") + labs(x="Grade Level", y ="Correctness")
+
+```
+
+## Wilcox Paired Test
+
+```{r, incude=TRUE, echo = FALSE}
+
+summary(filterIDAndCorrectness)
+##Wilcox Paired Test
+wilcox.exact.default(filterIDAndCorrectness$secAvgCorrect,filterIDAndCorrectness$safAvgCorrect,paired=TRUE)
+
+```
+
+##Wilcox Unpaired Test
+
+```{r, incude=TRUE, echo = FALSE}
+
+summary(filterIDAndCorrectness)
+wilcox.exact.default(filterIDAndCorrectness$secAvgCorrect,filterIDAndCorrectness$safAvgCorrect)
 
 ```
 
