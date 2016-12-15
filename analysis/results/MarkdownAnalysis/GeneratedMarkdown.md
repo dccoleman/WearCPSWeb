@@ -250,8 +250,8 @@ Basic plot of response correctness against the reading grade level of the notifi
 
 ![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-13-1.png)
 
-Wilcox Paired Test
-------------------
+Wilcoxon Paired Test
+--------------------
 
     ##  secAvgCorrect    safAvgCorrect   
     ##  Min.   :0.0000   Min.   :0.0000  
@@ -268,8 +268,8 @@ Wilcox Paired Test
     ## V = 94.5, p-value = 2.965e-05
     ## alternative hypothesis: true mu is not equal to 0
 
-Wilcox Unpaired Test
---------------------
+Wilcoxon Unpaired Test
+----------------------
 
     ##  secAvgCorrect    safAvgCorrect   
     ##  Min.   :0.0000   Min.   :0.0000  
