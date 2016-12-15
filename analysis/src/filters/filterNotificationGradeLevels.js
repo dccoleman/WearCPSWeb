@@ -4,7 +4,7 @@ var filteredJson = [];
 
 var newObj = {};
 
-var gradeLevelMap = [9.15,14.04,9.77,9.76,7.2,6.82]
+var gradeLevelMap = [9,10,8.8,9,10,8.8]
 
 json.dataEntries.filter(function(row){
 
@@ -27,7 +27,13 @@ json.dataEntries.filter(function(row){
 			correct = 0;
 		}
 
+		var type = "safety";
+		if(row.notifications[i].id < 3) {
+			type = "security";
+		}
+
 		newObj = {
+			"Type" : type,
 			"GradeLevel" : gradeLevel,
 			"Correct" : correct
 		}

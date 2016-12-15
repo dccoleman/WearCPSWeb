@@ -240,13 +240,13 @@ Notification Grade Level Versus Response Correctness
 
 Basic plot of response correctness against the reading grade level of the notification.
 
-    ##    GradeLevel        Correct      
-    ##  Min.   : 6.820   Min.   :0.0000  
-    ##  1st Qu.: 7.200   1st Qu.:0.0000  
-    ##  Median : 9.760   Median :0.0000  
-    ##  Mean   : 9.499   Mean   :0.4294  
-    ##  3rd Qu.: 9.770   3rd Qu.:1.0000  
-    ##  Max.   :14.040   Max.   :1.0000
+    ##      Type             GradeLevel        Correct      
+    ##  Length:361         Min.   : 8.800   Min.   :0.0000  
+    ##  Class :character   1st Qu.: 8.800   1st Qu.:0.0000  
+    ##  Mode  :character   Median : 9.000   Median :0.0000  
+    ##                     Mean   : 9.267   Mean   :0.4294  
+    ##                     3rd Qu.:10.000   3rd Qu.:1.0000  
+    ##                     Max.   :10.000   Max.   :1.0000
 
 ![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-13-1.png)
 

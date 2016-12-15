@@ -229,7 +229,7 @@ Basic plot of response correctness against the reading grade level of the notifi
 
 summary(filterNotificationGradeLevels)
 
-ggplot(filterNotificationGradeLevels, aes(x=GradeLevel, y=Correct, fill=GradeLevel, width=.5)) +  stat_summary(fun.y="mean", geom ="point") + ggtitle("Grade Levels Vs Correctness") + labs(x="Grade Level", y ="Correctness")
+ggplot(filterNotificationGradeLevels, aes(x=GradeLevel, y=Correct, color=Type, width=.5)) +  stat_summary(fun.y="mean", geom ="point") + ggtitle("Grade Levels Vs Correctness") + labs(x="Grade Level", y ="Correctness")
 
 ```
 
