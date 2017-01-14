@@ -242,13 +242,55 @@ Basic plot of response correctness against the reading grade level of the notifi
 
     ##      Type             GradeLevel        Correct      
     ##  Length:361         Min.   : 8.800   Min.   :0.0000  
-    ##  Class :character   1st Qu.: 8.800   1st Qu.:0.0000  
-    ##  Mode  :character   Median : 9.000   Median :0.0000  
-    ##                     Mean   : 9.267   Mean   :0.4294  
+    ##  Class :character   1st Qu.: 8.850   1st Qu.:0.0000  
+    ##  Mode  :character   Median : 9.050   Median :0.0000  
+    ##                     Mean   : 9.292   Mean   :0.4294  
     ##                     3rd Qu.:10.000   3rd Qu.:1.0000  
-    ##                     Max.   :10.000   Max.   :1.0000
+    ##                     Max.   :10.050   Max.   :1.0000
 
-![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-13-1.png)
+    ## Warning in boot.ci(boot(c(1L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 1L, 0L, 0L, 0L, :
+    ## bootstrap variances needed for studentized intervals
+
+    ## Warning in boot.ci(boot(c(1L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 1L, 0L, 0L, 0L, :
+    ## bootstrap variances needed for studentized intervals
+
+    ## Warning in boot.ci(boot(c(1L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 1L, 0L, 0L, 0L, :
+    ## bootstrap variances needed for studentized intervals
+
+    ## Warning in boot.ci(boot(c(1L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 1L, 0L, 0L, 0L, :
+    ## bootstrap variances needed for studentized intervals
+
+    ## Warning in boot.ci(boot(c(1L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 1L, 0L, 0L, 0L, :
+    ## bootstrap variances needed for studentized intervals
+
+    ## Warning in boot.ci(boot(c(1L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 1L, 0L, 0L, 0L, :
+    ## bootstrap variances needed for studentized intervals
+
+    ## Warning in boot.ci(boot(c(1L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 1L, 0L, 0L, 0L, :
+    ## bootstrap variances needed for studentized intervals
+
+    ## Warning in boot.ci(boot(c(1L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 1L, 0L, 0L, 0L, :
+    ## bootstrap variances needed for studentized intervals
+
+    ## Warning in boot.ci(boot(c(1L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 1L, 0L, 0L, 0L, :
+    ## bootstrap variances needed for studentized intervals
+
+    ## Warning in boot.ci(boot(c(1L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 1L, 0L, 0L, 0L, :
+    ## bootstrap variances needed for studentized intervals
+
+    ## Warning in boot.ci(boot(c(1L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 1L, 0L, 0L, 0L, :
+    ## bootstrap variances needed for studentized intervals
+
+    ## Warning in boot.ci(boot(c(1L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 1L, 0L, 0L, 0L, :
+    ## bootstrap variances needed for studentized intervals
+
+    ## Warning in boot.ci(boot(c(1L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 1L, 0L, 0L, 0L, :
+    ## bootstrap variances needed for studentized intervals
+
+    ## Warning in boot.ci(boot(c(1L, 1L, 1L, 0L, 1L, 1L, 1L, 1L, 1L, 0L, 0L, 0L, :
+    ## bootstrap variances needed for studentized intervals
+
+![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-13-1.png)![](GeneratedMarkdown_files/figure-markdown_github/unnamed-chunk-13-2.png)
 
 Wilcoxon Paired Test
 --------------------

@@ -4,7 +4,7 @@ var filteredJson = [];
 
 var newObj = {};
 
-var gradeLevelMap = [9,10,8.8,9,10,8.8]
+var gradeLevelMap = [9,10,8.8,9.05,10.05,8.85]
 
 json.dataEntries.filter(function(row){
 
